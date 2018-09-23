@@ -19,6 +19,7 @@
   "homepage": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04#readme",
   "dependencies": {
     "dotenv": "^6.0.0",
+    "ejs": "^2.6.1",
     "express": "^4.16.3"
   },
   "devDependencies": {
