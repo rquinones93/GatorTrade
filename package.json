@@ -4,8 +4,9 @@
   "description": "CSC648 Team 04 Website",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production nodemon ./bin/www"
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www",
+    "start": "NODE_ENV=production nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,15 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "express-ejs-layouts": "^2.5.0",
+    "express-validator": "^5.3.0",
+    "http": "0.0.0",
+    "morgan": "^1.9.1",
     "pg": "^7.4.3",
     "sequelize": "^4.38.1",
     "sequelize-cli": "^4.1.1"
