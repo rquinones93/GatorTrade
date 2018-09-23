@@ -1,0 +1,19 @@
+{
+  "name": "csc648-fa18-team04",
+  "version": "1.0.0",
+  "description": "CSC648 Team 04 Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC-648-SFSU/csc648-fa18-Team04.git"
+  },
+  "author": "Abigail Chin, Alyssa Malunao, Dhruv Shah, Jarek Rettinghouse, Jed Ahmadia, Nikita Bajracharya, Robert Quinones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04/issues"
+  },
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04#readme"
+}
