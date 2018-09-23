@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04/issues"
   },
-  "homepage": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04#readme"
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-fa18-Team04#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
