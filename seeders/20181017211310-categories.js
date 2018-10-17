@@ -15,6 +15,10 @@ module.exports = {
       title: 'Home Appliances',
       createdAt: new Date(),
       updatedAt: new Date()
+    },  {
+      title: 'Clothes',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       title: 'Student Services',
       createdAt: new Date(),
