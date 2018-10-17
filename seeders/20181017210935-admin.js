@@ -5,7 +5,7 @@ module.exports = {
     
     // Adds single admin - the Test User
     return queryInterface.bulkInsert('admin', [{
-      userId: '1',
+      userId: '2',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});

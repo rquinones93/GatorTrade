@@ -4,7 +4,11 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     // Adds ALL categories to DB
     return queryInterface.bulkInsert('categories', [{
-      title: 'Text Books',
+      title: 'Apparel',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      title: 'Books',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
@@ -12,15 +16,15 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      title: 'Home Appliances',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },  {
-      title: 'Clothes',
+      title: 'Events',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      title: 'Student Services',
+      title: 'Home Goods',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      title: 'Services',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
