@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Item = sequelize.define('Item', {
-    sellerId: DataTypes.STRING,
+    sellerId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.FLOAT,
@@ -13,7 +13,11 @@ module.exports = (sequelize, DataTypes) => {
 
   Item.associate = function(models) {
     // associations can be defined here
+    Item.belongsTo(models.Image, {
+      foreignKey: 'itemId',
+      targetKey: 'itemId'
+    });
   };
-  
+
   return Item;
 };
