@@ -14,7 +14,9 @@
     "db:create:model:user": "sequelize model:create --name user --attributes firstName:string,lastName:string,email:string,password:string,profilePicture:string",
     "db:create:model:admin": "sequelize model:create --name admin --attributes userId:integer",
     "db:create:model:item": "sequelize model:create --name item --attributes sellerId:integer,title:string,description:string,price:float,category:string,meetingPlace:string,status:string",
-    "db:create:model:image": "sequelize model:create --name image --attributes itemId:integer,imageLink:string"
+    "db:create:model:image": "sequelize model:create --name image --attributes itemId:integer,imageLink:string",
+    "db:create:model:categories": "sequelize model:create --name categories --attributes title:string"
+
 
   },
   "repository": {
