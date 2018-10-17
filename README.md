@@ -55,15 +55,16 @@
    # This installs node modules defined in package.json
    npm install
 
-   # Run Sequelize Migrations to finish database setup
-   # This will create tables in gator_trade DB and make defined key associations
+   # Run Sequelize Migrations to finish database setup - creates tables
    npm run db:migrate
 
+   # Seed the Database with dummy data provided in the seeders directory
+   npm run db:seed:all
+
    # Start the server and application
-    # On Windows
-   npm run start:windev
-    # On Mac or Linux
-   npm run start:dev
+   npm run start:windev  # On Windows
+   # Or
+   npm run start:dev     # On Mac or Linux
    ```
 
 4. Once the server is running, visit `localhost:3000` from your browser.
