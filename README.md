@@ -56,7 +56,7 @@ robertBEuserRegistration
 2. Create a new Pull Request.
 3. Set the base branch to 'development' and the compare branch to your personal branch.
 4. Request Abigail and your team lead to review your code.
-5. Request other members to review your code ( optional ).
+5. Request other members to rew your code ( optional ).
 6. After review, all Team Leads will ensure development branch runs smoothly.
 7. If there are no problems, the development branch will be merged into the master branch.
 8. Robert will then push changes to the live server.
