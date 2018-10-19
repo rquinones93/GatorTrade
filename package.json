@@ -7,7 +7,18 @@
     "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www",
     "start:windev": "nodemon ./bin/www",
     "start": "NODE_ENV=production nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:create:migration": "sequelize migration:generate --name",
+    "db:migrate": "sequelize db:migrate",
+    "db:rollback": "sequelize db:migrate:undo",
+    "db:create:model:user": "sequelize model:create --name user --attributes firstName:string,lastName:string,email:string,password:string,profilePicture:string",
+    "db:create:model:admin": "sequelize model:create --name admin --attributes userId:integer",
+    "db:create:model:item": "sequelize model:create --name item --attributes sellerId:integer,title:string,description:string,price:float,category:string,meetingPlace:string,status:string",
+    "db:create:model:message": "sequelize model:create --name message --attributes itemId:integer,sellerId:integer,message:string",
+    "db:create:model:image": "sequelize model:create --name image --attributes itemId:integer,imageLink:string",
+    "db:create:model:category": "sequelize model:create --name category --attributes title:string",
+    "db:create:model:meetingPlace": "sequelize model:create --name meetingPlace --attributes title:string",
+    "postinstall": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",
