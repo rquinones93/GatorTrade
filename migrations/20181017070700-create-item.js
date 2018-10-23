@@ -36,6 +36,10 @@ module.exports = {
       meetingPlace: {
         allowNull: false,
         type: Sequelize.STRING
+      }, 
+      imageLink: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       status: {
         allowNull: false,
