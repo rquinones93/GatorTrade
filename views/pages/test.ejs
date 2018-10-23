@@ -1,7 +1,8 @@
 <!--TESTING New home page-->
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3" id="currentCategory">Searching: <%= currentCategory %></h1>
+    <h1 class="display-3">Searching: <%= currentCategory %></h1>
+    <p hidden id="currentCategory"><%= currentCategory %></p>
   </div>
 </div>
 <form method="POST" action="/test">
@@ -42,3 +43,8 @@
     </div>
 <%}%>
 
+<script>
+  // Set Selected Attribute for drop down, for easier searching
+  var selectedCategory = document.getElementById("currentCategory").innerHTML;
+  document.getElementById(selectedCategory).setAttribute('selected', 'selected');
+</script>
