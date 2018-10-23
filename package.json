@@ -7,7 +7,21 @@
     "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www",
     "start:windev": "nodemon ./bin/www",
     "start": "NODE_ENV=production nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:create:migration": "sequelize migration:generate --name",
+    "db:migrate": "sequelize db:migrate",
+    "db:rollback": "sequelize db:migrate:undo",
+    "db:create:model:user": "sequelize model:create --name user --attributes firstName:string,lastName:string,email:string,password:string,profilePicture:string",
+    "db:create:model:admin": "sequelize model:create --name admin --attributes userId:integer",
+    "db:create:model:item": "sequelize model:create --name item --attributes sellerId:integer,title:string,description:string,price:float,category:string,meetingPlace:string,status:string",
+    "db:create:model:message": "sequelize model:create --name message --attributes itemId:integer,sellerId:integer,message:string",
+    "db:create:model:image": "sequelize model:create --name image --attributes itemId:integer,imageLink:string",
+    "db:create:model:category": "sequelize model:create --name category --attributes title:string",
+    "db:create:model:meetingPlace": "sequelize model:create --name meetingPlace --attributes title:string",
+    "db:seed:create": "sequelize seed:create --name",
+    "db:seed:all": "sequelize db:seed:all",
+    "db:seed:undo": "sequelize db:seed:undo --seed",
+    "db:seed:rollback": "sequelize db:seed:undo:all"
   },
   "repository": {
     "type": "git",
@@ -31,6 +45,7 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "pg": "^7.4.3",
+    "pg-promise": "^8.5.0",
     "sequelize": "^4.38.1",
     "sequelize-cli": "^4.1.1"
   }

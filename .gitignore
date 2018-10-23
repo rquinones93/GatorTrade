@@ -125,11 +125,11 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-# .env
+.env
 
 .DS_Store
 
 package-lock.json
 
 # End of https://www.gitignore.io/api/node,jetbrains
-.vscode/settings.json
+.vscode
