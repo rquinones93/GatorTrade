@@ -18,7 +18,6 @@
     "db:create:model:image": "sequelize model:create --name image --attributes itemId:integer,imageLink:string",
     "db:create:model:category": "sequelize model:create --name category --attributes title:string",
     "db:create:model:meetingPlace": "sequelize model:create --name meetingPlace --attributes title:string",
-    "postinstall": "sequelize db:migrate",
     "db:seed:create": "sequelize seed:create --name",
     "db:seed:all": "sequelize db:seed:all",
     "db:seed:undo": "sequelize db:seed:undo --seed",

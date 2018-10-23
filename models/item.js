@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.FLOAT,
     category: DataTypes.STRING,
     meetingPlace: DataTypes.STRING,
+    imageLink: DataTypes.STRING,
     status: DataTypes.STRING
   }, {});
 
