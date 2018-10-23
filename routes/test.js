@@ -8,12 +8,13 @@ const db = require('../database/index');
 // All Categories
 const NO_SEARCH_INPUT_ALL = "SELECT * FROM items;"; 
 // Specific Category
-const NO_SEARCH_INPUT_CATEGORY = "SELECT * FROM items WHERE category = $1;"; 
+const NO_SEARCH_INPUT_CATEGORY = "SELECT * FROM items WHERE category LIKE '%' || $2 || '%'"; 
 // Specific Category with given search input
 const SEARCH_INPUT = "SELECT * FROM items WHERE category LIKE '%' || $2 || '%' AND (LOWER(title) LIKE  '%' || $1 || '%' OR LOWER(description) LIKE '%' || $1 || '%')"; 
 
 router.get('/', (request, response, next) => {
     response.render('pages/test',{
+        title: "Search Here",
         currentCategory: "All Categories"
     });
 });
