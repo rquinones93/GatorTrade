@@ -6,4 +6,14 @@ router.get('/', (request, response, next) => {
         title: "Post"
     });
 });
+
+router.get('/:post', (request, response, next) => {
+    let localpostId = request.params.post;
+
+    response.render('pages/post', {
+      title: "Post " + localpostId,
+      postID: localpostId
+    });
+});
+
 module.exports = router;
