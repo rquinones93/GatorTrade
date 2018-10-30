@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www",
-    "start:windev": "nodemon ./bin/www",
+    "start:windev": "SET \"NODE_ENV=development\" SET DEBUG=myapp:* & nodemon ./bin/www",
     "start": "NODE_ENV=production nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:create:migration": "sequelize migration:generate --name",
