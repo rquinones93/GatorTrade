@@ -39,11 +39,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 const index = require('./routes/index');
 const about = require('./routes/about');
 const test = require('./routes/test');
+//const post = require('./routes/post');
 
 // Middleware for routes
 app.use('/', index);
 app.use('/about', about);
 app.use('/test', test);
+//app.use('/post', post);
 
 // Passport Initialize
 // app.use(passport.initialize());
