@@ -9,7 +9,7 @@ const db = require('../database/connection');
 router.get('/', (request, response, next) => {
     response.render('pages/test',{
         title: "GatorTrade - Search",
-        currentCategory: "All Categories"
+        current_category: "All Categories"
     });
 });
 
@@ -22,7 +22,7 @@ router.post('/', (request, response, next) => { //when hit search button
         response.render('pages/test', {
             title: "GatorTrade - Search",
             items: items,
-            currentCategory: searchCategory
+            current_category: searchCategory
         });
       }).catch(err => {
           console.log(err);
