@@ -30,14 +30,14 @@
   <div class="container">
     <div class="row center">
       <% items.forEach(( item ) => {%>
-        <div class="col-sm-4">      
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+          <div class="card" style="width: 100%;">
+            <img class="card-img-top" src="<%= item.item.image_link %>" height="250px" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title"><%= item.title %></h5>
               <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
               <p class="card-text"><%= item.description %></p>
-             <a href="#" class="btn btn-primary">See More</a>
+             <a href="/post" class="btn btn-primary">See More</a>
             </div>
           </div>
         </div>
