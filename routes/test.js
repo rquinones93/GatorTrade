@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const { Search } = require('../database');
 
+// Test
+const db = require('../database/connection');
+
 router.get('/', (request, response, next) => {
     response.render('pages/test',{
         title: "GatorTrade - Search",
@@ -26,4 +29,15 @@ router.post('/', (request, response, next) => { //when hit search button
       });
 });
 
+router.post('/:item_id', (request, response, next) => {
+    let item_id = request.params.item_id;
+    let searchQuery = `SELECT * FROM items WHERE item_id = $1;`;
+
+    db.any(searchQuery, [item_id])
+        .then(item => {
+            console.log(item);
+            response.render('pages/index');
+        }).catch(err => { console.log(err); });
+
+});
 module.exports = router;

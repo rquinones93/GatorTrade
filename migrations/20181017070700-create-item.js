@@ -3,18 +3,18 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('items', {
-      itemId: {
+      item_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sellerId: {
+      seller_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'users',
-          key: 'userId'
+          key: 'user_id'
         }
       },
       title: {
@@ -33,11 +33,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      meetingPlace: {
+      meeting_place: {
         allowNull: false,
         type: Sequelize.STRING
       }, 
-      imageLink: {
+      image_link: {
         allowNull: false,
         type: Sequelize.STRING
       },
