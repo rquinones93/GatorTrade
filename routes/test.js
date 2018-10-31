@@ -19,6 +19,7 @@ router.post('/', (request, response, next) => { //when hit search button
 
     Search.search(searchInput, searchCategory)
       .then( items => {
+          console.log(items);
         response.render('pages/test', {
             title: "GatorTrade - Search",
             items: items,
