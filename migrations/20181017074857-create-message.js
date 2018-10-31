@@ -3,26 +3,26 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('messages', {
-      messageId: {
+      message_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      itemId: {
+      item_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'items',
-          key: 'itemId'
+          key: 'item_id'
         }
       },
-      sellerId: {
+      seller_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'users',
-          key: 'userId'
+          key: 'user_id'
         }
       },
       message: {
