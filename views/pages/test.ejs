@@ -1,52 +1,53 @@
 <!--TESTING New home page-->
 <div class="jumbotron">
-  <div class="container">
-    <h1 class="display-3">
-    Team 04 <br />
-    Searching: <%= currentCategory %></h1>
-    <p hidden id="currentCategory"><%= currentCategory %></p>
-  </div>
-</div>
-<form method="POST" action="/test">
-  <div class="form-group input-group mb-4">
-    <select class="form-control input-group-append col-sm-2" name="categories" id="categories">
-      <option id="All Categories" value="All Categories">All Categories</option>
-      <option id="Apparel"        value="Apparel">Apparel</option>
-      <option id="Books"          value="Books">Books</option>
-      <option id="Electronics"    value="Electronics">Electronics</option>
-      <option id="Events"         value="Events">Events</option>
-      <option id="Home Goods"     value="Home Goods">Home Goods</option>
-      <option id="Services"       value="Services">Services</option>
-    </select>
-    <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    <div class="container">
+      <h1 class="display-3">
+      Team 04 <br />
+      Searching: <%= currentCategory %></h1>
+      <p hidden id="currentCategory"><%= currentCategory %></p>
     </div>
   </div>
-</form>
-
-<!-- Show Items -->
-<%if( typeof items != "undefined") { %>
-  <div class="container">
-    <div class="row center">
-      <% items.forEach(( item ) => {%>
-        <div class="col-sm-4">      
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<%= item.imageLink %>" height="250px" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"><%= item.title %></h5>
-              <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
-              <p class="card-text"><%= item.description %></p>
-             <a href="#" class="btn btn-primary">See More</a>
+  <form method="POST" action="/test">
+    <div class="form-group input-group mb-4">
+      <select class="form-control input-group-append col-sm-2" name="categories" id="categories">
+        <option id="All Categories" value="All Categories">All Categories</option>
+        <option id="Apparel"        value="Apparel">Apparel</option>
+        <option id="Books"          value="Books">Books</option>
+        <option id="Electronics"    value="Electronics">Electronics</option>
+        <option id="Events"         value="Events">Events</option>
+        <option id="Home Goods"     value="Home Goods">Home Goods</option>
+        <option id="Services"       value="Services">Services</option>
+      </select>
+      <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Show Items -->
+  <%if( typeof items != "undefined") { %>
+    <div class="container">
+      <div class="row center">
+        <% items.forEach(( item ) => {%>
+          <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="card" style="width: 100%;">
+              <img class="card-img-top" src="<%= item.imageLink %>" height="250px" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= item.title %></h5>
+                <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
+                <p class="card-text"><%= item.description %></p>
+               <a href="/post" class="btn btn-primary">See More</a>
+              </div>
             </div>
+            <br />
           </div>
-        </div>
-      <%});%>
-    </div>
-<%}%>
-
-<script>
-  // Set Selected Attribute for drop down, for easier searching
-  var selectedCategory = document.getElementById("currentCategory").innerHTML;
-  document.getElementById(selectedCategory).setAttribute('selected', 'selected');
-</script>
+        <%});%>
+      </div>
+  <%}%>
+  
+  <script>
+    // Set Selected Attribute for drop down, for easier searching
+    var selectedCategory = document.getElementById("currentCategory").innerHTML;
+    document.getElementById(selectedCategory).setAttribute('selected', 'selected');
+  </script>
