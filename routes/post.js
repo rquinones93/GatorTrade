@@ -25,9 +25,6 @@ router.get('/:post_id', (request, response, next) => {
             items: items,
             currentCategory: currentCategory,
             post_id: localpostId
-=======
-            postID: localpostId
->>>>>>> e23f00d24d57b743fc0b27f37c4b7fd36fa00f6d
         });
     }).catch( err =>{
         console.log(err);
