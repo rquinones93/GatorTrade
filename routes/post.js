@@ -20,12 +20,11 @@ router.get('/:post_id', (request, response, next) => {
 
 
     db.any(searchInput, [localpostId])
-    .then( items => {
-         console.log(items);
+    .then( item => {
+         console.log(item);
         response.render('pages/post', {
             title: "Post " + localpostId,
-            items: items,
-            post_id: localpostId
+            item: item
         });
     }).catch( err =>{
         console.log(err);
