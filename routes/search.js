@@ -7,7 +7,7 @@ const { Search } = require('../database');
 const db = require('../database/connection');
 
 router.get('/', (request, response, next) => {
-    response.render('pages/test',{
+    response.render('pages/search',{
         title: "GatorTrade - Search",
         current_category: "All Categories"
     });
@@ -20,7 +20,7 @@ router.post('/', (request, response, next) => { //when hit search button
     Search.search(searchInput, searchCategory)
       .then( items => {
           console.log(items);
-        response.render('pages/test', {
+        response.render('pages/search', {
             title: "GatorTrade - Search",
             items: items,
             current_category: searchCategory
