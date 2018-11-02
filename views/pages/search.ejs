@@ -7,7 +7,7 @@
     <p hidden id="currentCategory"><%= current_category %></p>
   </div>
 </div>
-<form method="POST" action="/test">
+<form method="POST" action="/search">
   <div class="form-group input-group mb-4">
     <select class="form-control input-group-append col-sm-2" name="categories" id="categories">
       <option id="All Categories" value="All Categories">All Categories</option>
@@ -31,7 +31,7 @@
     <div class="row center">
       <% items.forEach(( item ) => {%>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-          <div class="card" style="width: 100%;">
+          <div class="card" style="width: 100%; margin: 5px;">
             <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title"><%= item.title %></h5>

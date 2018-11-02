@@ -5,3 +5,28 @@
     <p>Placeholder for our Index Page</p>
   </div>
 </div>
+
+<!-- TODO - Update with correct styling, rapid prototype by backend -->
+<h2>
+  Recent Items - <a href="/search">See All Items</a>
+</h2>
+<hr>
+<!-- Show 6 Most Recent Items -->
+<%if( typeof items != "undefined") { %>
+  <div class="container">
+    <div class="row center">
+      <% items.forEach(( item ) => {%>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+          <div class="card" style="width: 100%; margin: 5px;">
+            <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
+              <p class="card-text"><%= item.description %></p>
+             <a href="/post/<%= item.item_id %>" class="btn btn-primary">See More</a>
+            </div>
+          </div>
+        </div>
+      <%});%>
+    </div>
+<%}%>
