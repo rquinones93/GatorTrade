@@ -16,19 +16,16 @@ router.get('/', (request, response, next) => {
     });
 });
 
-router.post('/', (request, response, next) => { //when hit search button
-  // let searchInput = (request.body.searchInput == undefined) ? "" : request.body.searchInput;
-  // let searchCategory = request.body.categories;
-  let searchInput = "";
-  let searchCategory = "";
-  if(request.body.searchInput) { 
-    searchInput = request.body.searchInput; 
-  }
+router.post('/', (request, response, next) => { 
+  // Search Input can be undefined if accessing from index or
+  // not input by user.
+  let searchInput = (request.body.searchInput != undefined) ? 
+                     request.body.searchInput.toLowerCase() : "";
+
+  let searchCategory = request.body.categories;
 
   Search.search(searchInput, searchCategory)
     .then(items => {
-
-      console.log(items);
       response.render('pages/search', {
         title: "GatorTrade - Search",
         items: items,
