@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-
-const db = require('../database/index');
-
+const db = require('../database/connection/index');
 
 router.get('/', (request, response, next) => {
     response.render('pages/post',{
@@ -12,10 +10,8 @@ router.get('/', (request, response, next) => {
 });
 
 router.get('/:post_id', (request, response, next) => {
-    let localpostId = request.params.post;
-
-    let searchInput = 'SELECT items.item_id FROM items WHERE items.item_id = $1';
-
+    let localpostId = request.params.post_id;
+    let searchInput = 'SELECT item_id FROM items WHERE item_id = $1';
 
     db.any(searchInput, [localpostId])
     .then( items => {
@@ -23,7 +19,6 @@ router.get('/:post_id', (request, response, next) => {
         response.render('pages/post', {
             title: "Post " + localpostId,
             items: items,
-            currentCategory: currentCategory,
             post_id: localpostId
         });
     }).catch( err =>{
