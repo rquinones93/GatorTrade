@@ -4,7 +4,7 @@ const router = express.Router();
 const { Item } = require('../database');
 
 router.get('/', (request, response, next) => {
-  Item.get6RecentItems()
+  Item.get4RecentItems()
     .then( items => {
         /// Get 5 Most Recent
       response.render('pages/index', {

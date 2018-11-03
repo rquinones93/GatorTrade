@@ -1,188 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-     <title>3 Col Portfolio - Start Bootstrap Template</title>
-     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-     <!-- Custom styles for this template -->
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
-   </head>
-  <body>
-     <!-- Page Content -->
-    <div class="container">
-       <!-- Page Heading -->
-      <h1 class="my-4">Categories</h1>
- <!--Categories-->
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-           
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Apparel</a>
-              </h4>
-              <p class="card-text">Clothes such as shirts, jeans and shoes.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Books</a>
-              </h4>
-              <p class="card-text">Find books for your current classes</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-          
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Electronics</a>
-              </h4>
-              <p class="card-text">Computers, tablets, calculators and etc.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Events</a>
-              </h4>
-              <p class="card-text">Concert tickets, sporting events and etc.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-           
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Home Goods</a>
-              </h4>
-              <p class="card-text">Pots, pans, microwaves, vaccums and etc.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Services</a>
-              </h4>
-              <p class="card-text">Find a tutor, personal trainer and etc.</p>
-            </div>
+  <!-- Page Heading -->
+  <h1 class="my-4">Categories</h1>
+  <!--Categories-->
+  <form method="POST" action="../search">
+    <div class="row" >
+      <!-- Apparel Card -->
+      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+        <div class="card h-100">
+          <div class="card-body">
+            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Apparel" type="submit">
+              <h4 class="card-title">Apparel</h4>
+            </button>
+            <p class="card-text">Clothes such as shirts, jeans, and shoes.</p>
           </div>
         </div>
       </div>
-    <!--Categories-->
-       <!-- /.row -->
-    </div>
- 
-<!--Bottom Half of Page(From Recent Posts Down)-->
-      <head>
-    
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-    
-      
-    
-        <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-        <!-- Custom styles for this template -->
-        <link href="css/heroic-features.css" rel="stylesheet">
-    
-      </head>
-    
-      <body>
-        <!-- Page Content -->
-        <div class="container">
-    
-          <!-- Jumbotron Header -->
-          <header class="jumbotron my-4">
-            <h1 class="display-3">Recent Posts</h1>
-            <p class="lead">Checkout what people have just posted!</p>
-            <a href="#" class="btn btn-primary btn-lg">See more</a>
-          </header>
-    
-        <!-- Page Features -->
-           <!--Recent Posts-->
-          <div class="row text-center">
-    
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="btn btn-primary">See Details</a>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                 
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="btn btn-primary">See Details</a>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="btn btn-primary">See Details</a>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card">
-                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                <div class="card-body">
-                  <h4 class="card-title">Card title</h4>
-                  
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="btn btn-primary">See Details</a>
-                </div>
-              </div>
-            </div>
-    
+      <!-- Books Card -->
+      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+        <div class="card h-100">   
+          <div class="card-body">
+            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Books" type="submit">
+              <h4 class="card-title">Books</h4>
+            </button>
+            <p class="card-text">Find books for your current classes.</p>
           </div>
-          <!--Recent Posts-->
-          
-          <!-- /.row -->
         </div>
-        <!-- /.container -->
-          <!-- /.container -->
-     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   </body>
- </html>
+      </div>
+      <!-- Electronics Card -->
+      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+        <div class="card h-100">  
+          <div class="card-body">
+            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Electronics" type="submit">
+              <h4 class="card-title">Electronics</h4>
+            </button>
+            <p class="card-text">Computers, Tablets, Calculators, Etc.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Events Card -->
+      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+        <div class="card h-100">
+          <div class="card-body">
+            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Events" type="submit">
+              <h4 class="card-title">Events</h4>
+            </button>
+            <p class="card-text">Concert Tickets, Sporting Events, Etc.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Home Goods Card -->
+      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+        <div class="card h-100">
+          <div class="card-body">
+            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Home Goods" type="submit">
+              <h4 class="card-title">Home Goods</h4>
+            </button>
+            <p class="card-text">Pots, Pans, Microwaves, Vacuums, Etc.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Services Card -->
+      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+        <div class="card h-100">     
+          <div class="card-body">
+            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Services" type="submit">
+              <h4 class="card-title">Services</h4>
+            </button>
+            <p class="card-text">Find a tutor, personal trainer and etc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+<!--Bottom Half of Page(From Recent Posts Down)-->
+<!-- Jumbotron Header -->
+<header class="jumbotron my-4">
+  <h1 class="display-3">Recent Posts</h1>
+  <p class="lead">Checkout what people have just posted!</p>
+  <a href="/search" class="btn btn-primary btn-lg">See All Items</a>
+</header>
+
+<!-- Page Features -->
+<%if( typeof items != "undefined") { %>
+  <div class="container">
+    <div class="row center">
+      <% items.forEach(( item ) => {%>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="<%= item.image_link %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
+              <p class="card-text"><%= item.description %></p>
+              <a href="/post/<%= item.item_id %>" class="btn btn-primary">See Details</a>
+            </div>
+          </div>
+        </div>
+      <%});%>
+    </div>
+<%}%>
+<!--Recent Posts-->
