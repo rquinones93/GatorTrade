@@ -1,76 +1,24 @@
-  <!-- Page Heading -->
-  <h1 class="my-4">Categories</h1>
-  <!--Categories-->
-  <form method="POST" action="../search">
-    <div class="row" >
-      <!-- Apparel Card -->
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-        <div class="card h-100">
-          <div class="card-body">
-            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Apparel" type="submit">
-              <h4 class="card-title">Apparel</h4>
-            </button>
-            <p class="card-text">Clothes such as shirts, jeans, and shoes.</p>
+<!-- Page Heading -->
+<h1 class="my-4">Categories</h1>
+<!--Categories-->
+<%if( typeof categories != "undefined") { %>
+  <form method="POST" action="/search">
+    <div class="row">
+      <% categories.forEach(( category ) => {%>
+        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+          <div class="card h-100">
+            <div class="card-body">
+              <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
+                <h4 class="card-title"><%= category.title %></h4>
+              </button>
+              <p class="card-text"><%= category.description %></p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Books Card -->
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-        <div class="card h-100">   
-          <div class="card-body">
-            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Books" type="submit">
-              <h4 class="card-title">Books</h4>
-            </button>
-            <p class="card-text">Find books for your current classes.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Electronics Card -->
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-        <div class="card h-100">  
-          <div class="card-body">
-            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Electronics" type="submit">
-              <h4 class="card-title">Electronics</h4>
-            </button>
-            <p class="card-text">Computers, Tablets, Calculators, Etc.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Events Card -->
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-        <div class="card h-100">
-          <div class="card-body">
-            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Events" type="submit">
-              <h4 class="card-title">Events</h4>
-            </button>
-            <p class="card-text">Concert Tickets, Sporting Events, Etc.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Home Goods Card -->
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-        <div class="card h-100">
-          <div class="card-body">
-            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Home Goods" type="submit">
-              <h4 class="card-title">Home Goods</h4>
-            </button>
-            <p class="card-text">Pots, Pans, Microwaves, Vacuums, Etc.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Services Card -->
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-        <div class="card h-100">     
-          <div class="card-body">
-            <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="Services" type="submit">
-              <h4 class="card-title">Services</h4>
-            </button>
-            <p class="card-text">Find a tutor, personal trainer and etc.</p>
-          </div>
-        </div>
-      </div>
+      <%});%>
     </div>
   </form>
+<%}%>
 
 <!--Bottom Half of Page(From Recent Posts Down)-->
 <!-- Jumbotron Header -->
@@ -80,7 +28,7 @@
   <a href="/search" class="btn btn-primary btn-lg">See All Items</a>
 </header>
 
-<!-- Page Features -->
+<!-- 4 Most Recent Items -->
 <%if( typeof items != "undefined") { %>
   <div class="container">
     <div class="row center">
@@ -99,4 +47,3 @@
       <%});%>
     </div>
 <%}%>
-<!--Recent Posts-->
