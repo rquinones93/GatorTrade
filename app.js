@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // Make use of environment variables defined in .env
 if ( process.env.NODE_ENV === 'development' ||
-     process.env.NODE_ENV === 'production') {
+    process.env.NODE_ENV === 'production') {
   require('dotenv').config();
 }
 
