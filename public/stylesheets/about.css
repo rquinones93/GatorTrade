@@ -64,21 +64,21 @@ body {
 }
 
 .sidenav {
-    height: 50%;
+    height: 350px;
     width: 200px;
     position: fixed;
     z-index: 1;
-    top: 150;
-    left: 0;
+    top: 350px;
+    left: 10px;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .sidenav label {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     color: #818181;
     display: block;
 }

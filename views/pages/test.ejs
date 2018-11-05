@@ -25,34 +25,47 @@
     </div>
   </form>
 
-  <!--Side Price&Location-->
-  <div class= "container-fluid">
-    <div class = "row content">
-      <div class ="col-md-2 sidenav hidden-md">
-        <div class="form-group">
-            <div class="Price Range">
-              <label for="sel1">Price Range:</label>
-              <input class="form-control" id="sel1" type="number" min="0">
-            </div>
-        <div class="form-group">
-            <label for="sel1">Meeting Location:</label>
-            <select class="form-control" id="sel1">
-              <option>Select</option>
-              <option>J. Paul Leonard Library</option>
-              <option>Student Center</option>
-              <option>Cafe</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
 
-
-  <!-- Show Items -->
+  <!-- Show Items & Side Price/Location-->
   <%if( typeof items != "undefined") { %>
     <div class="container">
       <div class="row center">
+        <div class = "col-sm-2">Displaying 12 of 100</div>
+        <ul class="pagination pagination-md">
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+        <p cl></p>
+          <div class= "container-fluid">
+              <div class = "row content">
+                <div class ="col-md-2 sidenav hidden-md">
+                  <div class="form-group">
+                      <div class="Price Range">
+                        <label for="sel1">Price Range:</label>
+                        <input class="form-control" id="sel1" type="number" min="0">
+                        <br/>
+                        <label>Filter by:</label>
+                        <select class="form-control" id="select">
+                          <option>Select</option>
+                          <option>Name</option>
+                        </select>
+                      </div>
+                  <div class="form-group">
+                    <br/>
+                      <label for="sel1">Meeting Location:</label>
+                      <select class="form-control" id="sel1">
+                        <option>Select</option>
+                        <option>J. Paul Leonard Library</option>
+                        <option>Student Center</option>
+                        <option>Cafe</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
         <% items.forEach(( item ) => {%>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card" style="width: 100%;">
@@ -69,6 +82,8 @@
         <%});%>
       </div>
   <%}%>
+
+
   
   <script>
     // Set Selected Attribute for drop down, for easier searching
