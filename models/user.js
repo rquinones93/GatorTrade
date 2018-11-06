@@ -12,18 +12,18 @@ module.exports = (sequelize, DataTypes) => {
   // Key Associations
   User.associate = function(models) {
     User.hasMany(models.Items, {
-      foreignKey: 'sellerId',
-      sourceKey: 'userId'
+      foreignKey: 'seller_id',
+      sourceKey: 'user_id'
     });
 
     User.hasMany(models.Messages, {
-      foreignKey: 'sellerId',
-      sourceKey: 'userId'
+      foreignKey: 'seller_id',
+      sourceKey: 'user_id'
     });
 
     User.hasMany(models.Admin, {
-      foreignKey: 'userId',
-      sourceKey: 'userId'
+      foreignKey: 'user_id',
+      sourceKey: 'user_id'
     });
   };
   
