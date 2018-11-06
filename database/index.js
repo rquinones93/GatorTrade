@@ -1,4 +1,4 @@
-const pgp = require('pg-promise')();
-const connection = pgp(process.env.DATABASE_URL);
-
-module.exports = connection;
+// Export all DB related modules to the rest of application
+module.exports = {
+  Search: require('./search')
+};
