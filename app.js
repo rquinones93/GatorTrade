@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // Make use of environment variables defined in .env
 if ( process.env.NODE_ENV === 'development' ||
-     process.env.NODE_ENV === 'production') {
+    process.env.NODE_ENV === 'production') {
   require('dotenv').config();
 }
 
@@ -38,12 +38,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routers 
 const index = require('./routes/index');
 const about = require('./routes/about');
-const test = require('./routes/test');
+const search = require('./routes/search');
+const post = require('./routes/post');
 
 // Middleware for routes
 app.use('/', index);
 app.use('/about', about);
-app.use('/test', test);
+app.use('/search', search);
+app.use('/post', post);
 
 // Passport Initialize
 // app.use(passport.initialize());

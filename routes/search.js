@@ -4,26 +4,35 @@ const router = express.Router();
 const { Search } = require('../database');
 
 router.get('/', (request, response, next) => {
-    response.render('pages/test',{
+  Search.searchAll()
+    .then(items => {
+      response.render('pages/search', {
         title: "GatorTrade - Search",
-        currentCategory: "All Categories"
+        items: items,
+        current_category: "All Categories"
+      });
+    }).catch(err => {
+      console.log(err);
     });
 });
 
-router.post('/', (request, response, next) => { //when hit search button
-    let searchInput = request.body.searchInput.toLowerCase();
-    let searchCategory = request.body.categories;
+router.post('/', (request, response, next) => { 
+  // Search Input can be undefined if accessing from index or
+  // not input by user.
+  let searchInput = (request.body.searchInput != undefined) ? 
+                     request.body.searchInput.toLowerCase() : "";
 
-    Search.search(searchInput, searchCategory)
-      .then( items => {
-        response.render('pages/test', {
-            title: "GatorTrade - Search",
-            items: items,
-            currentCategory: searchCategory
-        });
-      }).catch(err => {
-          console.log(err);
+  let searchCategory = request.body.categories;
+
+  Search.search(searchInput, searchCategory)
+    .then(items => {
+      response.render('pages/search', {
+        title: "GatorTrade - Search",
+        items: items,
+        current_category: searchCategory
       });
+    }).catch(err => {
+      console.log(err);
+    });
 });
-
 module.exports = router;
