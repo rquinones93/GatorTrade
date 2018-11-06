@@ -29,7 +29,8 @@ router.post('/', (request, response, next) => {
       response.render('pages/search', {
         title: "GatorTrade - Search",
         items: items,
-        current_category: searchCategory
+        current_category: searchCategory,
+        current_search: searchInput
       });
     }).catch(err => {
       console.log(err);

@@ -5,9 +5,10 @@
       Team 04 <br />
       Searching: <%= current_category %></h1>
       <p hidden id="current_category"><%= current_category %></p>
+      <p hidden id="current_search"><%= current_search %></p>
     </div>
   </div>
-  <form method="POST" action="/search">
+  <form method="POST" action="/search" role="search">
     <div class="form-group input-group mb-4">
       <select class="form-control input-group-append col-sm-2" name="categories" id="categories">
         <option id="All Categories" value="All Categories">All Categories</option>
@@ -18,10 +19,11 @@
         <option id="Home Goods"     value="Home Goods">Home Goods</option>
         <option id="Services"       value="Services">Services</option>
       </select>
-      <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="submit">Search</button>
       </div>
+      <div class="invalid-feedback">Please type in a correct search</div>
     </div>
   </form>
 
@@ -85,6 +87,17 @@
   
   <script>
     // Set Selected Attribute for drop down, for easier searching
-    var selectedCategory = document.getElementById("currentCategory").innerHTML;
-    document.getElementById(selectedCategory).setAttribute('selected', 'selected');
+    function setSelectedCategory() {
+      var selectedCategory = document.getElementById("current_category").innerHTML;
+      document.getElementById(selectedCategory).setAttribute('selected', 'selected');
+    }
+
+    // Set search input, so last search is remembered
+    function setSearchInput() {
+      var searchInput = document.getElementById("current_search").innerHTML;
+      document.getElementsByName("searchInput")[0].value = searchInput;
+    }
+
+    setSelectedCategory();
+    setSearchInput();
   </script>
