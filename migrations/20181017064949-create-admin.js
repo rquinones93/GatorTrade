@@ -3,18 +3,18 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('admin', {
-      adminId: {
+      admin_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'users',
-          key: 'userId'
+          key: 'user_id'
         }
       },
       createdAt: {

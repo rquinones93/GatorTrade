@@ -3,11 +3,11 @@
   <div class="container">
     <h1 class="display-3">
     Team 04 <br />
-    Searching: <%= currentCategory %></h1>
-    <p hidden id="currentCategory"><%= currentCategory %></p>
+    Searching: <%= current_category %></h1>
+    <p hidden id="currentCategory"><%= current_category %></p>
   </div>
 </div>
-<form method="POST" action="/test">
+<form method="POST" action="/search">
   <div class="form-group input-group mb-4">
     <select class="form-control input-group-append col-sm-2" name="categories" id="categories">
       <option id="All Categories" value="All Categories">All Categories</option>
@@ -32,12 +32,13 @@
       <% items.forEach(( item ) => {%>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
           <div class="card" style="width: 100%;">
-            <img class="card-img-top" src="<%= item.imageLink %>" height="250px" alt="Card image cap">
+            <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title"><%= item.title %></h5>
               <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
               <p class="card-text"><%= item.description %></p>
-             <a href="/post" class="btn btn-primary">See More</a>
+             <!-- This goes to the FE Post page <a href="/post" class="btn btn-primary">See More</a> -->
+             <a href="/post/<%= item.item_id %>" class="btn btn-primary">See More</a>
             </div>
           </div>
         </div>
