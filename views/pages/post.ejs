@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <div class="container">
     <h1 class="display-3">Under Construction!</h1>
-    <p> Placeholder <%= post_id%></p>
+    <p> Placeholder: <%=item.title%></p>
   </div>
 </div>
 
@@ -10,18 +10,16 @@
 <div class="flex-container">
   <div class="row">
     <div class = "col-md-4 item-photo">
-       <img src="https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125823/samples/ecommerce/shoes.png" alt="Item's Image" height="250px" class="img-responsive">
+       <img src="<%= item.image_link %>" alt="Item's Image" height="250px" class="img-responsive">
     </div>
     
     <div class = "col-md-8 item-detail" >
-      <h2 class="item-title"><strong>Item title</strong></h2>
-      <h5 class="item-location" style="color:rgb(12, 175, 204)"><i class="fas fa-map-marker-alt"></i> Ceaser Chavez Student Center</h5>
+      <h2 class="item-title"><strong><%= item.title %></strong></h2>
+      <h5 class="item-location" style="color:rgb(12, 175, 204)"><i class="fas fa-map-marker-alt"></i> <%=item.meeting_place%></h5>
       <hr>
-      <h4 class="item-price">Price: <span>$50</span></h5>
+      <h4 class="item-price">Price: <span>$<%=item.price%></span></h5>
       <hr>
-      <p class="item-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi doloribus tempora 
-        facere maiores sint animi nesciunt nostrum molestias? Ea, aliquam? Nobis, tempore a pariatur tempora 
-        exercitationem amet fuga odio magni!</p>
+      <p class="item-description"><%= item.description %></p>
     </div>
 
   <div class="container">
