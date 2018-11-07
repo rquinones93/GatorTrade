@@ -6,8 +6,9 @@ const expressValidator = require('express-validator');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 // const passport = require('passport');
-// const session = require('express-session');
+const session = require('express-session');
 const PORT = process.env.PORT || 5000;
 
 // Make use of environment variables defined in .env
@@ -34,6 +35,30 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
+app.enable('trust proxy');
+app.use(
+  session({
+    store: new(require('connect-pg-simple')(session))(),
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      secure: app.get('env') != 'development'
+    }
+  })
+);
+
+// // Flash Messages
+app.use(flash());
+app.use((request, response, next) => {
+  response.locals.success_msg = request.flash('success_msg');
+  response.locals.error_msg = request.flash('error_msg');
+  response.locals.error = request.flash('error');
+  response.locals.user = request.user || null;
+  next();
+});
 
 // Routers 
 const index = require('./routes/index');
