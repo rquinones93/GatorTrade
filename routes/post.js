@@ -6,14 +6,14 @@ const db = require('../database/connection');
 router.get('/:post_id', (request, response, next) => {
     let localpostId = request.params.post_id;
 
-    let searchInput = 'SELECT items.item_id FROM items WHERE items.item_id = $1';
+    let searchInput = 'SELECT * FROM items WHERE items.item_id = $1';
 
     db.oneOrNone(searchInput, [localpostId])
-    .then( item => {
-         console.log(item);
+    .then( items => {
+
         response.render('pages/post', {
             title: "Post " + localpostId,
-            item: item,
+            item: items,
             post_id: localpostId
         });
     }).catch( err =>{
