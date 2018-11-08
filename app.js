@@ -60,24 +60,6 @@ app.use((request, response, next) => {
   next();
 });
 
-// Routers 
-const index = require('./routes/index');
-const about = require('./routes/about');
-const search = require('./routes/search');
-const post = require('./routes/post');
-const signup = require('./routes/signup');
-
-// Middleware for routes
-app.use('/', index);
-app.use('/about', about);
-app.use('/search', search);
-app.use('/post', post);
-app.use('/signup', signup);
-
-// Passport Initialize
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 // Express Validator - Taken from Middleware Options on Github
 app.use(
   expressValidator({
@@ -98,6 +80,24 @@ app.use(
     }
   })
 );
+
+// Routers 
+const index = require('./routes/index');
+const about = require('./routes/about');
+const search = require('./routes/search');
+const post = require('./routes/post');
+const signup = require('./routes/signup');
+
+// Middleware for routes
+app.use('/', index);
+app.use('/about', about);
+app.use('/search', search);
+app.use('/post', post);
+app.use('/signup', signup);
+
+// Passport Initialize
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // catch 404 and forward to error handler
 app.use(function (req, response, next) {

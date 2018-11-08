@@ -1,18 +1,11 @@
 const express = require('express');
 const router = express.Router();
+let multer = require('multer');
+let cloudinary = require('cloudinary');
 const { User } = require('../database');
 
-
-router.get('/', (request, response, next) => {
-  response.render('pages/signup', {
-    title: "GatorTrade - Sign Up"
-  });
-});
-
-// For Image Upload
-let multer = require('multer');
-// Configure multer's diskStorage,
-// when file is uploaded, create custom name
+// Set Up For Image Upload
+// Configure multer's diskStorage, when file is uploaded, create custom name
 let storage = multer.diskStorage({
   filename: (request, file, callback) => {
     callback(null, Date.now() + file.originalname);
@@ -29,48 +22,64 @@ let imageFilter = (request, file, cb) => {
 };
 
 // Create upload variable w/ multer object & configurations
-let upload = multer({ storage: storage, fileFilter: imageFilter });
+let upload = multer({
+  storage: storage,
+  fileFilter: imageFilter
+});
 
 // Set up cloudinary
-let cloudinary = require('cloudinary');
 cloudinary.config({
   cloud_name: 'hx8ztvtac',
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-// Upload Single Image is a middleware function
-router.post('/', upload.single('image'), (request, response, next) => {
-  // Get Sign Up Form Data
-  const { first_name, last_name, email, password } = request.body;
-  const image_path = request.file.path;
-  
-  // Upload Profile Picture
-  cloudinary.uploader.upload(image_path, (result) => {
-    // Add Cloudinary url for the user's profile picture
-    const profile_picture = result.secure_url;
-    // Save Public ID for potential delete if errors exist
-    const public_id = result.public_id;
 
-    // Create User
-    User.create(first_name, last_name, email, password, profile_picture).then(errors => {
-      if (errors) {
-        // Delete picture just uploaded
-        cloudinary.v2.uploader.destroy(public_id, { invalidate: true }, (error, result) => {
-          console.log(result, error, "Profile Picture Deleted.");
-        });
-        renderErrors(response, errors);
-
-      } else {
-
-        request.flash('success_msg', "Congrats! You're registered!");
-        response.redirect('/signup'); // TODO: Change this to whatever a user can access after login
-
-      }
-    }).catch(err => { console.log(err); });
-  }).catch( err => { console.log(err); });
-
+// Routes
+router.get('/', (request, response, next) => {
+  response.render('pages/signup', {
+    title: "GatorTrade - Sign Up"
+  });
 });
+
+router.post('/', upload.single('image'), (request, response, next) => {
+  let formErrors = formValidation( request );
+
+  if( formErrors ) {
+    renderErrors(response, formErrors);
+  } else {
+    const { first_name, last_name, email, password } = request.body;
+    const image_path = request.file.path;
+
+    cloudinary.uploader.upload(image_path, (result) => {
+      const profile_picture = result.secure_url;
+      const public_id = result.public_id;
+
+      User.create(first_name, last_name, email, password, profile_picture).then(errors => {
+        if (errors) {
+          cloudinary.v2.uploader.destroy(public_id, { invalidate: true }, (error, result) => { 
+            console.log(result, error, "Profile Picture Deleted."); 
+          });
+          renderErrors(response, errors);
+
+        } else {
+          request.flash('success_msg', "Congrats! You're registered!");
+          response.redirect('/signup'); // TODO: Change this to whatever a user can access after login
+
+        }
+      }).catch(err => { console.log(err); });
+    }).catch(err => { console.log(err); });
+  }
+});
+
+let formValidation = request => {
+  request.checkBody('email', 'Email is not valid.').isEmail();
+  request.checkBody('email', 'Not a valid SFSU email.').contains('@mail.sfsu.edu');
+  request.checkBody('password', 'Password must be 8-32 characters long.').len(8, 32);
+  request.checkBody('confirmpassword', 'Password must be 8-32 characters long.').len(8, 32);
+  request.checkBody('confirmpassword', 'Passwords do not match.').equals(request.body.password);
+  return request.validationErrors();
+};
 
 let renderErrors = (response, errors) => {
   response.render('pages/signup', {
