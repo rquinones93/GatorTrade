@@ -1,0 +1,130 @@
+<html>
+
+        <!--SignUp Form-->
+<body>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xl-8 offset-xl-2">
+                
+        
+                <br>
+                <br>
+
+                <h1>SignUp Form</h1>
+
+                <br>
+
+                <form id="contact-form" method="post" action="contact.php" role="form">
+
+                    <div class="messages"></div>
+
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_name">Firstname *</label>
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required"
+                                        data-error="Firstname is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_lastname">Lastname *</label>
+                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required"
+                                        data-error="Lastname is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="form_email">Email *</label>
+                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required"
+                                        data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="form_phone">Password *</label>
+                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your password *">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="form_phone">Confirm Password *</label>
+                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please re-enter your password *">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+            <!--SignUp Form-->
+
+             <!--UPLOAD IMAGE-->
+            <table>
+                <img style="margin-left:0px;" src="upload2/avatar.png" width="325" height="250" />
+                <br>
+                <tr><td><input type="file" name="image" ></td></tr>
+                <br>
+                <tr><td><input name="Submit" type="submit" value="Upload image"></td></tr>
+            </table>
+             <!--UPLOAD IMAGE-->
+                        <br>
+                        
+                    <!--Captcha-->
+
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    <!--Captcha-->
+
+                    
+                    <!--Agree to Terms-->
+                        
+                        <form action="#" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }">
+
+                            <input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the Terms and Conditions and Privacy Policy
+                            
+                        </form>
+                    <!--Agree to Terms-->  
+
+                        <br>
+                        <br>
+                        
+                    <!--Submit SignUp Form-->    
+                        <form action="#">
+                        <input type="submit" class="btn btn-success btn-send" value="Finish">
+                        </form>
+                      
+                    <!--Submit SignUp Form-->    
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- /.8 -->
+
+        </div>
+        <!-- /.row-->
+
+    </div>
+    <!-- /.container-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="validator.js"></script>
+    <script src="contact.js"></script>
+</body>
+
+</html>
