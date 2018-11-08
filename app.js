@@ -40,12 +40,14 @@ const index = require('./routes/index');
 const about = require('./routes/about');
 const search = require('./routes/search');
 const post = require('./routes/post');
+const admin = require('./routes/admin');
 
 // Middleware for routes
 app.use('/', index);
 app.use('/about', about);
 app.use('/search', search);
 app.use('/post', post);
+app.use('/admin', admin);
 
 // Passport Initialize
 // app.use(passport.initialize());
