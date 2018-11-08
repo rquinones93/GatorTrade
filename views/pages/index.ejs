@@ -1,7 +1,49 @@
-<!-- Main jumbotron for a primary developer message or call to action -->
-<div class="jumbotron">
+<!-- Page Heading -->
+<h1 class="my-4">Categories</h1>
+<!--Categories-->
+<%if( typeof categories != "undefined") { %>
+  <form method="POST" action="/search">
+    <div class="row">
+      <% categories.forEach(( category ) => {%>
+        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
+          <div class="card h-100">
+            <div class="card-body">
+              <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
+                <h4 class="card-title"><%= category.title %></h4>
+              </button>
+              <p class="card-text"><%= category.description %></p>
+            </div>
+          </div>
+        </div>
+      <%});%>
+    </div>
+  </form>
+<%}%>
+
+<!--Bottom Half of Page(From Recent Posts Down)-->
+<!-- Jumbotron Header -->
+<header class="jumbotron my-4">
+  <h1 class="display-3">Recent Posts</h1>
+  <p class="lead">Checkout what people have just posted!</p>
+  <a href="/search" class="btn btn-primary btn-lg">See All Items</a>
+</header>
+
+<!-- 4 Most Recent Items -->
+<%if( typeof items != "undefined") { %>
   <div class="container">
-    <h1 class="display-3">Under Construction!</h1>
-    <p>Placeholder for our Index Page</p>
-  </div>
-</div>
+    <div class="row center">
+      <% items.forEach(( item ) => {%>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="<%= item.image_link %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title %></h5>
+              <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
+              <p class="card-text"><%= item.description %></p>
+              <a href="/post/<%= item.item_id %>" class="btn btn-primary">See Details</a>
+            </div>
+          </div>
+        </div>
+      <%});%>
+    </div>
+<%}%>

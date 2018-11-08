@@ -1,0 +1,102 @@
+<!--TESTING New home page-->
+<div class="jumbotron">
+  <div class="container">
+      <h1 class="display-3">
+      Team 04 <br />
+      Searching: <%= current_category %></h1>
+      <p hidden id="current_category"><%= current_category %></p>
+      <p hidden id="current_search"><%= current_search %></p>
+    </div>
+  </div>
+  <form method="POST" action="/search" role="search">
+    <div class="form-group input-group mb-4">
+      <select class="form-control input-group-append col-sm-2" name="categories" id="categories">
+        <option id="All Categories" value="All Categories">All Categories</option>
+        <option id="Apparel"        value="Apparel">Apparel</option>
+        <option id="Books"          value="Books">Books</option>
+        <option id="Electronics"    value="Electronics">Electronics</option>
+        <option id="Events"         value="Events">Events</option>
+        <option id="Home Goods"     value="Home Goods">Home Goods</option>
+        <option id="Services"       value="Services">Services</option>
+      </select>
+      <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Show Items & Side Price/Location-->
+  <%if( typeof items != "undefined") { %>
+    <div class="container">
+      <div class="row center">
+        <div class = "col-sm-2">Displaying 12 of 100</div>
+        <ul class="pagination pagination-md">
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+          <div class= "container-fluid">
+              <div class = "row content">
+                <div class ="col-md-2 sidenav hidden-md">
+                  <div class="form-group">
+                      <div class="Price Range">
+                        <label for="sel1">Price Range:</label>
+                        <input class="form-control" id="sel1" type="number" min="0">
+                        <br/>
+                        <label>Filter by:</label>
+                        <select class="form-control" id="select">
+                          <option>Select</option>
+                          <option>Name</option>
+                        </select>
+                      </div>
+                  <div class="form-group">
+                    <br/>
+                      <label for="sel1">Meeting Location:</label>
+                      <select class="form-control" id="sel1">
+                        <option>Select</option>
+                        <option>J. Paul Leonard Library</option>
+                        <option>Student Center</option>
+                        <option>Cafe</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+        <% items.forEach(( item ) => {%>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card" style="width: 100%;">
+              <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= item.title %></h5>
+                <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
+                <p class="card-text"><%= item.description %></p>
+               <a href="/post/<%= item.item_id %>" class="btn btn-primary">See More</a>
+              </div>
+            </div>
+            <br />
+          </div>
+        <%});%>
+      </div>
+  <%}%>
+
+
+  
+  <script>
+    // Set Selected Attribute for drop down, for easier searching
+    function setSelectedCategory() {
+      var selectedCategory = document.getElementById("current_category").innerHTML;
+      document.getElementById(selectedCategory).setAttribute('selected', 'selected');
+    }
+
+    // Set search input, so last search is remembered
+    function setSearchInput() {
+      var searchInput = document.getElementById("current_search").innerHTML;
+      document.getElementsByName("searchInput")[0].value = searchInput;
+    }
+
+    setSelectedCategory();
+    setSearchInput();
+  </script>
