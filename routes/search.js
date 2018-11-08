@@ -9,7 +9,8 @@ router.get('/', (request, response, next) => {
       response.render('pages/search', {
         title: "GatorTrade - Search",
         items: items,
-        current_category: "All Categories"
+        current_category: "All Categories",
+        current_search: ""
       });
     }).catch(err => {
       console.log(err);
