@@ -1,12 +1,9 @@
-<br>
-<br>
 <div class="container">
   <div class="row">
     <div class="col-xl-8 offset-xl-2">
-      <% include ../error.ejs %>
-      <br>
       <br>
       <h1>Sign Up</h1>
+      <% include ../error.ejs %>
       <hr>
             
       <form class="form-signin form-group" method="POST" action="/signup" enctype="multipart/form-data">
@@ -85,6 +82,9 @@
         </div>
         <!--Submit SignUp Form-->    
         <button class="btn btn-lg btn-primary" type="submit" id="create_account" disabled>Create Account</button>
+        <div class="float-right">
+          <a href="/login" class="btn btn-lg btn-success" role="button">Have An Account? Log In </a>
+        </div>
       </form>
     </div>
   </div>
