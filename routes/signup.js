@@ -3,6 +3,7 @@ const router = express.Router();
 let multer = require('multer');
 let cloudinary = require('cloudinary');
 const { User } = require('../database');
+const formValidation = require('../validation/signup_validation');
 
 // Set Up For Image Upload
 // Configure multer's diskStorage, when file is uploaded, create custom name
@@ -47,6 +48,7 @@ router.post('/', upload.single('image'), (request, response, next) => {
 
   if( formErrors ) {
     renderErrors(response, formErrors);
+
   } else {
     const { first_name, last_name, email, password } = request.body;
     const image_path = request.file.path;
@@ -71,15 +73,6 @@ router.post('/', upload.single('image'), (request, response, next) => {
     }).catch(err => { console.log(err); });
   }
 });
-
-let formValidation = request => {
-  request.checkBody('email', 'Email is not valid.').isEmail();
-  request.checkBody('email', 'Not a valid SFSU email.').contains('@mail.sfsu.edu');
-  request.checkBody('password', 'Password must be 8-32 characters long.').len(8, 32);
-  request.checkBody('confirmpassword', 'Password must be 8-32 characters long.').len(8, 32);
-  request.checkBody('confirmpassword', 'Passwords do not match.').equals(request.body.password);
-  return request.validationErrors();
-};
 
 let renderErrors = (response, errors) => {
   response.render('pages/signup', {
