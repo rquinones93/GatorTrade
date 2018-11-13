@@ -28,8 +28,10 @@
       </div>
 
     <div class="container">
+      <!--Will show up if logged in, otherwise display message telling user to log in-->
       <form method="POST" action = "/post">
         <div class=" col-lg-12 col-md-12 col-sm-12">
+          <!--Used for database query adding messages--> 
           <input hidden name="item_id" value="<%=item.item_id%>">
           <input hidden name="seller_id" value="<%=item.seller_id%>">
           <h2>Message</h2>
