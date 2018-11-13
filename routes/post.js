@@ -21,4 +21,22 @@ router.get('/:post_id', (request, response, next) => {
     });
 });
 
+router.post('/', (request, response, next) => {
+    
+    let messageInput = request.body.messageInput;
+    let item_id = request.body.item_id;
+    let seller_id = request.body.seller_id;
+
+
+    let sql = 'INSERT INTO messages (item_id, seller_id, message) VALUES ($1, $2, $3)';
+    console.log(item_id);
+    console.log(messageInput);
+    console.log(seller_id);
+    db.query(sql, [item_id, seller_id, messageInput]);
+
+    request.flash('success_msg', "Message has been sent to the seller");
+    response.redirect(`/post/${item_id}`);
+});
+
+
 module.exports = router;
