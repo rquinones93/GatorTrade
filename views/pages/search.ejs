@@ -26,6 +26,8 @@
     </div>
   </form>
 
+<div class = "">Displaying <%=items.length%> of <%=items.length%></div>
+
   <!-- Show Items & Side Price/Location-->
 <div class="wrapper">
   <nav class="bg-light" id="sidebar">
@@ -71,41 +73,27 @@
                     <p class="postcard-text"><strong>Price: </strong> $<%= item.price %></p>
                     <p class="postcard-text"><%= item.description %></p>
                   </div>
-                </div>
+                </a>
+               </div>
               </div>
-              </div>
-        <% items.forEach(( item ) => {%>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="card" style="width: 100%;">
-              <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"><%= item.title %></h5>
-                <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
-                <p class="card-text"><%= item.description %></p>
-               <a href="/post/<%= item.item_id %>" class="btn btn-primary">See More</a>
-              </div>
-            </div>
-            <br />
-          </div>
-        <%});%>
+            <%});%>
+          <%}%>
       </div>
-  <%}%>
+    </div>
+  </div>
 
-
-  
+ 
   <script>
     // Set Selected Attribute for drop down, for easier searching
     function setSelectedCategory() {
       var selectedCategory = document.getElementById("current_category").innerHTML;
       document.getElementById(selectedCategory).setAttribute('selected', 'selected');
     }
-
     // Set search input, so last search is remembered
     function setSearchInput() {
       var searchInput = document.getElementById("current_search").innerHTML;
       document.getElementsByName("searchInput")[0].value = searchInput;
     }
-
     setSelectedCategory();
     setSearchInput();
   </script>
