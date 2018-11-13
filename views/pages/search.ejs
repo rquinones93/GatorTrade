@@ -26,8 +26,6 @@
     </div>
   </form>
 
-<div class = "">Displaying <%=items.length%> of <%=items.length%></div>
-
   <!-- Show Items & Side Price/Location-->
 <div class="wrapper">
   <nav class="bg-light" id="sidebar">
@@ -73,16 +71,28 @@
                     <p class="postcard-text"><strong>Price: </strong> $<%= item.price %></p>
                     <p class="postcard-text"><%= item.description %></p>
                   </div>
-                </a>
-               </div>
+                </div>
               </div>
-            <%});%>
-          <%}%>
+              </div>
+        <% items.forEach(( item ) => {%>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card" style="width: 100%;">
+              <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= item.title %></h5>
+                <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
+                <p class="card-text"><%= item.description %></p>
+               <a href="/post/<%= item.item_id %>" class="btn btn-primary">See More</a>
+              </div>
+            </div>
+            <br />
+          </div>
+        <%});%>
       </div>
-    </div>
-  </div>
+  <%}%>
 
- 
+
+  
   <script>
     // Set Selected Attribute for drop down, for easier searching
     function setSelectedCategory() {
