@@ -30,20 +30,23 @@
 
 <!-- 4 Most Recent Items -->
 <%if( typeof items != "undefined") { %>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row center">
+    <%if( typeof items != "undefined") { %>
       <% items.forEach(( item ) => {%>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="<%= item.image_link %>" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"><%= item.title %></h5>
-              <p class="card-text"><strong>Price: </strong> $<%= item.price %></p>
-              <p class="card-text"><%= item.description %></p>
-              <a href="/post/<%= item.item_id %>" class="btn btn-primary">See Details</a>
-            </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card rounded" style="width: 100%;">
+            <a href="/post/<%= item.item_id %>" class="btn">
+              <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+              <div class="overlay rounded">
+                <h5 class="postcard-title"><b><%= item.title %></b></h5>
+                <p class="postcard-text"><strong>Price: </strong> $<%= item.price %></p>
+                <p class="postcard-text"><%= item.description %></p>
+              </div>
+            </a>
           </div>
-        </div>
-      <%});%>
+          </div>
+        <%});%>
+      <%}%>
     </div>
 <%}%>
