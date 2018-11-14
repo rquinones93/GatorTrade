@@ -41,6 +41,8 @@ const about = require('./routes/about');
 const search = require('./routes/search');
 const post = require('./routes/post');
 const signup = require('./routes/signup');
+const create = require('./routes/create');
+
 
 // Middleware for routes
 app.use('/', index);
@@ -48,6 +50,8 @@ app.use('/about', about);
 app.use('/search', search);
 app.use('/post', post);
 app.use('/signup', signup);
+app.use('/create', create);
+
 
 // Passport Initialize
 // app.use(passport.initialize());
