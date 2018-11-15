@@ -89,13 +89,11 @@
       var selectedCategory = document.getElementById("current_category").innerHTML;
       document.getElementById(selectedCategory).setAttribute('selected', 'selected');
     }
-
     // Set search input, so last search is remembered
     function setSearchInput() {
       var searchInput = document.getElementById("current_search").innerHTML;
       document.getElementsByName("searchInput")[0].value = searchInput;
     }
-
     setSelectedCategory();
     setSearchInput();
   </script>
