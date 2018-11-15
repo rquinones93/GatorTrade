@@ -1,73 +1,82 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" >
+<link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" >
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<div class="container">
 
-<form class="form-horizontal">
-    <fieldset>
+    <h2>POST YOUR PRODUCT</h2>
+    <form class="form-horizontal">
+        <fieldset>
 
-        <!-- Form Name -->
-        <legend>POST YOUR PRODUCTS</legend>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="product_name">PRODUCT NAME*</label>
-            <div class="col-md-4">
-                <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md"
-                    required="" type="text">
-
+            <!--TITE INPUT-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">PRODUCT NAME*</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+                </div>
             </div>
-        </div>
 
-
-        <!-- Select Basic -->
-        <div class="form-group">
-
-            <label class="col-md-4 control-label" for="product_categorie">CATEGORY*</label>
-            <div class="col-md-4">
-                <select id="product_categorie" name="product_categorie" class="form-control">
-                    <option>Apparels</option>
-                    <option>Books</option>
-                    <option>Electronics</option>
-                    <option>Events</option>
-                    <option>Home Goods</option>
-                    <option>Services</option>
-                </select>
+            <!--DESCRIPTION BOX -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textarea">PRODUCT DESCRITPTION*</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="textarea" name="textarea"></textarea>
+                </div>
             </div>
-        </div>
-        <script>
-            $('.form-control').form - control();
-        </script>
 
-        <!-- Textarea -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION*</label>
-            <div class="col-md-4">
-                <textarea class="form-control" id="product_description" name="product_description"></textarea>
+            <!-- PRICE INPUT-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">PRICE($)*</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+
+                </div>
             </div>
-        </div>
 
-        <!-- File Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="filebutton">UPLOAD AN IMAGE*</label>
-            <div class="col-md-4">
-                <input id="filebutton" name="filebutton" class="input-file" type="file">
+            <!-- Select Categories -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="selectbasic">CATEGORY*</label>
+                <div class="col-md-4">
+                    <select id="selectbasic" name="selectbasic" class="form-control">
+                        <option value="1">Apparels</option>
+                        <option value="2">Books</option>
+                        <option value="3">Electronics</option>
+                        <option value="4">Events</option>
+                        <option value="5">Home Goods</option>
+                        <option value="6">Services</option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton">POST</label>
-            <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">POST</button>
+            <!-- Select Locations -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="selectbasic">MEETING LOCATIONS*</label>
+                <div class="col-md-4">
+                    <select id="selectbasic" name="selectbasic" class="form-control">
+                        <option value="1">J.PAUL LEONARD LIBRARY</option>
+                        <option value="2">STUDENT CENTER</option>
+                        <option value="3">CAFE</option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-    </fieldset>
-</form>
+            <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="filebutton">UPLOAD AN IMAGE*</label>
+                <div class="col-md-4">
+                    <input id="filebutton" name="filebutton" class="input-file" type="file">
+                </div>
+            </div>
+
+            <!-- POST Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton">POST</label>
+                <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-success">POST</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
