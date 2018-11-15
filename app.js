@@ -78,7 +78,12 @@ const search = require('./routes/search');
 const post = require('./routes/post');
 const admin = require('./routes/admin');
 const signup = require('./routes/signup');
+<<<<<<< HEAD
 const signin = require('./routes/login');
+=======
+const user = require('./routes/user');
+const signin = require('./routes/signin');
+>>>>>>> development
 const resetpassword = require('./routes/resetpassword');
 const create = require('./routes/create');
 
@@ -89,7 +94,12 @@ app.use('/search', search);
 app.use('/post', post);
 app.use('/admin', admin);
 app.use('/signup', signup);
+<<<<<<< HEAD
 app.use('/login', signin);
+=======
+app.use('/user', user);
+app.use('/signin', signin);
+>>>>>>> development
 app.use('/resetpassword', resetpassword);
 app.use('/create', create);
 

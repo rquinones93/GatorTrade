@@ -62,7 +62,7 @@ div{
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: purple;
+    background-color: darkmagenta;
   }
   
   .card:hover .overlay {
@@ -75,9 +75,18 @@ div{
     font-family: Verdana;
     font: bold;
     padding: 16px 16px;
+    white-space:normal;
+    word-break: inherit;
   }
   .postcard-text {
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     padding: 16px 16px;
+<<<<<<< HEAD
   }
+=======
+    white-space:normal;
+    word-break: inherit;
+  }
+ 
+>>>>>>> development
