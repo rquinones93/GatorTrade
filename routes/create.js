@@ -61,7 +61,7 @@ router.post('/', upload.single('image'), (request, response, next) => {
     Item.create(seller_id, title, description, price, 
                 category, meeting_place, image_link, public_id).then(errors => {
       request.flash('success_msg', "Posted! Your post is now pending admin review.");
-      response.redirect('/create'); // TODO: Change this to whatever a user can access after creating
+      response.redirect('/user'); // TODO: Unsure if this will go to user specific dashboard 
 
     }).catch(err => { renderErrors(response, err); });
   }).catch(err => { renderErrors(response, err); });

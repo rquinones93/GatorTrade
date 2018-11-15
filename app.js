@@ -89,6 +89,7 @@ const post = require('./routes/post');
 const admin = require('./routes/admin');
 const signup = require('./routes/signup');
 const create = require('./routes/create');
+const user = require('./routes/user');
 
 // Middleware for routes
 app.use('/', index);
@@ -98,6 +99,7 @@ app.use('/post', post);
 app.use('/admin', admin);
 app.use('/signup', signup);
 app.use('/create', create);
+app.use('/user', user);
 
 // Passport Initialize
 // app.use(passport.initialize());
