@@ -45,5 +45,4 @@ form-control{
 	-webkit-transition: width 0.3s;
 	-moz-transition: width 0.3s;
 	transition: width 0.3s;
-	-webkit-backface-visibility: hidden;
 }
