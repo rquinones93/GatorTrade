@@ -50,6 +50,16 @@ app.use(
   })
 );
 
+// // Flash Messages
+app.use(flash());
+app.use((request, response, next) => {
+  response.locals.success_msg = request.flash('success_msg');
+  response.locals.error_msg = request.flash('error_msg');
+  response.locals.error = request.flash('error');
+  response.locals.user = request.user || null;
+  next();
+});
+
 // Express Validator - Taken from Middleware Options on Github
 app.use(
   expressValidator({
@@ -80,7 +90,6 @@ const admin = require('./routes/admin');
 const signup = require('./routes/signup');
 const signin = require('./routes/login');
 const resetpassword = require('./routes/resetpassword');
-const create = require('./routes/create');
 
 // Middleware for routes
 app.use('/', index);
@@ -91,7 +100,6 @@ app.use('/admin', admin);
 app.use('/signup', signup);
 app.use('/login', signin);
 app.use('/resetpassword', resetpassword);
-app.use('/create', create);
 
 // Passport Initialize
 // app.use(passport.initialize());
