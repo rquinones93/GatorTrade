@@ -29,16 +29,23 @@ let upload = multer({
 
 // Set up cloudinary
 cloudinary.config({
-  cloud_name: 'hx8ztvtac',
+  cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 // Routes
 router.get('/', (request, response, next) => {
-  response.render('pages/create', {
-    title: "GatorTrade - Create New Post"
-  });
+  Promise.all([Item.getItemCategories(), Item.getMeetingPlaces()])
+    .then(([categories, meeting_places]) => {
+      response.render('pages/create', {
+        title: "GatorTrade - Create New Post",
+        categories: categories,
+        meeting_places: meeting_places
+      });
+    }).catch(err => {
+      console.log(err);
+    });
 });
 
 router.post('/', upload.single('image'), (request, response, next) => {
@@ -49,8 +56,10 @@ router.post('/', upload.single('image'), (request, response, next) => {
 
   cloudinary.uploader.upload(image_path, (result) => {
     const image_link = result.secure_url;
+    const public_id = result.public_id;
 
-    Item.create(seller_id, title, description, price, category, meeting_place, image_link).then(errors => {
+    Item.create(seller_id, title, description, price, 
+                category, meeting_place, image_link, public_id).then(errors => {
       request.flash('success_msg', "Posted! Your post is now pending admin review.");
       response.redirect('/create'); // TODO: Change this to whatever a user can access after creating
 

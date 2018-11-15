@@ -52,13 +52,13 @@ module.exports = {
       defaultValue: Sequelize.fn('NOW')
     });
 
-    queryInterface.changeColumn('meetingPlaces', 'createdAt', {
+    queryInterface.changeColumn('meetingplaces', 'createdAt', {
       allowNull: false,
       type: Sequelize.DATE,
       defaultValue: Sequelize.fn('NOW')
     });
 
-    queryInterface.changeColumn('meetingPlaces', 'updatedAt', {
+    queryInterface.changeColumn('meetingplaces', 'updatedAt', {
       allowNull: false,
       type: Sequelize.DATE,
       defaultValue: Sequelize.fn('NOW')

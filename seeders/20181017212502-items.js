@@ -11,6 +11,7 @@ module.exports = {
       category: 'Apparel',
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125823/samples/ecommerce/shoes.png',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -22,6 +23,7 @@ module.exports = {
       category: 'Apparel',
       meeting_place: 'J. Paul Leonard Library - Peets Coffee',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125830/samples/ecommerce/leather-bag-gray.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -33,6 +35,7 @@ module.exports = {
       category: 'Books',
       meeting_place: 'J. Paul Leonard Library - Research Commons',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539811936/samples/ecommerce/books.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -44,6 +47,7 @@ module.exports = {
       category: 'Books',
       meeting_place: 'Student Services Building',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539811936/samples/ecommerce/books.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -55,6 +59,7 @@ module.exports = {
       category: 'Electronics',
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816302/iphone6s.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -66,6 +71,7 @@ module.exports = {
       category: 'Electronics',
       meeting_place: 'Student Services Building',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816416/macbookair.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -77,6 +83,7 @@ module.exports = {
       category: 'Events',
       meeting_place: 'Mashouf Wellness Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816512/mashouf.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -88,6 +95,7 @@ module.exports = {
       category: 'Events',
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816585/career.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -99,6 +107,7 @@ module.exports = {
       category: 'Home Goods',
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/c_scale,w_250/v1539816673/coffeepot1.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -110,6 +119,7 @@ module.exports = {
       category: 'Home Goods',
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816732/coffeepot2.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -121,6 +131,7 @@ module.exports = {
       category: 'Services',
       meeting_place: 'J. Paul Leonard Library - Research Commons',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125821/samples/people/smiling-man.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -132,6 +143,7 @@ module.exports = {
       category: 'Services',
       meeting_place: 'J. Paul Leonard Library - Peets Coffee',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125824/samples/bike.jpg',
+      public_id: "",
       status: 'Pending',
       createdAt: new Date(),
       updatedAt: new Date()
