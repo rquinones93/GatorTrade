@@ -87,6 +87,7 @@
       <br>
       <div class="table-responsive-lg">
         <table class="table">
+
           <thead>
             <tr>
               <th>
@@ -105,6 +106,7 @@
               <th>Read</th>
             </tr>
           </thead>
+
           <tbody>
             <tr>
               <td>
@@ -122,6 +124,28 @@
               <td> <button type="button" class="btn btn-primary">Read</button></td>
             </tr>
           </tbody>
+
+          <% if (typeof messages != "undefined") { %>
+
+            <% messages.forEach((message) => { %>
+              <tbody>
+                <tr>
+                  <td>
+                    <form action="">
+                      <input type="checkbox" name=" " value=" ">
+                    </form>
+                  </td>
+                  <td><%=message.item_id%></td>
+                  <td>
+                    <%= message.message %>
+                  </td>
+                  <td><%= message.createdAt %></td>
+                  <td> <button type="button" class="btn btn-primary">Read</button></td>
+                </tr>
+              </tbody>
+            <%});%>
+          <% } %>
+
         </table>
       </div>
     </div>
@@ -177,8 +201,7 @@
     </div>
 
     <!-- POSTS TAB -->
-    <div id="menu3" class="container tab-pane fade">
-      </br>
+    <div id="menu3" class="container tab-pane fade"><br>
       <h2>My Posts</h2>
       <div class="text-center">
         <form class="form-horizontal" action="/post">
