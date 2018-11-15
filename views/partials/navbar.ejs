@@ -4,25 +4,57 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <nav class="navbar navbar-expand-lg navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navigation">
-                <a href="/" class="navbar-brand">GT</a>
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                       <a href="/create" class="nav-link">Post</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="/about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link">Log In</a>
-                    </li>
-                    <li class="nav-item">
+    <!------ Cross Browsing Compatibility Responsiveness ---------->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+            
+    <div class="collapse navbar-collapse" id="navigation">
+        <!------ LOGO ---------->
+        <a href="/" class="navbar-brand">GT</a>
+            <!------ NavBar ---------->
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a href="/create" class="nav-link">Post</a>
+                </li>
+                
+                <!------ Search Panel ---------->
+                 <form class="form-inline" action="#" method="POST">
+                    <select class="form-control">
+                        <option>All</option>
+                        <option>Apparels</option>
+                        <option>Books</option>
+                        <option>Electronics</option>
+                        <option>Events</option>
+                        <option>Home Goods</option>
+                        <option>Services</option>
+                    </select>
+
+                    <input type="text" class="form-control" placeholder="Type..." size='80'>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                </span>Search</button>       
+                        </span>         
+                </form>
+            </ul>  <!------ Ends NavBar ---------->
+    </div>
+    <!------ NavBar1 for "About Log In Sign Up" ---------->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav">    
+                <li class="nav-item">
+                    <a href="/about" class="nav-link">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Log In</a>
+                </li>
+
+                <li class="nav-item">
                         <a href="/signup" class="nav-link">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                </li>
+            </ul> 
+        </div> <!------ Ends NavBar1 ----------> 
+    </nav>     
+ </nav>
