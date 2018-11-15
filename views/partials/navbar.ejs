@@ -4,38 +4,43 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">GT</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" href="/">GT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="/create">Post</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+        <a class="nav-link" href="/search">Search</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Signup</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0 mr-lg-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+
+    <ul class="navbar-nav mr-lg-5">
+        <form class="form-group form-inline input-group my-2 my-lg-0 mr-lg-5">
+        <select class="form-control input-group-append" name="categories" id="categories">
+            <option id="All Categories" value="All Categories">All Categories</option>
+            <option id="Apparel"        value="Apparel">Apparel</option>
+            <option id="Books"          value="Books">Books</option>
+            <option id="Electronics"    value="Electronics">Electronics</option>
+            <option id="Events"         value="Events">Events</option>
+            <option id="Home Goods"     value="Home Goods">Home Goods</option>
+            <option id="Services"       value="Services">Services</option>
+        </select>
+        <input class="input-group-append" placeholder="Search here...">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+        </form>
+    </ul>
 </nav>
+<br>
