@@ -4,13 +4,13 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
   <a class="navbar-brand" href="/">GT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="navbar-collapse collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="/create">Post</a>
@@ -26,21 +26,40 @@
       </li>
     </ul>
 
-    <ul class="navbar-nav mr-lg-5">
-        <form class="form-group form-inline input-group my-2 my-lg-0 mr-lg-5">
-        <select class="form-control input-group-append" name="categories" id="categories">
-            <option id="All Categories" value="All Categories">All Categories</option>
-            <option id="Apparel"        value="Apparel">Apparel</option>
-            <option id="Books"          value="Books">Books</option>
-            <option id="Electronics"    value="Electronics">Electronics</option>
-            <option id="Events"         value="Events">Events</option>
-            <option id="Home Goods"     value="Home Goods">Home Goods</option>
-            <option id="Services"       value="Services">Services</option>
-        </select>
-        <input class="input-group-append" placeholder="Search here...">
-            <button class="btn btn-outline-secondary" type="submit">Search</button>
+    <ul class="navbar-nav mt-2 mr-auto ml-auto">
+      <div class="input-group my-0">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
+          <div class="dropdown-menu" name="categories" id="categories">
+              <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
+              <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
+              <option class="dropdown-item" id="Books"          value="Books">Books</option>
+              <option class="dropdown-item" id="Electronics"    value="Electronics">Electronics</option>
+              <option class="dropdown-item" id="Events"         value="Events">Events</option>
+              <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
+              <option class="dropdown-item" id="Services"       value="Services">Services</option>
+          </div>  
         </div>
+        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        <div class="input-group-append">
+          <button class="form-control btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+      </div>
+      <!---
+        <form class="form-group input-group my-0">
+          <select class="input-group-append" name="categories" id="categories">
+              <option id="All Categories" value="All Categories">All Categories</option>
+              <option id="Apparel"        value="Apparel">Apparel</option>
+              <option id="Books"          value="Books">Books</option>
+              <option id="Electronics"    value="Electronics">Electronics</option>
+              <option id="Events"         value="Events">Events</option>
+              <option id="Home Goods"     value="Home Goods">Home Goods</option>
+              <option id="Services"       value="Services">Services</option>
+          </select>
+          <input class="input-group-append" placeholder="Search here...">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
+        --->
     </ul>
 </nav>
 <br>
