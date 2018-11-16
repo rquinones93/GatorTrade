@@ -117,7 +117,7 @@
                       <input type="checkbox" name=" " value=" ">
                     </form>
                   </td>
-                  <td><%=message.item_id%></td>
+                  <td><a href="/post/<%= message.item_id %>" class="btn"><%=message.item_id%></td>
                   <td>
                     <%= message.message %>
                   </td>
@@ -228,7 +228,7 @@
                 <input type="checkbox" name=" " value=" ">
               </form>
             </td>
-            <td><%= post.title %></td>
+            <td><a href="/post/<%= post.item_id %>" class="btn"><%= post.title %></td>
             <td>
               <%= post.description %>
             </td>
