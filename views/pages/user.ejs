@@ -87,6 +87,7 @@
       <br>
       <div class="table-responsive-lg">
         <table class="table">
+
           <thead>
             <tr>
               <th>
@@ -105,23 +106,28 @@
               <th>Read</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <form action="">
-                  <input type="checkbox" name=" " value=" ">
-                </form>
-              </td>
-              <td>Leather Bag</td>
-              <td>
-                Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco.
-              </td>
-              <td>11.15.18</td>
-              <td> <button type="button" class="btn btn-primary">Read</button></td>
-            </tr>
-          </tbody>
+
+          <% if (typeof messages != "undefined") { %>
+
+            <% messages.forEach((message) => { %>
+              <tbody>
+                <tr>
+                  <td>
+                    <form action="">
+                      <input type="checkbox" name=" " value=" ">
+                    </form>
+                  </td>
+                  <td><a href="/post/<%= message.item_id %>" class="btn"><%=message.item_id%></td>
+                  <td>
+                    <%= message.message %>
+                  </td>
+                  <td><%= message.createdAt %></td>
+                  <td> <button type="button" class="btn btn-primary">Read</button></td>
+                </tr>
+              </tbody>
+            <%});%>
+          <% } %>
+
         </table>
       </div>
     </div>
@@ -177,8 +183,7 @@
     </div>
 
     <!-- POSTS TAB -->
-    <div id="menu3" class="container tab-pane fade">
-      </br>
+    <div id="menu3" class="container tab-pane fade"><br>
       <h2>My Posts</h2>
       <div class="text-center">
         <form class="form-horizontal" action="/post">
@@ -188,6 +193,7 @@
       </div>
     </div>
     <h2></h2>
+
     <div class="table-responsive-lg">
       <table class="table">
         <thead>
@@ -210,19 +216,23 @@
             <th>Remove</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        
+
+          <!-- For each post with seller_id being the user, display post details -->
+          <% if (typeof posts != "undefined") { %>
+
+            <% posts.forEach((post) => { %>
+            <tr>
             <td>
               <form action="">
                 <input type="checkbox" name=" " value=" ">
               </form>
             </td>
-            <td>Purple Shoes</td>
+            <td><a href="/post/<%= post.item_id %>" class="btn"><%= post.title %></td>
             <td>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.
+              <%= post.description %>
             </td>
-            <td>10.28.18</td>
+            <td><%= post.updatedAt %></td>
             <td>
               <form class="form-horizontal" action="/action_page.php">
                 <div class="form-group">
@@ -236,33 +246,11 @@
               </form>
             </td>
           </tr>
-          <tr>
-            <td>
-              <form action="">
-                <input type="checkbox" name=" " value=" ">
-              </form>
-            </td>
-            <td>Leather Bag</td>
-            <td>
-              Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco.
-            </td>
-            <td>11.15.18</td>
-            <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-info">Edit</button>
-              </form>
-            </td>
-            <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-danger">Remove</button>
-              </form>
-            </td>
-          </tr>
+            <%});%>
+          <% } %>
+
         </tbody>
+
       </table>
     </div>
   </div>
