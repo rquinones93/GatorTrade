@@ -107,24 +107,6 @@
             </tr>
           </thead>
 
-          <tbody>
-            <tr>
-              <td>
-                <form action="">
-                  <input type="checkbox" name=" " value=" ">
-                </form>
-              </td>
-              <td>Leather Bag</td>
-              <td>
-                Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco.
-              </td>
-              <td>11.15.18</td>
-              <td> <button type="button" class="btn btn-primary">Read</button></td>
-            </tr>
-          </tbody>
-
           <% if (typeof messages != "undefined") { %>
 
             <% messages.forEach((message) => { %>
@@ -234,60 +216,7 @@
             <th>Remove</th>
           </tr>
         </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              <form action="">
-                <input type="checkbox" name=" " value=" ">
-              </form>
-            </td>
-            <td>Purple Shoes</td>
-            <td>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.
-            </td>
-            <td>10.28.18</td>
-            <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-info">Edit</button>
-              </form>
-            </td>
-            <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-danger">Remove</button>
-              </form>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <form action="">
-                <input type="checkbox" name=" " value=" ">
-              </form>
-            </td>
-            <td>Leather Bag</td>
-            <td>
-              Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco.
-            </td>
-            <td>11.15.18</td>
-            <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-info">Edit</button>
-              </form>
-            </td>
-            <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-danger">Remove</button>
-              </form>
-            </td>
-          </tr>
+        
 
           <!-- For each post with seller_id being the user, display post details -->
           <% if (typeof posts != "undefined") { %>

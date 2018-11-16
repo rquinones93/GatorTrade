@@ -5,7 +5,8 @@ const db = require('../database/connection');
 
 router.get('/', (request, response, next) => {
   //Currently displays all messages
-  let messageSearch = 'SELECT * FROM messages';
+  let messageSearch = 'SELECT * FROM messages WHERE seller_id = $1';
+  let sellID = 1;
   
   //Todo: USER specific
   //let messageSearch = 'SELECT * FROM messages WHERE __________';
@@ -14,7 +15,7 @@ router.get('/', (request, response, next) => {
   //User specific id placeholder
   let tempSellerID = 1;
 
-  db.query(messageSearch, [])
+  db.query(messageSearch, [sellID])
     .then(messages => {
       db.query(postSearch, [tempSellerID])
         .then(posts => {
