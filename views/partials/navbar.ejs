@@ -2,56 +2,88 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header justify-content-between d-print-block">
+  <div class="container flex-md-row">
+    <a class="navbar-brand" href="/">GT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between d-print-block">
-  <a class="navbar-brand" href="/">GT</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="navbar-collapse collapse d-print-block" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-change" href="/create">Post</a>
+        </li>
+      </ul>
 
-  <div class="navbar-collapse collapse d-print-block" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/create">Post</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/search">Search</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signup">Sign Up</a>
-      </li>
-    </ul>
+      <div hidden id="secrets">
+      <% if (typeof current_category != "undefined")  {%>
+        <p hidden id="current_category"><%= current_category %></p>
+      <% } %>
+      <% if (typeof current_search != "undefined") {%>
+        <p hidden id="current_search"><%= current_search %></p>     
+      <% } %>
+      </div>
 
-    <ul class="navbar-nav mt-2 mr-auto ml-auto d-print-block">
-      <div class="input-group my-0">
+      <form class="input-group search-bar" method="POST" action="/search" role="search">
         <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
-          <div class="dropdown-menu" name="categories" id="categories">
-              <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
-              <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
-              <option class="dropdown-item" id="Books"          value="Books">Books</option>
-              <option class="dropdown-item" id="Electronics"    value="Electronics">Electronics</option>
-              <option class="dropdown-item" id="Events"         value="Events">Events</option>
-              <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
-              <option class="dropdown-item" id="Services"       value="Services">Services</option>
+          <% if (typeof current_category != "undefined") { %>
+            <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
+          <% } else { %>
+            <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories</button>
+          <% } %>
+          <input hidden id="hidden-categories" name="categories" value="All Categories">
+          <div class="dropdown-menu" id="categories">
+            <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
+            <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
+            <option class="dropdown-item" id="Books"          value="Books">Books</option>
+            <option class="dropdown-item" id="Electronics"    value="Electronics">Electronics</option>
+            <option class="dropdown-item" id="Events"         value="Events">Events</option>
+            <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
+            <option class="dropdown-item" id="Services"       value="Services">Services</option>
           </div>  
         </div>
         <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
         <div class="input-group-append">
           <button class="form-control btn btn-outline-secondary" type="submit">Search</button>
         </div>
-      </div>
-    </ul>
+      </form>
 
+       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-change" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-change" href="/signup">Sign Up</a>
+        </li>
+      </ul>
+    </div>  
+  </div>
 </nav>
 <br>
 
 <script>
   $(".dropdown-item").click(function(){
-    $(".dropdown-toggle").text($(this).text());
-    $(".dropdown-toggle").val($(this).text());
+    $("#dropdown-toggle-btn").text($(this).text());
+    $("#dropdown-toggle-btn").val($(this).text());
+    $("#hidden-categories").text($(this).text());
+    $("#hidden-categories").val($(this).text());
   });
+
+  // Set Selected Attribute for drop down, for easier searching
+  function setSelectedCategory() {
+    var selectedCategory = document.getElementById("current_category").innerHTML;
+    if( selectedCategory ) {
+      document.getElementById("dropdown-toggle-btn").innerHTML = selectedCategory;
+      document.getElementById("hidden-categories").value = selectedCategory;
+    }
+  }
+  // Set search input, so last search is remembered
+  function setSearchInput() {
+    var searchInput = document.getElementById("current_search").innerHTML;
+    document.getElementsByName("searchInput")[0].value = searchInput;
+  }
+
+  setSelectedCategory();
+  setSearchInput();
 </script>
