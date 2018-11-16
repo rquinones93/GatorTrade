@@ -1,82 +1,114 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-
 <div class="container">
-
-    <h2>POST YOUR PRODUCT</h2>
-    <form class="form-horizontal">
-        <fieldset>
-
-            <!--TITE INPUT-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">PRODUCT NAME*</label>
-                <div class="col-md-4">
-                    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-                </div>
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2">
+      <br>
+      <h1>Post Item For Sale</h1>
+      <% include ../error.ejs %>
+      <hr>
+            
+      <form class="form-signin form-group" method="POST" action="/create" enctype="multipart/form-data">
+        <div class="controls">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="form_title">Title *</label>
+                <input id="form_title" type="text" name="title" class="form-control" placeholder="Enter post title" required="required"
+                    data-error="A post title is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
+                <div class="help-block with-errors"></div>
+              </div>
             </div>
-
-            <!--DESCRIPTION BOX -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="textarea">PRODUCT DESCRITPTION*</label>
-                <div class="col-md-4">
-                    <textarea class="form-control" id="textarea" name="textarea"></textarea>
-                </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="form_description">Description *</label>
+                <input id="form_description" type="text" name="description" class="form-control" placeholder="Describe in 100 characters or less" required="required"
+                    data-error="An item description is required." max-length="100" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
+                <div class="help-block with-errors"></div>
+              </div>
             </div>
+          </div>
 
-            <!-- PRICE INPUT-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">PRICE($)*</label>
-                <div class="col-md-4">
-                    <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+          <div class="row">
+            <!-- Category Pulldown -->
+            <%if( typeof categories != "undefined") { %>
+              <div class="col-lg-6">
+                <label for="form_category">Select Item Category *</label>
+                <select class="form-control input-group-append col-lg-12" name="category" id="category">
+                  <% categories.forEach(( category ) => {%>
+                  <option id="<%= category.title %>" value="<%= category.title %>"><%= category.title %></option>
+                <%});%>
+                </select>
+              </div>
+            <%}%>
 
-                </div>
+            <!-- Meeting Place Pulldown -->
+            <%if( typeof meeting_places != "undefined") { %>
+              <div class="col-lg-6">
+                <label for="form_meeting_place">Select Meeting Place *</label>
+                <select class="form-control input-group-append col-lg-12" name="meeting_place" id="category">
+                  <% meeting_places.forEach(( meeting_place ) => {%>
+                  <option id="<%= meeting_place.title %>" value="<%= meeting_place.title %>"><%= meeting_place.title %></option>
+                <%});%>
+                </select>
+              </div>
+            <%}%>
+          </div>
+
+          <div class="row">
+            <!-- Item Price-->
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="form_price">Price *</label>
+                <input id="form_price" type="text" name="price" class="form-control" placeholder="$" required="required"
+                       data-error="An item price is required." max-length="40">
+                <div class="help-block with-errors"></div>
+              </div>
             </div>
-
-            <!-- Select Categories -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="selectbasic">CATEGORY*</label>
-                <div class="col-md-4">
-                    <select id="selectbasic" name="selectbasic" class="form-control">
-                        <option value="1">Apparels</option>
-                        <option value="2">Books</option>
-                        <option value="3">Electronics</option>
-                        <option value="4">Events</option>
-                        <option value="5">Home Goods</option>
-                        <option value="6">Services</option>
-                    </select>
+            <!-- Item Photo-->
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="form_upload_profile_picture">Item Photo*</label>
+                <div class="custom-file">
+                  <input id="logo" type="file" name="image" accept="image/*" class="custom-file-input" required>
+                  <label for="logo" class="custom-file-label text-truncate">Choose file...</label>
                 </div>
+              </div>
             </div>
-
-            <!-- Select Locations -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="selectbasic">MEETING LOCATIONS*</label>
-                <div class="col-md-4">
-                    <select id="selectbasic" name="selectbasic" class="form-control">
-                        <option value="1">J.PAUL LEONARD LIBRARY</option>
-                        <option value="2">STUDENT CENTER</option>
-                        <option value="3">CAFE</option>
-                    </select>
-                </div>
+          </div>
+          <div class="row">
+            <!--Captcha-->
+            <div class="col-lg-12">
+              <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+              <input class="d-none" data-recaptcha="true" data-error="Please complete the Captcha">
+              <div class="help-block with-errors"></div>
             </div>
-
-            <!-- File Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="filebutton">UPLOAD AN IMAGE*</label>
-                <div class="col-md-4">
-                    <input id="filebutton" name="filebutton" class="input-file" type="file">
-                </div>
+            
+            <!--Agree to Terms onchange="document.getElementById('create_account').disabled = !this.checked;"-->     
+            <div class="col-lg-12">
+              <input type="checkbox" onchange="document.getElementById('create_account').disabled = !this.checked;"
+                  name="checkbox" value="check" id="agree"/> I have read and agree to the Terms and Conditions and Privacy Policy
             </div>
-
-            <!-- POST Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="singlebutton">POST</label>
-                <div class="col-md-4">
-                    <button id="singlebutton" name="singlebutton" class="btn btn-success">POST</button>
-                </div>
+          </div>
+        </div>
+        <!--Submit SignUp Form-->    
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="btn btn-lg btn-success" type="submit" id="create_account" disabled>Post Item For Sale</button>
+            <div class="float-right">
+              <a href="/search" class="btn btn-lg btn-danger" role="button">Cancel Post</a>
             </div>
-        </fieldset>
-    </form>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
+<script>
+  $('.custom-file-input').on('change', function() { 
+   let fileName = $(this).val().split('\\').pop(); 
+   $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+  });
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
