@@ -5,9 +5,8 @@
 <div class="flex-container">
   <div class="row">
     <div class = "col-lg-12 col-md-12 col-sm-12 item-title">
-      <h2 class="item-title"><%= item.title %></h2>
+      <h1 class="item-title"><%= item.title %></h1>
     </div>
-
     <div class = "col-lg-5 col-md-6 col-sm-12 item-photo">
       <img src="<%= item.image_link %>" alt="Item's Image" height="100%" width = "100%" class="img-responsive rounded">
     </div>
@@ -18,27 +17,26 @@
       <h4 class="item-price">Price: <span>$<%=item.price%></span></h5>
       <hr>
       <p class="item-description"><%= item.description %></p>
-      
       <% if (typeof seller != "undefined") { %>
         <hr>
         <h5>Sold By - <%= seller.full_name %></h5>
         <img src="<%= seller.profile_picture %>" height="45%" alt="Seller Profile Picture" class="img-responsive img-thumbail rounded">
       <% }%>
     </div>
-  </div>
-
-  <!--TODO: Will show up if logged in, otherwise display message telling user to log in-->
-  <form class="row" method="POST" action = "/post">
-    <div class=" col-lg-12 col-md-12 col-sm-12">
-      <!--Used for database query adding messages--> 
-      <input hidden name="item_id" value="<%=item.item_id%>">
-      <input hidden name="seller_id" value="<%=item.seller_id%>">
-      <h2>Message Seller</h2>
-      <textarea type="text" name="messageInput" placeholder="Enter your message for seller"></textarea>
+    <div class="container">
+      <form class="row" method="POST" action = "/post">
+        <div class=" col-lg-12 col-md-12 col-sm-12">
+          <input hidden name="item_id" value="<%=item.item_id%>">
+          <input hidden name="seller_id" value="<%=item.seller_id%>">
+          <h2>Message</h2>
+          <textarea type="text" name="messageInput" placeholder="Enter your message for seller"></textarea>
+        </div>
+      
+        <div class="container">
+          <button class="btn btn-success float-right" type="submit">Send Message</button>
+        </div>
+      </form>
     </div>
-  </form>
-  
-  <button class="btn btn-success float-right" type="submit">Send Message</button>
-  <br>
+  </div>
 </div>
 <% } %>
