@@ -3,58 +3,63 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <!------ Cross Browsing Compatibility Responsiveness ---------->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-            
-    <div class="collapse navbar-collapse" id="navigation">
-        <!------ LOGO ---------->
-        <a href="/" class="navbar-brand">GT</a>
-            <!------ NavBar ---------->
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a href="/create" class="nav-link">Post</a>
-                </li>
-                
-                <!------ Search Panel ---------->
-                 <form class="form-inline" action="#" method="POST">
-                    <select class="form-control">
-                        <option>All</option>
-                        <option>Apparels</option>
-                        <option>Books</option>
-                        <option>Electronics</option>
-                        <option>Events</option>
-                        <option>Home Goods</option>
-                        <option>Services</option>
-                    </select>
 
-                    <input type="text" class="form-control" placeholder="Type..." size='80'>
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">
-                                <span class="glyphicon glyphicon-search" aria-hidden="true">
-                                </span>Search</button>       
-                        </span>         
-                </form>
-            </ul>  <!------ Ends NavBar ---------->
-    </div>
-    <!------ NavBar1 for "About Log In Sign Up" ---------->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="collapse navbar-collapse" id="navigation">
-            <ul class="navbar-nav">    
-                <li class="nav-item">
-                    <a href="/about" class="nav-link">About</a>
-                </li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+  <a class="navbar-brand" href="/">GT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-                <li class="nav-item">
-                    <a href="/login" class="nav-link">Log In</a>
-                </li>
+  <div class="navbar-collapse collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/create">Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Signup</a>
+      </li>
+    </ul>
 
-                <li class="nav-item">
-                        <a href="/signup" class="nav-link">Sign Up</a>
-                </li>
-            </ul> 
-        </div> <!------ Ends NavBar1 ----------> 
-    </nav>     
- </nav>
+    <ul class="navbar-nav mt-2 mr-auto ml-auto">
+      <div class="input-group my-0">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
+          <div class="dropdown-menu" name="categories" id="categories">
+              <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
+              <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
+              <option class="dropdown-item" id="Books"          value="Books">Books</option>
+              <option class="dropdown-item" id="Electronics"    value="Electronics">Electronics</option>
+              <option class="dropdown-item" id="Events"         value="Events">Events</option>
+              <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
+              <option class="dropdown-item" id="Services"       value="Services">Services</option>
+          </div>  
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        <div class="input-group-append">
+          <button class="form-control btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+      </div>
+      <!---
+        <form class="form-group input-group my-0">
+          <select class="input-group-append" name="categories" id="categories">
+              <option id="All Categories" value="All Categories">All Categories</option>
+              <option id="Apparel"        value="Apparel">Apparel</option>
+              <option id="Books"          value="Books">Books</option>
+              <option id="Electronics"    value="Electronics">Electronics</option>
+              <option id="Events"         value="Events">Events</option>
+              <option id="Home Goods"     value="Home Goods">Home Goods</option>
+              <option id="Services"       value="Services">Services</option>
+          </select>
+          <input class="input-group-append" placeholder="Search here...">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+        --->
+    </ul>
+</nav>
+<br>

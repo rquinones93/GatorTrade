@@ -4,4 +4,5 @@ module.exports = {
   getItemCategories: require('./getItemCategories'),
   getMeetingPlaces: require('./getMeetingPlaces'),
   create: require('./create')
+  getItemById: require('./getItemById')
 };
