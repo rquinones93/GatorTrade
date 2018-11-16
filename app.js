@@ -71,6 +71,17 @@ app.use(
   })
 );
 
+// Flash Messages
+app.use(flash());
+
+app.use(function (request, response, next) {
+  response.locals.success_msg = request.flash('success_msg');
+  response.locals.error_msg = request.flash('error_msg');
+  response.locals.error = request.flash('error');
+  response.locals.user = request.user || null;
+  next();
+});
+
 // Routers 
 const index = require('./routes/index');
 const about = require('./routes/about');
@@ -98,6 +109,10 @@ app.use('/create', create);
 // Passport Initialize
 // app.use(passport.initialize());
 // app.use(passport.session());
+// app.use((request, response, next) => {
+//   response.locals.isAuthenticated = request.isAuthenticated();
+//   next();
+// });
 
 // catch 404 and forward to error handler
 app.use(function (req, response, next) {
