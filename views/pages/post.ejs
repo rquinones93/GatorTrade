@@ -1,43 +1,42 @@
-<!--Testing Post Page-->
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-3"> Item Title: <%= item.title %></h1>
-    <p> Status: <%= item.status %></p>
-  </div>
-</div>
-
+<br>
+<% include ../error.ejs %>
 <!--Show Product detail-->
 <% if (typeof item != "undefined") { %>
-  <div class="flex-container">
-    <div class="row">
-      <div class = "col-lg-12 col-md-12 col-sm-12 item-title">
-        <h2 class="item-title"><strong><%= item.title %></strong></h2>
-      </div>
-
-      <div class = "col-lg-5 col-md-6 col-sm-12 item-photo">
-        <img src="<%= item.image_link %>" alt="Item's Image" height="100%" width = "100%" class="img-responsive">
-      </div>
-      
-      <div class = "col-lg-7 col-md-6 col-sm-12 item-detail">
-        <h5 class="item-location" style="color:rgb(12, 175, 204)"><i class="fas fa-map-marker-alt"></i> <%=item.meeting_place%></h5>
+<div class="flex-container">
+  <div class="row">
+    <div class = "col-lg-12 col-md-12 col-sm-12 item-title">
+      <h1 class="item-title"><%= item.title %></h1>
+    </div>
+    <div class = "col-lg-5 col-md-6 col-sm-12 item-photo">
+      <img src="<%= item.image_link %>" alt="Item's Image" height="100%" width = "100%" class="img-responsive rounded">
+    </div>
+    
+    <div class = "col-lg-7 col-md-6 col-sm-12 item-detail">
+      <h5 class="item-location">Meeting Place: <span style="color:rgb(12, 175, 204)"><%=item.meeting_place%></span></h5>
+      <hr>
+      <h4 class="item-price">Price: <span>$<%=item.price%></span></h5>
+      <hr>
+      <p class="item-description"><%= item.description %></p>
+      <% if (typeof seller != "undefined") { %>
         <hr>
-        <h4 class="item-price">Price: <span>$<%=item.price%></span></h5>
-        <hr>
-        <p class="item-description"><%= item.description %></p>
-      </div>
-
+        <h5>Sold By - <%= seller.full_name %></h5>
+        <img src="<%= seller.profile_picture %>" height="45%" alt="Seller Profile Picture" class="img-responsive img-thumbail rounded">
+      <% }%>
+    </div>
     <div class="container">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2>Message</h2>
-        <textarea placeholder="Enter your message for seller"></textarea>
-      </div>
+      <form class="row" method="POST" action = "/post">
+        <div class=" col-lg-12 col-md-12 col-sm-12">
+          <input hidden name="item_id" value="<%=item.item_id%>">
+          <input hidden name="seller_id" value="<%=item.seller_id%>">
+          <h2>Message</h2>
+          <textarea type="text" name="messageInput" placeholder="Enter your message for seller"></textarea>
+        </div>
       
-      <div class="container">
-        <button type ="button" class="btn btn-success float-right">Send Message</button>
-      </div>
-      </div>
+        <div class="container">
+          <button class="btn btn-success float-right" type="submit">Send Message</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 <% } %>
-
-

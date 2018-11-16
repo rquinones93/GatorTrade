@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
         // Adds ALL meetingPlaces to DB
-    return queryInterface.bulkInsert('meetingPlaces', [{
+    return queryInterface.bulkInsert('meetingplaces', [{
       title: 'Cesar Chavez Student Center',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -28,6 +28,6 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     // Delete Table
-    return queryInterface.bulkDelete('meetingPlaces', null, {});
+    return queryInterface.bulkDelete('meetingplaces', null, {});
   }
 };

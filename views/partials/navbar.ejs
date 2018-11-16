@@ -3,25 +3,55 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-            <button class="navbar-toggler" type="button" data-target="#navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-                <a href="/" class="navbar-brand">GT</a>
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a href="/post" class="nav-link">Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link">Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/signup" class="nav-link">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between d-print-block">
+  <a class="navbar-brand" href="/">GT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse d-print-block" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/create">Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Signup</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mt-2 mr-auto ml-auto d-print-block">
+      <div class="input-group my-0">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
+          <div class="dropdown-menu" name="categories" id="categories">
+              <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
+              <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
+              <option class="dropdown-item" id="Books"          value="Books">Books</option>
+              <option class="dropdown-item" id="Electronics"    value="Electronics">Electronics</option>
+              <option class="dropdown-item" id="Events"         value="Events">Events</option>
+              <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
+              <option class="dropdown-item" id="Services"       value="Services">Services</option>
+          </div>  
+        </div>
+        <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
+        <div class="input-group-append">
+          <button class="form-control btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+      </div>
+    </ul>
+
+</nav>
+<br>
+
+<script>
+  $(".dropdown-item").click(function(){
+    $(".dropdown-toggle").text($(this).text());
+    $(".dropdown-toggle").val($(this).text());
+  });
+</script>
