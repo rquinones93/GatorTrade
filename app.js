@@ -12,8 +12,8 @@ const session = require('express-session');
 const PORT = process.env.PORT || 5000;
 
 // Make use of environment variables defined in .env
-if ( process.env.NODE_ENV === 'development' ||
-    process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development' ||
+  process.env.NODE_ENV === 'production') {
   require('dotenv').config();
 }
 
@@ -30,7 +30,7 @@ app.use(logger('dev'));
 app.use(expressLayouts);
 
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: false
 }));
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -49,16 +49,6 @@ app.use(
     }
   })
 );
-
-// // Flash Messages
-app.use(flash());
-app.use((request, response, next) => {
-  response.locals.success_msg = request.flash('success_msg');
-  response.locals.error_msg = request.flash('error_msg');
-  response.locals.error = request.flash('error');
-  response.locals.user = request.user || null;
-  next();
-});
 
 // Express Validator - Taken from Middleware Options on Github
 app.use(
@@ -102,6 +92,7 @@ const signup = require('./routes/signup');
 const user = require('./routes/user');
 const signin = require('./routes/login');
 const resetpassword = require('./routes/resetpassword');
+const create = require('./routes/create');
 
 // Middleware for routes
 app.use('/', index);
@@ -113,6 +104,7 @@ app.use('/signup', signup);
 app.use('/user', user);
 app.use('/login', signin);
 app.use('/resetpassword', resetpassword);
+app.use('/create', create);
 
 // Passport Initialize
 // app.use(passport.initialize());
