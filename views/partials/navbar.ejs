@@ -51,7 +51,7 @@
 
       <!-- Right side of navbar changes whether user is logged in -->
       <!-- STILL DEVELOPING -->
-      <% if ( typeof isAuthenticated != "undefined") { %>
+      <% if ( isAuthenticated ) { %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link nav-link-change" href="/user">Profile</a>

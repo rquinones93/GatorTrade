@@ -48,6 +48,14 @@ app.use(
   })
 );
 
+// Passport Initialize
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((request, response, next) => {
+  response.locals.isAuthenticated = request.isAuthenticated();
+  next();
+});
+
 // Express Validator - Taken from Middleware Options on Github
 app.use(
   expressValidator({
@@ -103,14 +111,6 @@ app.use('/user', user);
 app.use('/login', signin);
 app.use('/resetpassword', resetpassword);
 app.use('/create', create);
-
-// Passport Initialize
-app.use(passport.initialize());
-app.use(passport.session());
-app.use((request, response, next) => {
-  response.locals.isAuthenticated = request.isAuthenticated();
-  next();
-});
 
 // catch 404 and forward to error handler
 app.use(function (req, response, next) {

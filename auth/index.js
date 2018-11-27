@@ -1,5 +1,5 @@
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const User = require("../database/user");
 
@@ -17,13 +17,13 @@ passport.deserializeUser((user_id, done) => {
     });
 });
 
-passport.use(
-  new LocalStrategy(
-    {
-      passReqToCallback: true
+passport.use( new LocalStrategy({
+      passReqToCallback: true,
+      usernameField: 'email' // username is actually the email, overriding normal mechanism
     },
-    (request, email, password, done) => {
-      User.getUserDataByEmail(email).then(user => {
+    (request, username, password, done) => {
+      User.getUserDataByEmail(username).then(user => {
+        console.log(user);
         if (!user) {
           return done(null, false, { message: "This email address is not in use." });
         }
