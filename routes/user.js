@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+//const{ Messages } = require('../database');
 
 const db = require('../database/connection');
 
@@ -14,6 +15,9 @@ router.get('/', (request, response, next) => {
   let postSearch = 'SELECT * FROM items WHERE seller_id = $1';
   //User specific id placeholder
   let tempSellerID = 1;
+
+  //
+
 
   db.query(messageSearch, [sellID])
     .then(messages => {
