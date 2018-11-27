@@ -2,6 +2,7 @@
 module.exports = {
   isEmailInUse: require('./isEmailInUse'),
   getUserDataById: require('./getUserDataById'),
+  getUserDataByEmail: require('./getUserDataByEmail'),
   create: require('./create'),
   message: require('./message')
 };
