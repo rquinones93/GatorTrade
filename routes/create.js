@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../auth/actionAuthentication');
 const { Item } = require('../database');
 let multer = require('multer');
 let cloudinary = require('cloudinary');
@@ -48,7 +49,7 @@ router.get('/', (request, response, next) => {
     });
 });
 
-router.post('/', upload.single('image'), (request, response, next) => {
+router.post('/', auth.postAuthentication, upload.single('image'), (request, response, next) => {
   const { title, description, price, category, meeting_place } = request.body;
   const seller_id = "2"; // TODO: Change hard-coded seller_id to user's unique id
                          // Login functionality must be implemented to do this

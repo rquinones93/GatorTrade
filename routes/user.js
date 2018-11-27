@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
+const auth = require('../auth/actionAuthentication');
 const db = require('../database/connection');
 
-router.get('/', (request, response, next) => {
+router.get('/', auth.userDashBoardAuthentication, (request, response, next) => {
   //Currently displays all messages
   let messageSearch = 'SELECT * FROM messages WHERE seller_id = $1';
   let sellID = request.user.user_id;
@@ -22,7 +22,8 @@ router.get('/', (request, response, next) => {
           response.render('pages/user', {
             title: "GatorTrade - User",
             messages: messages,
-            posts: posts
+            posts: posts,
+            name: `${request.user.first_name} ${request.user.last_name}`
           });
       }); 
   });
