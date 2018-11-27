@@ -1,15 +1,13 @@
 const express = require('express');
 const path = require('path');
-// Commenting Out until useful
 const expressLayouts = require('express-ejs-layouts');
 const expressValidator = require('express-validator');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
-// const passport = require('passport');
+const passport = require('passport');
 const session = require('express-session');
-const PORT = process.env.PORT || 5000;
 
 // Make use of environment variables defined in .env
 if (process.env.NODE_ENV === 'development' ||
@@ -107,12 +105,12 @@ app.use('/resetpassword', resetpassword);
 app.use('/create', create);
 
 // Passport Initialize
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use((request, response, next) => {
-//   response.locals.isAuthenticated = request.isAuthenticated();
-//   next();
-// });
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((request, response, next) => {
+  response.locals.isAuthenticated = request.isAuthenticated();
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, response, next) {

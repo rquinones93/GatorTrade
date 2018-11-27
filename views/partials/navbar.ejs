@@ -49,14 +49,27 @@
         </div>
       </form>
 
-       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-change" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-change" href="/signup">Sign Up</a>
-        </li>
-      </ul>
+      <!-- Right side of navbar changes whether user is logged in -->
+      <!-- STILL DEVELOPING -->
+      <% if ( typeof isAuthenticated != "undefined") { %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/user">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/logout">Log Out</a>
+          </li>
+        </ul>
+      <% } else { %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/login">Login</a>
+          </li>
+        </ul>
+      <% } %>
     </div>  
   </div>
 </nav>
