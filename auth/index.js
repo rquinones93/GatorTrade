@@ -23,7 +23,6 @@ passport.use( new LocalStrategy({
     },
     (request, username, password, done) => {
       User.getUserDataByEmail(username).then(user => {
-        console.log(user);
         if (!user) {
           return done(null, false, { message: "This email address is not in use." });
         }
@@ -31,7 +30,7 @@ passport.use( new LocalStrategy({
           if (result) {
             return done(null, user.user_id);
           } else {
-            return done(null, false, { message: "Invalid Password." });
+            return done(null, false, { message: "Invalid password."});
           }
         });
       });

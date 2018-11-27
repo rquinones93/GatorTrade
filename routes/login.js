@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
- const passport = require('../auth/index');
+ const passport = require('../auth');
 
 router.get('/', (request, response, next) => {
   response.render('pages/login', {
@@ -8,13 +8,12 @@ router.get('/', (request, response, next) => {
   });
 });
 
-router.post('/',
+router.post('/', (request, response, next) => {
   passport.authenticate('local', {
     successRedirect: '/user',
     failureRedirect: '/login',
     failureFlash: true
-  }), (request, response, next) => {
-    response.redirect('/user');
+  })(request, response, next);
 });
 
 module.exports = router;
