@@ -5,10 +5,13 @@
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
+
+     <!-- original setup
+
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">WATCHLIST</a>
     </li>
-    <li class="nav-item">
+        <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">NEW MESSAGES</a>
     </li>
     <li class="nav-item">
@@ -19,11 +22,19 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu4">SETTINGS</a>
+    </li>     
+  -->
+      <!--NEW SETUP OF TABS-->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#home">MESSAGES</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">POSTS</a>
     </li>
   </ul>
 
   <!-- Tab panes -->
-  <!-- WATCHLIST TAB -->
+  <!-- WATCHLIST TAB
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
       <h2>Welcome, User!</h2>
@@ -82,10 +93,13 @@
         </table>
       </div>
     </div>
+  -->
 
-    <!-- NEW MESSAGES TAB -->
-    <div id="menu1" class="container tab-pane fade"><br>
-      <h2>New Messages</h2>
+    <!-- MESSAGES TAB -->
+    <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h2>Welcome, User!</h2>
+      <h5>Here are your messages:</h5>
       <br>
       <div class="table-responsive-lg">
         <table class="table">
@@ -110,7 +124,6 @@
           </thead>
 
           <% if (typeof messages != "undefined") { %>
-
             <% messages.forEach((message) => { %>
               <tbody>
                 <tr>
@@ -134,64 +147,17 @@
       </div>
     </div>
 
-    <!-- READ MESSAGES TAB -->
-    <div id="menu2" class="container tab-pane fade"><br>
-      <h2>Read Messages</h2>
-      <br>
-      <div class="table-responsive-lg">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>
-                <form action="">
-                  <input type="checkbox" name=" " value=" ">
-                </form>
-              </th>
-              <th>
-                  Item
-                  <i class="fa fa-sort float-right" aria-hidden="true"></i>
-                </th>
-              <th>Description</th>
-              <th>
-                Date
-                <i class="fa fa-sort float-right" aria-hidden="true"></i>
-              </th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <form action="">
-                  <input type="checkbox" name=" " value=" ">
-                </form>
-              </td>
-              <td>Purple Shoes</td>
-              <td>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
-              </td>
-              <td>10.28.18</td>
-              <td>
-                <form class="form-horizontal" action="/action_page.php">
-                  <div class="form-group">
-                    <button type="edit" class="btn btn-danger">Remove</button>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+
+    <!-- deleted READ MESSAGES TAB -->
 
     <!-- POSTS TAB -->
-    <div id="menu3" class="container tab-pane fade"><br>
+    <div id="menu1" class="container tab-pane fade"><br>
       <h2>My Posts</h2>
       <div class="text-center">
-        <form class="form-horizontal" action="/post">
-          <div class="form-group">
-            <button type="button" class="btn btn-success">Add Post</button>
-        </form>
+          <form class="form-horizontal" action="/action_page.php">
+            <div class="form-group">
+              <button type="add" class="btn btn-success">Add Post</button>
+          </form>
       </div>
     </div>
     <h2></h2>
@@ -222,7 +188,6 @@
 
           <!-- For each post with seller_id being the user, display post details -->
           <% if (typeof posts != "undefined") { %>
-
             <% posts.forEach((post) => { %>
             <tr>
             <td>
@@ -257,39 +222,6 @@
     </div>
   </div>
 
-  <!-- SETTINGS TAB -->
-  <div id="menu4" class="container tab-pane fade"><br>
-    <h2>Change Settings</h2>
-    <div class="container-fluid">
+  <!--deleted SETTINGS TAB -->
 
-      <h5>Edit Profile Picture</h5>
-      <img src="//placehold.it/150" class="rounded-circle" alt="Cinque Terre" width="250" height="236">
-      <br>
-      <br>
-      <input type="file" id="myFile">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-            <br>
-            <label for="form_password">Change Password <small>(8 character minimum) *</small></label>
-            <input id="form_password" type="password" name="password" class="form-control" placeholder="Please Enter Your Password"
-              max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-            <div class="help-block with-errors"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-            <label for="form_confirm_password">Confirm Password *</label>
-            <input id="form_confirm_password" type="password" name="confirmpassword" class="form-control" placeholder="Please Re-Enter Your Password"
-              max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-            <div class="help-block with-errors"></div>
-          </div>
-        </div>
-        <button type="button" class="btn btn-success btn-block">Update Changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+</div> <!--closes tab content from message tab-->
