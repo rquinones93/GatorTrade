@@ -12,7 +12,7 @@
             <!-- Form Input -->
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="form_name">First Name *</label>
+                <label for="form_name">First Name <small>(Required)</small></label>
                 <input id="form_name" type="text" name="first_name" class="form-control" placeholder="Please Enter Your First Name" required="required"
                     data-error="First Name is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
                 <div class="help-block with-errors"></div>
@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label for="form_lastname">Last Name *</label>
+                <label for="form_lastname">Last Name <small>(Required)</small></label>
                 <input id="form_lastname" type="text" name="last_name" class="form-control" placeholder="Please Enter Your Last Name" required="required"
                     data-error="Last Name is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
                 <div class="help-block with-errors"></div>
@@ -30,7 +30,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="form_email">SFSU Email <small>(Must end in @mail.sfsu.edu) *</small></label>
+                <label for="form_email">SFSU Email <small>(Required, Must end in @mail.sfsu.edu)</small></label>
                 <input id="form_email" type="email" name="email" class="form-control" placeholder="Please Enter Your SFSU Email" required="required"
                        data-error="Valid SFSU Email is required." max-length="40">
                 <div class="help-block with-errors"></div>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="form_password">Password <small>(8 character minimum) *</small></label>
+                <label for="form_password">Password <small>(Required, 8 character minimum)</small></label>
                 <input id="form_password" type="password" name="password" class="form-control" placeholder="Please Enter Your Password"
                        max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
                 <div class="help-block with-errors"></div>
@@ -48,7 +48,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="form_confirm_password">Confirm Password *</label>
+                <label for="form_confirm_password">Confirm Password <small>(Required)</small></label>
                 <input id="form_confirm_password" type="password" name="confirmpassword" class="form-control" placeholder="Please Re-Enter Your Password"
                   max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
                 <div class="help-block with-errors"></div>
@@ -60,7 +60,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="form_upload_profile_picture">Upload Profile Picture *</label>
+                <label for="form_upload_profile_picture">Upload Profile Picture <small>(Optional)</small></label>
                 <div class="custom-file">
                   <input id="logo" type="file" name="image" accept="image/*" class="custom-file-input" required>
                   <label for="logo" class="custom-file-label text-truncate">Choose file...</label>
