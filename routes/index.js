@@ -5,6 +5,8 @@ const { Item } = require('../database');
 
 router.get('/', (request, response, next) => {
 
+  // Query DB for Categories to Populate buttons at top of the page
+  // and get Recent Items
   Promise.all([Item.get4RecentItems(), Item.getItemCategories()])
   .then(([items, categories]) => {
     response.render('pages/index', {

@@ -4,6 +4,7 @@ const{ Item } = require('../database');
 
 router.get('/', (request, response, next) => {
 
+  // Query Database for all Pending Items to populate Approve/Deny Table
   Item.getPendingItems()
     .then( (items) => {
       response.render('pages/admin', {
