@@ -4,14 +4,14 @@
 <%if( typeof categories != "undefined") { %>
   <form method="POST" action="/search">
     <div class="row">
-      <% categories.forEach(( category ) => {%>
+     <% categories.forEach(( category ) => {%>
         <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
           <div class="card h-100">
             <div class="card-body">
               <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
-                <h4 class="card-title" style="color:#9575cd"><%= category.title %></h4>
+                <h4 class="card-title" style="color:#9575cd"><b><b><%= category.title %></b></b></h4>
               </button>
-              <p class="card-text"><%= category.description %></p>
+              <p class="card-text" style = "font-size: 17px;"><%= category.description %></p>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
 <!--Bottom Half of Page(From Recent Posts Down)-->
 <!-- Jumbotron Header -->
 <header class="jumbotron my-4" style="background-color:whitesmoke; border-color: #9575cd; ">
-  <h1 class="display-3" style="color:#9575cd">Recent Posts <a href="/search" class="btn btn-primary btn-lg" style="color:#9575cd; background-color:white;height:46px;width:185px">See All Items</a></h1>
+  <h1 class="display-3" style="color:#9575cd">Recent Posts <a href="/search" class="btn btn-primary btn-lg" style="color:white; background-color:#9575cd;height:46px;width:185px">See All Items</a></h1>
   <p class="lead">Checkout what people have just posted!</p>
 </header>
 
