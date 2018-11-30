@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//const{ Messages } = require('../database');
+const{ Messages } = require('../database');
 
 const db = require('../database/connection');
 
@@ -16,10 +16,20 @@ router.get('/', (request, response, next) => {
   //User specific id placeholder
   let tempSellerID = 1;
 
-  //
 
+  Messages.message()
+    .then( (messages) => {
+      db.query(postSearch, [tempSellerID])
+        .then(posts => {
+          response.render('pages/user', {
+            title: "GatorTrade - User",
+            messages: messages,
+            posts: posts
+          });
+      });
+    });
 
-  db.query(messageSearch, [sellID])
+  /*db.query(messageSearch, [sellID])
     .then(messages => {
       db.query(postSearch, [tempSellerID])
         .then(posts => {
@@ -29,7 +39,7 @@ router.get('/', (request, response, next) => {
             posts: posts
           });
       }); 
-  });
+  });*/
 });
 
 module.exports = router;
