@@ -194,10 +194,11 @@
           </div>
           <div class="col">
             <div class="text-left">
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="button" class="btn btn-raised btn-success">Add Post</button>
-              </form>
+                <form>
+                    <button type="addPost" class="btn btn-success btn-raised">
+                        <a href="/create" style="color:white">Add Post</a>
+                      </button>
+                  </form>
             </div>
           </div>
           <!--closes row-->
@@ -239,10 +240,9 @@
               <%= post.updatedAt %>
             </td>
             <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <div class="row"></div>
-                  <button type="button" class="btn btn-raised btn-info">Edit</button>
+              <form>
+                <div class="row"></div>
+                <button type="edit" class="btn btn-info btn-raised">Edit</button>
               </form>
             </td>
             <td>
