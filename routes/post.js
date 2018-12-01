@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../auth/actionAuthentication');
 const { User, Item } = require('../database');
 
 router.get('/:item_id', (request, response, next) => {
@@ -26,7 +27,7 @@ router.get('/:item_id', (request, response, next) => {
   }).catch( err => { console.log(err);});
 });
 
-router.post('/', (request, response, next) => {
+router.post('/', auth.messageAuthentication, (request, response, next) => {
   let {item_id, seller_id, messageInput} = request.body;
 
   // Send message to Seller. Sender's User ID not required

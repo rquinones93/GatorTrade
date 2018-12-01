@@ -1,51 +1,51 @@
-<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
-
-<body>
-	<div class="container">
-	  <div class="row">
-		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-		  <div class="card card-signin my-5">
-			<div class="card-body">
-			  <h5 class="card-title text-center"><font size = +3>Sign In</font></h5>
-			  <br>
+<!--Login Page-->
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<div class="card card-signin my-5">
+				<div class="card-body">
+						<br>
+						<!--Link to Sign Up Page-->
+						<div class="float-right">
+							<span class="psw" ><a href="/signup"><p style="color: #9575cd">Not Registered? Sign Up</p></a></span>
+						</div>
+						<br>
 			
-			<!--Not Registered Link-->
-			  <div class="container" >
-				<span class="psw"><a href="/signup"><font size = -1><p align="right">Not Registered? Sign Up</p></font></a></span>
-			  </div>
-			<!--Not Registered Link-->	
+						<!-- Link to Sign Up Page-->
+						<h1 class="card-title" style="color: #9575cd"><font size=+3>Log In</font></h1>
+						<hr style="background-color: #9575cd">
+						<% include ../error.ejs %>
 
 			
-		<!--Email and Password Input-->
-			  <form class="form-signin">
-				<div class="form-label-group">
-				  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-				  <label for="inputEmail">Email address</label>
-				</div>
-  
-				<div class="form-label-group">
-				  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-				  <label for="inputPassword">Password</label>
-				</div>
-  
-				<div class="custom-control custom-checkbox mb-3">
-				  <input type="checkbox" class="custom-control-input" id="customCheck1">
-				  <label class="custom-control-label" for="customCheck1">Remember password</label>
-				</div>
-				<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-				<hr class="my-4">
-
-		<!--Email and Password Input-->
-				
-		<!--Forogt Password-->
-				<div class="container" >
-					<span class="psw"><a href="/resetpassword">Forgot password?</a></span>
-				  </div>
-		<!--Forogt Password-->
-			  </form>
-			</div>
-		  </div>
-		</div>
-	  </div>
+						<!--Email and Password Input-->
+						<form class="form-signin" method="POST" action="/login">
+							<div class="form-group">
+								<label for="inputEmail" style="color: #9575cd">Email</label>
+								<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" style="border:0mm" required>
+								<small>This should be your school email(@mail.sfsu.edu)</small>
+							</div>
+			
+							<div class="form-group">
+								<label for="inputPassword" style="color: #9575cd">Password</label>
+								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" style="border:0mm" required>
+							</div>
+			
+							<!--Remember email and password-->
+							<div class="custom-control custom-checkbox mb-3">
+								<input type="checkbox" class="custom-control-input" id="customCheck1">
+								<label class="custom-control-label" for="customCheck1" style="color: #9575cd">Remember password</label>
+							</div>
+			
+							<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="color: white; background-color: #9575cd; border-color: #9575cd ">Log In</button>
+							<hr class="my-4" style="background-color: #9575cd">
+			
+							<!--Forgot Password Link-->
+							<div class="container">
+								<span class="psw"><a href="/resetpassword"><p class="text-center" style="color: #9575cd">Forgot password?</p></a></span>
+							</div>
+						</form>
+				</div>	
+			</div>			
 	</div>
-  </body>
+</div>
+</div>
