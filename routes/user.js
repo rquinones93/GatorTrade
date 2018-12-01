@@ -6,11 +6,11 @@ const {User} = require('../database');
 router.get('/', auth.userDashBoardAuthentication, (request, response, next) => {
   
   //need to check the user logged in for sellerID in the future
-  let tempSellerID = request.user.user_id;
+  let seller_id = request.user.user_id;
 
-  User.selectMessages(tempSellerID)
+  User.selectMessages(seller_id)
     .then( (messages) => {
-      User.selectPosts(tempSellerID)
+      User.selectPosts(seller_id)
         .then( (posts) => {
           response.render('pages/user', {
             title: "GatorTrade - User",
@@ -26,8 +26,7 @@ router.post('/read', (request, response, next) => {
   let message = request.body;
   User.readMessage(message.message_id) 
     .then( () => {
-      console.log("message got here");
-      request.flash('success_msg', 'Messasge has been read.');
+      request.flash('success_msg', 'Messasge has been marked as read.');
       response.redirect('/user');
   }).catch(err => console.log(err));
 });

@@ -18,7 +18,6 @@ router.get('/', auth.adminAuthentication, (request, response, next) => {
 //Approve Post on admin dashboard
 router.post('/approve', (request, response, next) => {
   let item = request.body;
-  console.log(item.item_id);
   Item.approveItem(item.item_id) 
   .then( () => {
     request.flash('success_msg', 'Message has been approved');
@@ -29,14 +28,11 @@ router.post('/approve', (request, response, next) => {
 //Deny Post on admin dashboard
 router.post('/deny', (request, response, next) => {
   let item = request.body;
-  console.log(item.item_id);
   Item.denyItem(item.item_id) 
     .then( () => {
       request.flash('success_msg', 'Message has been Denied');
       response.redirect('/admin');
   }).catch(err => console.log(err));
-
-
 });
 
 module.exports = router;
