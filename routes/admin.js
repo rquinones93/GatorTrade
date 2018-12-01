@@ -5,6 +5,7 @@ const{ Item } = require('../database');
 
 router.get('/', auth.adminAuthentication, (request, response, next) => {
 
+  // Query Database for all Pending Items to populate Approve/Deny Table
   Item.getPendingItems()
     .then( (items) => {
       response.render('pages/admin', {
@@ -12,6 +13,30 @@ router.get('/', auth.adminAuthentication, (request, response, next) => {
         items: items
       });
     }).catch( err => { console.log(err); });
+});
+
+//Approve Post on admin dashboard
+router.post('/approve', (request, response, next) => {
+  let item = request.body;
+  console.log(item.item_id);
+  Item.approveItem(item.item_id) 
+  .then( () => {
+    request.flash('success_msg', 'Message has been approved');
+    response.redirect('/admin');
+  }).catch(err => console.log(err));
+});
+
+//Deny Post on admin dashboard
+router.post('/deny', (request, response, next) => {
+  let item = request.body;
+  console.log(item.item_id);
+  Item.denyItem(item.item_id) 
+    .then( () => {
+      request.flash('success_msg', 'Message has been Denied');
+      response.redirect('/admin');
+  }).catch(err => console.log(err));
+
+
 });
 
 module.exports = router;

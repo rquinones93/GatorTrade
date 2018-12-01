@@ -115,6 +115,7 @@
                   <i class="fa fa-sort float-right" aria-hidden="true"></i>
                 </th>
                 <th>Read</th>
+                <th>Remove</th>
               </tr>
             </thead>
   
@@ -129,11 +130,29 @@
                     </td>
                     <td><a href="/post/<%= message.item_id %>" class="btn"><%=message.item_id%></td>
                     <td>
+                    <% if (message.status != "READ") { %>
+                      <strong><%= message.message %>
+                    <% } else { %>
                       <%= message.message %>
+                    <% } %>
                     </td>
                     <td><%= message.createdAt %></td>
-                    <td> <button type="button" class="btn btn-primary">Read</button></td>
+                    <td>
+                      <form class="form-horizontal" action="/user/read" method="post">
+                        <div class="form-group">
+                          <button type="submit" formmethod="post" name="message_id" value = "<%= message.message_id%>" class="btn btn-primary">Read</button>
+                        </div>
+                      </form>
+                    </td>
+                    <td>
+                      <form class="form-horizontal" action="/user/remove" method="post">
+                        <div class="form-group">
+                          <button type="submit" formmethod="post" name="message_id" value = "<%= message.message_id%>" class="btn btn-danger">Remove</button>
+                        </div>
+                      </form>
+                    </td>
                   </tr>
+
                 </tbody>
               <%});%>
             <% } %>

@@ -28,6 +28,7 @@
               <th>Location</th>
               <th>Approve</th>
               <th>Deny</th>
+              <th>Status</th>
             </tr>
           </thead>
 
@@ -41,19 +42,20 @@
                   <td>$<%= item.price %></td>
                   <td><%= item.meeting_place %></td>
                   <td>
-                    <form class="form-horizontal" action="/approve_item/<%= item.item_id %>">
+                    <form class="form-horizontal" action="/admin/approve" method="post">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success">Approve</button>
+                            <button type="submit" formmethod="post" name="item_id" value="<%= item.item_id %>" class="btn btn-success">Approve</button>
                         </div>
                     </form>
                   </td>
                   <td>
-                    <form class="form-horizontal" action="/deny_item/<%= item.item_id %>">
+                    <form class="form-horizontal" action="/admin/deny" method="post">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger">Deny</button>
+                            <button type="submit" formmethod="post" name="item_id" value="<%= item.item_id %>" class="btn btn-danger">Deny</button>
                         </div>
                     </form>
                   </td>
+                  <td><%= item.status %></td>
                 </tr>
               <% }); %>
             <% } %>

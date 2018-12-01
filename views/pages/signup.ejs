@@ -6,7 +6,7 @@
       <% include ../error.ejs %>
       <hr>
             
-      <form class="form-signin form-group" method="POST" action="/signup" enctype="multipart/form-data">
+      <form class="form-signin form-group" method="POST" action="/signup">
         <div class="controls">
           <div class="row">
             <!-- Form Input -->
@@ -55,19 +55,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Profile Picture-->
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label for="form_upload_profile_picture">Upload Profile Picture <small>(Optional)</small></label>
-                <div class="custom-file">
-                  <input id="logo" type="file" name="image" accept="image/*" class="custom-file-input" required>
-                  <label for="logo" class="custom-file-label text-truncate">Choose file...</label>
-                </div>
-              </div>
-            </div>
-          </div>      
 
           <!--Captcha-->
           <div class="form-group">
