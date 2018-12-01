@@ -43,14 +43,14 @@
                   <td>
                     <form class="form-horizontal" action="/approve_item/<%= item.item_id %>">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success">Approve</button>
+                            <button type="submit" formaction='/approve' class="btn btn-success">Approve</button>
                         </div>
                     </form>
                   </td>
                   <td>
                     <form class="form-horizontal" action="/deny_item/<%= item.item_id %>">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger">Deny</button>
+                            <button type="submit" formaction='/deny' class="btn btn-danger">Deny</button>
                         </div>
                     </form>
                   </td>
