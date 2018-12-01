@@ -29,9 +29,9 @@ router.post('/deny', (request, response, next) => {
   let item = request.body;
   console.log(item.item_id);
   Item.denyItem(item.item_id) 
-  .then( () => {
-    request.flash('success_msg', 'Message has been Denied');
-    response.redirect('/admin');
+    .then( () => {
+      request.flash('success_msg', 'Message has been Denied');
+      response.redirect('/admin');
   }).catch(err => console.log(err));
 
 
