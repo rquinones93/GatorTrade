@@ -7,5 +7,6 @@ module.exports = {
   selectMessages: require('./selectMessages'),
   selectPosts: require('./selectPosts'),
   readMessage: require('./readMessage'),
-  removeMessage: require('./removeMessage')
+  removeMessage: require('./removeMessage'),
+  updateProfilePicture: require('./updateProfilePicture'),
 };
