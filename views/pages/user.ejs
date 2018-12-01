@@ -113,23 +113,23 @@
             </tr>
           </thead>
           <% if (typeof messages != "undefined") { %>
-          <% messages.forEach((message) => { %>
-          <tbody>
-            <tr>
-              <th scope="row"><a href="/post/<%= message.item_id %>" class="btn">
-                  <%=message.item_id%>
-              </th>
-              <td>
-                <%= message.message %>
-              </td>
-              <td>
-                <%= message.createdAt %>
-              </td>
-              <td><button type="button" class="btn btn-raised btn-primary">Read</button></td>
-            </tr>
-          </tbody>
-          <%});%>
-          <% } %>
+            <% messages.forEach((message) => { %>
+            <tbody>
+              <tr>
+                <th scope="row"><a href="/post/<%= message.item_id %>" class="btn">
+                    <%=message.item_id%>
+                </th>
+                <td>
+                  <%= message.message %>
+                </td>
+                <td>
+                  <%= message.createdAt %>
+                </td>
+                <td><button type="button" class="btn btn-raised btn-primary">Read</button></td>
+              </tr>
+            </tbody>
+            <%});%>
+            <% } %>
         </table>
       </div>
     </div>
