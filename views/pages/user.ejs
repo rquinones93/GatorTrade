@@ -3,27 +3,34 @@
   <h2>User Dashboard</h2>
   <% include ../error.ejs %>
   <br>
+
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
+
+      <!-- REMOVED TABS 
       <a class="nav-link active" data-toggle="tab" href="#home">WATCHLIST</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">NEW MESSAGES</a>
-    </li>
+    
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu2">READ MESSAGES</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu3">POSTS</a>
-    </li>
+    
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu4">SETTINGS</a>
+    </li>
+    -->
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#home">MESSAGES</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">POSTS</a>
     </li>
   </ul>
 
   <!-- Tab panes -->
-  <!-- WATCHLIST TAB -->
+  <!-- WATCHLIST TAB 
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
       <h2>Welcome, User!</h2>
@@ -82,59 +89,52 @@
         </table>
       </div>
     </div>
+    -->
 
-    <!-- NEW MESSAGES TAB -->
-    <div id="menu1" class="container tab-pane fade"><br>
-      <h2>New Messages</h2>
+  <!-- MESSAGES TAB -->
+  <div class="tab-content bg-light">
+    <div id="home" class="container tab-pane active"><br>
+      <p class="h2" style="color:indigo">Welcome, User!</p>
+      <h5>Here are your messages:</h5>
       <br>
       <div class="table-responsive-lg">
         <table class="table">
-
-          <thead>
+          <thead class="thead-light">
             <tr>
-              <th>
-                <form action="">
-                  <input type="checkbox" name=" " value=" ">
-                </form>
+              <th scope="col">  
+                Item <i class="fa fa-sort float-right" aria-hidden="true"></i>
               </th>
-              <th>
-                Item<i class="fa fa-sort float-right" aria-hidden="true"></i>
-              </th>
-              <th>Message</th>
-              <th>
+              <th scope="col">Message</th>
+              <th scope="col">
                 Date
                 <i class="fa fa-sort float-right" aria-hidden="true"></i>
               </th>
-              <th>Read</th>
+              <th scope="col">Read</th>
             </tr>
           </thead>
-
           <% if (typeof messages != "undefined") { %>
-
-            <% messages.forEach((message) => { %>
-              <tbody>
-                <tr>
-                  <td>
-                    <form action="">
-                      <input type="checkbox" name=" " value=" ">
-                    </form>
-                  </td>
-                  <td><a href="/post/<%= message.item_id %>" class="btn"><%=message.item_id%></td>
-                  <td>
-                    <%= message.message %>
-                  </td>
-                  <td><%= message.createdAt %></td>
-                  <td> <button type="button" class="btn btn-primary">Read</button></td>
-                </tr>
-              </tbody>
-            <%});%>
+          <% messages.forEach((message) => { %>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="/post/<%= message.item_id %>" class="btn">
+                  <%=message.item_id%>
+              </th>
+              <td>
+                <%= message.message %>
+              </td>
+              <td>
+                <%= message.createdAt %>
+              </td>
+              <td><button type="button" class="btn btn-raised btn-primary">Read</button></td>
+            </tr>
+          </tbody>
+          <%});%>
           <% } %>
-
         </table>
       </div>
     </div>
 
-    <!-- READ MESSAGES TAB -->
+    <!-- READ MESSAGES TAB 
     <div id="menu2" class="container tab-pane fade"><br>
       <h2>Read Messages</h2>
       <br>
@@ -183,81 +183,114 @@
         </table>
       </div>
     </div>
+    -->
 
     <!-- POSTS TAB -->
-    <div id="menu3" class="container tab-pane fade"><br>
-      <h2>My Posts</h2>
-      <div class="text-center">
-        <form class="form-horizontal" action="/post">
-          <div class="form-group">
-            <button type="button" class="btn btn-success">Add Post</button>
-        </form>
-      </div>
-    </div>
-    <h2></h2>
-
-    <div class="table-responsive-lg">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>
-              <form action="">
-                <input type="checkbox" name=" " value=" ">
+    <div id="menu1" class="container tab-pane fade"><br>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <p class="h2" style="color:indigo">My Posts</p>
+          </div>
+          <div class="col">
+            <div class="text-left">
+              <form class="form-horizontal" action="/action_page.php">
+                <div class="form-group">
+                  <button type="button" class="btn btn-raised btn-success">Add Post</button>
               </form>
-            </th>
-            <th>
-              Item
-              <i class="fa fa-sort float-right" aria-hidden="true"></i>
-            </th>
-            <th>Description</th>
-            <th>
-              Date
-              <i class="fa fa-sort float-right" aria-hidden="true"></i>
-            </th>
-            <th>View/Edit</th>
-            <th>Remove</th>
-          </tr>
-        </thead>
-        
+            </div>
+          </div>
+          <!--closes row-->
+        </div>
+        <!--closes container-->
+      </div>
+
+      <h2></h2>
+
+      <div class="table-responsive-lg">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">
+                Item
+                <i class="fa fa-sort float-right" aria-hidden="true"></i>
+              </th>
+              <th scope="col">Description</th>
+              <th scope="col">
+                Date
+                <i class="fa fa-sort float-right" aria-hidden="true"></i>
+              </th>
+              <th scope="col">View/Edit</th>
+              <th scope="col">Remove</th>
+            </tr>
+          </thead>
 
           <!-- For each post with seller_id being the user, display post details -->
           <% if (typeof posts != "undefined") { %>
-
-            <% posts.forEach((post) => { %>
-            <tr>
-            <td>
-              <form action="">
-                <input type="checkbox" name=" " value=" ">
-              </form>
+          <% posts.forEach((post) => { %>
+          <tr>
+            <td><a href="/post/<%= post.item_id %>" class="btn">
+                <%= post.title %>
             </td>
-            <td><a href="/post/<%= post.item_id %>" class="btn"><%= post.title %></td>
             <td>
               <%= post.description %>
             </td>
-            <td><%= post.updatedAt %></td>
             <td>
-              <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                  <button type="edit" class="btn btn-info">Edit</button>
-              </form>
+              <%= post.updatedAt %>
             </td>
             <td>
               <form class="form-horizontal" action="/action_page.php">
                 <div class="form-group">
-                  <button type="edit" class="btn btn-danger">Remove</button>
+                  <div class="row"></div>
+                  <button type="button" class="btn btn-raised btn-info">Edit</button>
               </form>
+            </td>
+            <td>
+              <div class="row"></div>
+
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-raised btn-danger" data-toggle="modal" data-target="#exampleModal">
+                Remove
+              </button>
+
+              <!-- Modal -->
+              <script>
+                $('#myModal').on('shown.bs.modal', function () {
+                  $('#myInput').trigger('focus')
+                })
+              </script>
+
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Removal of Post</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you would like to remove this post?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-success">Confirm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
-            <%});%>
+          <%});%>
           <% } %>
 
-        </tbody>
+          </tbody>
 
-      </table>
+        </table>
+      </div>
     </div>
-  </div>
 
-  <!-- SETTINGS TAB -->
+    <!-- SETTINGS TAB 
   <div id="menu4" class="container tab-pane fade"><br>
     <h2>Change Settings</h2>
     <div class="container-fluid">
@@ -291,5 +324,15 @@
         <button type="button" class="btn btn-success btn-block">Update Changes</button>
       </div>
     </div>
+  </div>-->
+
+    <!--closes tab content from messages tab-->
   </div>
-</div>
+
+
+  <!--for modal-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+
