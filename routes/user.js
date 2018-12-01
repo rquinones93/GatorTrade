@@ -29,9 +29,19 @@ router.post('/read', (request, response, next) => {
   User.readMessage(message.message_id) 
     .then( () => {
       console.log("message got here");
-      request.flash('success_msg', 'Messasge has been read');
+      request.flash('success_msg', 'Messasge has been read.');
       response.redirect('/user');
   }).catch(err => console.log(err));
 });
 
+router.post('/remove', (request, response, next) => {
+  let message = request.body;
+  console.log(message.message_id);
+  User.removeMessage(message.message_id) 
+    .then( () => {
+      console.log("message got here");
+      request.flash('success_msg', 'Messasge has been deleted.');
+      response.redirect('/user');
+  }).catch(err => console.log(err));
+});
 module.exports = router;

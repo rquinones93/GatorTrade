@@ -6,5 +6,6 @@ module.exports = {
   message: require('./message'),
   selectMessages: require('./selectMessages'),
   selectPosts: require('./selectPosts'),
-  readMessage: require('./readMessage')
+  readMessage: require('./readMessage'),
+  removeMessage: require('./removeMessage')
 };
