@@ -9,14 +9,16 @@ const adminAuthentication = (request, response, next) => {
     Admin.adminByUserId(request.user.user_id)
     .then(admin => {
 
-      // Logged in user is an admin, go to panel
+      if(!admin) {
+        // Logged in user is not an admin, redirect to user panel
+        request.flash('error', 'You are not an admin.');
+        response.redirect('/user');
+      }
+
+      // Logged in user is an admin, go to admin panel
       if( admin.user_id == request.user.user_id ) {
         return next();
       }
-
-      // Logged in user is not an admin, redirect to user panel
-      request.flash('error', 'You are not an admin.');
-      response.redirect('/user');
 
     }).catch( err => { console.log(err);});
 
