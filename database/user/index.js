@@ -3,5 +3,6 @@ module.exports = {
   isEmailInUse: require('./isEmailInUse'),
   getUserDataById: require('./getUserDataById'),
   create: require('./create'),
+  updateProfilePicture: require('./updateProfilePicture'),
   message: require('./message')
 };
