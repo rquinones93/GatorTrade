@@ -5,5 +5,7 @@ module.exports = {
   getMeetingPlaces: require('./getMeetingPlaces'),
   getPendingItems: require('./getPendingItems'),
   create: require('./create'),
-  getItemById: require('./getItemById')
+  getItemById: require('./getItemById'),
+  approveItem: require('./approveItem'),
+  denyItem: require('./denyItem')
 };
