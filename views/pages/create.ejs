@@ -34,7 +34,7 @@
             <%if( typeof categories != "undefined") { %>
               <div class="col-lg-6">
                 <label for="form_category">Select Item Category <small>(Required)</small></label>
-                <select class="form-control input-group-append col-lg-12" name="category" id="category">
+                <select class="form-control input-group-append col-lg-12 custom-select" name="category" id="category">
                   <% categories.forEach(( category ) => {%>
                   <option id="<%= category.title %>" value="<%= category.title %>"><%= category.title %></option>
                 <%});%>
@@ -99,4 +99,11 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('.custom-file-input').on('change', function() { 
+   let fileName = $(this).val().split('\\').pop(); 
+   $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+  });
+</script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
