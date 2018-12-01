@@ -2,7 +2,7 @@
 const db = require('../connection');
 
 // All Categories
-const SEARCH_ALL = `SELECT * FROM items WHERE status = 'Accepted';`;
+const SEARCH_ALL = `SELECT * FROM items WHERE status = 'Approved';`;
 
 const searchAll = () => {
   // Query the DB and return results
