@@ -13,18 +13,28 @@ router.get('/', (request, response, next) => {
     }).catch( err => { console.log(err); });
 });
 
+//Approve Post on admin dashboard
 router.post('/approve', (request, response, next) => {
-  let {item_id} = request.body;
-
-  Item.approveItem(item_id) 
+  let item = request.body;
+  console.log(item.item_id);
+  Item.approveItem(item.item_id) 
   .then( () => {
     request.flash('success_msg', 'Message has been approved');
-    reponse.redirect('/admin')
+    response.redirect('/admin');
+  }).catch(err => console.log(err));
+});
+
+//Deny Post on admin dashboard
+router.post('/deny', (request, response, next) => {
+  let item = request.body;
+  console.log(item.item_id);
+  Item.denyItem(item.item_id) 
+  .then( () => {
+    request.flash('success_msg', 'Message has been Denied');
+    response.redirect('/admin');
   }).catch(err => console.log(err));
 
 
 });
-
-router.post()
 
 module.exports = router;
