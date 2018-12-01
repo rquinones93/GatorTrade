@@ -1,15 +1,13 @@
 const express = require('express');
 const path = require('path');
-// Commenting Out until useful
 const expressLayouts = require('express-ejs-layouts');
 const expressValidator = require('express-validator');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
-// const passport = require('passport');
+const passport = require('passport');
 const session = require('express-session');
-const PORT = process.env.PORT || 5000;
 
 // Make use of environment variables defined in .env
 if (process.env.NODE_ENV === 'development' ||
@@ -50,6 +48,14 @@ app.use(
   })
 );
 
+// Passport Initialize
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((request, response, next) => {
+  response.locals.isAuthenticated = request.isAuthenticated();
+  next();
+});
+
 // Express Validator - Taken from Middleware Options on Github
 app.use(
   expressValidator({
@@ -83,14 +89,15 @@ app.use(function (request, response, next) {
 });
 
 // Routers 
-const index = require('./routes/index');
-const about = require('./routes/about');
+const index  = require('./routes/index');
+const about  = require('./routes/about');
 const search = require('./routes/search');
-const post = require('./routes/post');
-const admin = require('./routes/admin');
+const post   = require('./routes/post');
+const admin  = require('./routes/admin');
 const signup = require('./routes/signup');
-const user = require('./routes/user');
-const signin = require('./routes/login');
+const user   = require('./routes/user');
+const login  = require('./routes/login');
+const logout = require('./routes/logout');
 const resetpassword = require('./routes/resetpassword');
 const create = require('./routes/create');
 
@@ -102,17 +109,10 @@ app.use('/post', post);
 app.use('/admin', admin);
 app.use('/signup', signup);
 app.use('/user', user);
-app.use('/login', signin);
+app.use('/login', login);
+app.use('/logout', logout);
 app.use('/resetpassword', resetpassword);
 app.use('/create', create);
-
-// Passport Initialize
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use((request, response, next) => {
-//   response.locals.isAuthenticated = request.isAuthenticated();
-//   next();
-// });
 
 // catch 404 and forward to error handler
 app.use(function (req, response, next) {

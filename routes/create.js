@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../auth/actionAuthentication');
 const { Item } = require('../database');
 let multer = require('multer');
 let cloudinary = require('cloudinary');
@@ -48,10 +49,9 @@ router.get('/', (request, response, next) => {
     });
 });
 
-router.post('/', upload.single('image'), (request, response, next) => {
+router.post('/', auth.postAuthentication, upload.single('image'), (request, response, next) => {
   const { title, description, price, category, meeting_place } = request.body;
-  const seller_id = "2"; // TODO: Change hard-coded seller_id to user's unique id
-                         // Login functionality must be implemented to do this
+  const seller_id = request.user.user_id;
   const image_path = request.file.path;
 
   cloudinary.uploader.upload(image_path, (result) => {
@@ -60,8 +60,8 @@ router.post('/', upload.single('image'), (request, response, next) => {
 
     Item.create(seller_id, title, description, price, 
                 category, meeting_place, image_link, public_id).then(errors => {
-      request.flash('success_msg', "Posted! Your post is now pending admin review.");
-      response.redirect('/user'); // TODO: Unsure if this will go to user specific dashboard 
+      request.flash('success_msg', "Posted! Your post is now pending admin review. Check again within 24 hours.");
+      response.redirect('/user');
 
     }).catch(err => { renderErrors(response, err); });
   }).catch(err => { renderErrors(response, err); });
