@@ -15,10 +15,6 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu2">READ MESSAGES</a>
     </li>
-    
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu4">SETTINGS</a>
-    </li>
     -->
 
     <li class="nav-item">
@@ -27,6 +23,9 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">POSTS</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">SETTINGS</a>
+      </li>
   </ul>
 
   <!-- Tab panes -->
@@ -109,7 +108,7 @@
                 Date
                 <i class="fa fa-sort float-right" aria-hidden="true"></i>
               </th>
-              <th scope="col">Read</th>
+              <th scope="col">Remove</th>
             </tr>
           </thead>
           <% if (typeof messages != "undefined") { %>
@@ -125,7 +124,7 @@
                 <td>
                   <%= message.createdAt %>
                 </td>
-                <td><button type="button" class="btn btn-raised btn-primary">Read</button></td>
+                <td><button type="button" class="btn btn-raised btn-danger">Remove</button></td>
               </tr>
             </tbody>
             <%});%>
@@ -196,7 +195,7 @@
             <div class="text-left">
                 <form>
                     <button type="addPost" class="btn btn-success btn-raised">
-                        <a href="/create" style="color:white">Add Post</a>
+                        <a href="../create" style="color:white">Add Post</a>
                       </button>
                   </form>
             </div>
@@ -290,8 +289,8 @@
       </div>
     </div>
 
-    <!-- SETTINGS TAB 
-  <div id="menu4" class="container tab-pane fade"><br>
+    <!--SETTINGS TAB --> 
+  <div id="menu2" class="container tab-pane fade"><br>
     <h2>Change Settings</h2>
     <div class="container-fluid">
 
@@ -321,10 +320,10 @@
             <div class="help-block with-errors"></div>
           </div>
         </div>
-        <button type="button" class="btn btn-success btn-block">Update Changes</button>
+        <button type="button" style="color:white" class="btn btn-success btn-block bg-success">Update Changes</button>
       </div>
     </div>
-  </div>-->
+  </div>
 
     <!--closes tab content from messages tab-->
   </div>
