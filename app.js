@@ -83,7 +83,7 @@ app.use(flash());
 app.use(function (request, response, next) {
   response.locals.success_msg = request.flash('success_msg');
   response.locals.error_msg = request.flash('error_msg');
-  response.locals.error = request.flash('error');
+  response.locals.error_msg = request.flash('error');
   response.locals.user = request.user || null;
   next();
 });

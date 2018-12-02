@@ -36,7 +36,7 @@ cloudinary.config({
 });
 
 // Routes
-router.get('/', (request, response, next) => {
+router.get('/', auth.postAuthentication, (request, response, next) => {
   Promise.all([Item.getItemCategories(), Item.getMeetingPlaces()])
     .then(([categories, meeting_places]) => {
       response.render('pages/create', {
