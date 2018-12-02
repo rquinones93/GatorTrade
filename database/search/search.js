@@ -3,13 +3,13 @@ const db = require('../connection');
 
 
 // All Categories
-const NO_SEARCH_INPUT_ALL = `SELECT * FROM items;`;
+const NO_SEARCH_INPUT_ALL = `SELECT * FROM items WHERE status = 'Approved';`;
 
 // Specific Category
-const NO_SEARCH_INPUT_CATEGORY = `SELECT * FROM items WHERE category LIKE '%' || $2 || '%'`;
+const NO_SEARCH_INPUT_CATEGORY = `SELECT * FROM items WHERE status = 'Approved' AND category LIKE '%' || $2 || '%'`;
 
 // Specific Category with given search input
-const SEARCH_INPUT = `SELECT * FROM items WHERE category LIKE '%' || $2 || '%' ` +
+const SEARCH_INPUT = `SELECT * FROM items WHERE status = 'Approved' AND category LIKE '%' || $2 || '%' ` +
                                          `AND (LOWER(title) LIKE  '%' || $1 || '%' ` +
                                          `OR LOWER(description) LIKE '%' || $1 || '%')`;
 

@@ -2,7 +2,7 @@
 // TODO: UPDATE TO ONLY INCLUDE APPROVED POSTS
 const db = require('../connection');
 
-const GET_4_RECENT_ITEMS = `SELECT * FROM items ORDER BY item_id DESC LIMIT 4`;
+const GET_4_RECENT_ITEMS = `SELECT * FROM items WHERE status = 'Approved' ORDER BY item_id DESC LIMIT 4`;
 
 const get4RecentItems = () => {
   // Query the DB and return results
