@@ -108,6 +108,7 @@
                 Date
                 <i class="fa fa-sort float-right" aria-hidden="true"></i>
               </th>
+              <th scope="col">Read</th>
               <th scope="col">Remove</th>
             </tr>
           </thead>
@@ -115,16 +116,18 @@
             <% messages.forEach((message) => { %>
             <tbody>
               <tr>
-                <th scope="row"><a href="/post/<%= message.item_id %>" class="btn">
+                  <td><button type="seePost" class="btn btn-raised btn-success">See Post</button></td>
+                <!-- <th scope="row"><a href="/post/<%= message.item_id %>" class="btn">
                     <%=message.item_id%>
-                </th>
+                </th> -->
                 <td>
                   <%= message.message %>
                 </td>
                 <td>
                   <%= message.createdAt %>
                 </td>
-                <td><button type="button" class="btn btn-raised btn-danger">Remove</button></td>
+                <td><button type="read" class="btn btn-raised btn-info">Read</button></td>
+                <td><button type="remove" class="btn btn-raised btn-danger">Remove</button></td>
               </tr>
             </tbody>
             <%});%>
