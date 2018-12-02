@@ -18,35 +18,30 @@
     <div class="sidebar-header">
       <h3><br>Search Filters</h3>
     </div>
-      <div class="form-group">
-        
-        <!-- Changing from input to price dropdown selction
-      <div class="Price Range">
-        <label for="sel1">Price Range:</label>
-        <input class="form-control" id="sel1" type="number" min="0">
-        <br/>
-      -->
-
-      <!--changed filter by to SORT BY PRICE-->
-        <label>Sort by Price:</label>
-        <select class="form-control" id="select">
-          <option>Select</option>
-          <option>Under $25</option>
-          <option>$25 - $50</option>
-          <option>$50 - $100</option>
-          <option>$100 & Above</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <br/>
-          <label for="sell">Meeting Location:</label>
-          <select class="form-control" id="sel1">
-            <option>Select</option>
-            <option>J. Paul Leonard Library</option>
-            <option>Student Center</option>
-            <option>Cafe</option>
+    <form>
+        <div class="form-group">
+          <label for="sortPrice" style="color:black" style="text-decoration-bold" class="bmd-label-floating">Sort By Price:</label>
+          <select class="form-control" id="sortPrice">
+            <option>- select price -</option>
+            <option>less than $25</option>
+            <option>$25 to $50</option>
+            <option>$50 to $100</option>
+            <option>$100 & up</option>
           </select>
         </div>
+        <br>
+        <div class="form-group">
+            <label for="meetLocation" style="color:black" class="bmd-label-floating">Meet Location:</label>
+            <select class="form-control" id="meetLocation">
+              <option>- select location -</option>
+              <option>Cesar Chavez Student Center</option>
+              <option>J. Paul Leonard Library - Peets Coffee</option>
+              <option>J. Paul Leonard Library - Reasearch Commons</option>
+              <option>Student Services Building</option>
+              <option>Mashouf Wellness Center</option>
+            </select>
+          </div>
+      </form>
       </div>
   </nav>
 
@@ -65,6 +60,12 @@
                     <p class="postcard-text"><%= item.description %></p>
                   </div>
                 </a>
+
+                <!--Item Title and Price display below picture-->
+                <div class="col-lg-12">
+                    <p >GYM OPENING PART -$5 AT THE DOOR</p>
+                      <p >PRICE: $50 </p>
+                 </div>
                </div>
               </div>
             <%});%>
@@ -72,6 +73,7 @@
       </div>
     </div>
   </div>
+
 
  
   <script>
