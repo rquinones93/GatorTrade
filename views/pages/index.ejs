@@ -3,20 +3,18 @@
 <head>
 <style>
 txtshd {
-    text-shadow: 4px 4px 10px#9575cd;
+    text-shadow: 4px 4px 11px#9575cd;
 }
 
-outlnclr {
-  color:#9575cd ;
-  font-size: 1.5em;
-  -webkit-text-stroke: 2.5px black;
+headline {
+    z-index: 1;
+    background-color: white;
+    position: absolute;
+    margin-top:-30px;
 }
 
-outlnclrsm {
-  color:#9575cd ;
-  font-size: 1em;
-  -webkit-text-stroke: 1.75px black;
-}
+
+
 </style>
 </head>
 <body>
@@ -37,28 +35,37 @@ outlnclrsm {
 <br>
 <br>
 <!--Categories-->
+
 <%if( typeof categories != "undefined") { %>
+  
   <form method="POST" action="/search">
     <div class="row">
      <% categories.forEach(( category ) => {%>
-        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-            
+        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 40px;" >
+        
        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <headline><img class="" src="../../images/icons/clothes.png"  width="70" height="70"></headline>
             <div class="card-body">
-              <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
-                <h4 class="card-title" style="color:#9575cd"><b><b><%= category.title %></b></b></h4>
+              <div class='Center' align='center'>
+              <button class="btn btn-primary text-primary "  style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
+                <h4 class="card-title" style="color:#9575cd; "><b><b><%= category.title %></b></b></h4>
               </button>
-              <p class="card-text" style = "font-size: 17px;"><%= category.description %></p>
+               </div>
+
+               <hr class="rgba-white-light" style="margin: 4 15%;background-color:whitesmoke">
+
+
+              <p class="card-text" style = "font-size: 17px; text-align: center"><%= category.description %></p>
             </div>
           </div>
         </div>
+        <br>
       <%});%>
     </div>
   </form>
 <%}%>
 
-<br>
+
 
 <!--Bottom Half of Page(From Recent Posts Down)-->
 <!-- Jumbotron Header -->
