@@ -31,38 +31,37 @@ headline {
 <!-- Welcome to GatorTrade -->
 
 <!-- Page Heading -->
-<h1 class="display-3" style="color:black"><center><txtshd><u><i><b>Categories</b></i></u></txtshd></center></h1>
-<br>
+<h1 class="display-3" style="color:black; text-align: center;"><h><txtshd><b>Categories</b></h></txtshd></h1><br>
 <br>
 <!--Categories-->
 
 <%if( typeof categories != "undefined") { %>
-  
-  <form method="POST" action="/search">
-    <div class="row">
-     <% categories.forEach(( category ) => {%>
-        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 50px;" >
-        
-       <div class="card h-100">
-          <headline><img class="" src="../../images/icons/clothes.png"  width="70" height="70"></headline>
-            <div class="card-body">
-              <div class='Center' align='center'>
-              <button class="btn btn-primary text-primary "  style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
-                <h4 class="card-title" style="color:#9575cd; "><b><b><%= category.title %></b></b></h4>
-              </button>
-               </div>
+  <div class="card-body">
+    <form method="POST" action="/search">
+      <div class="row">
+      <% categories.forEach(( category ) => {%>
+          <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 50px;" >
+        <div class="card h-100">
+            <headline><img src="<%= category.image %>"  width="70" height="70"></headline>
+              <div class="card-body">
+                <div class='Center' align='center'>
+                <button class="btn btn-primary text-primary "  style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
+                  <h4 class="card-title" style="color:#9575cd; "><b><b><%= category.title %></b></b></h4>
+                </button>
+                </div>
 
-               <hr class="rgba-white-light" style="margin: 4 15%;background-color:whitesmoke">
+                <hr class="rgba-white-light" style="margin: 4 15%;background-color:whitesmoke">
 
 
-              <p class="card-text" style = "font-size: 17px; text-align: center"><%= category.description %></p>
+                <p class="card-text" style = "font-size: 17px; text-align: center"><%= category.description %></p>
+              </div>
             </div>
           </div>
-        </div>
-        <br>
-      <%});%>
-    </div>
-  </form>
+          <br>
+        <%});%>
+      </div>
+    </form>
+  </div>
 <%}%>
 
 
@@ -70,7 +69,7 @@ headline {
 <!--Bottom Half of Page(From Recent Posts Down)-->
 <!-- Jumbotron Header -->
 <header class="jumbotron my-4" style="background-color:whitesmoke; border-color: #9575cd; ">
-  <h1 class="display-3" style="color:black"><h><txtshd><b>Recent Posts &nbsp</b></h></txtshd><a href="/search" class="btn btn-primary btn-lg" style="color:white; background-color:#9575cd;height:46px;width:185px">See All Items</a></h1>
+  <h1 class="display-3" style="color:black"><h><txtshd><b>Recent Posts &nbsp</b></h></txtshd><a href="/search" class="btn btn-primary btn-lg btn-raised" style="color:white; background-color:#9575cd;height:46px;width:185px">See All Items</a></h1>
   <p class="lead"><b>Checkout what people have just posted!</b></p>
 </header>
 <br>

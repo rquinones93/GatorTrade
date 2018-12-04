@@ -5,29 +5,29 @@
   <br/>
 </div>
 <div>
-<h3>Apply Search Filter</h3>
+<h3 style="color:#9575cd">Apply Search Filter</h3>
   <br/>
   <div class="row">
     <div class="form-group col-md-6">
-      <h6>By Price:</h6><hr>
+      <h6 style="color:#9575cd">By Price:</h6><hr>
       <div class="row">
         <!-- Low to High -->
         <form class="col-sm-6" method="POST" action="/search/low_to_high">
           <input hidden name="searchInput" value="<%= current_search %>">
           <input hidden name="categories" value="<%= current_category %>">
-          <button class="btn btn-sm btn-primary btn-raised" type="submit" id="low_to_high" >Price: Low to High</button>
+          <button class="btn btn-sm btn-primary btn-raised" style="color: white; background-color: #9575cd; border-color: #9575cd;" type="submit" id="low_to_high" >Price: Low to High</button>
         </form>
 
         <!-- High to Low -->
         <form class="col-sm-6" method="POST" action="/search/high_to_low">
           <input hidden name="searchInput" value="<%= current_search %>">
           <input hidden name="categories" value="<%= current_category %>">
-          <button class="btn btn-sm btn-primary btn-raised" type="submit" id="high_to_low" >Price: High to Low</button>
+          <button class="btn btn-sm btn-primary btn-raised" style="color: white; background-color: #9575cd; border-color: #9575cd;" type="submit" id="high_to_low" >Price: High to Low</button>
         </form>
       </div>
     </div>
     <div class="form-group col-md-6">
-      <h6>By Meeting Location:</h6><hr>
+      <h6 style="color:#9575cd">By Meeting Location:</h6><hr>
         <div class="row">
           <form class="col-sm-12 input-group" method="POST" action="/search/meeting_location">
             <input hidden name="searchInput" value="<%= current_search %>">
@@ -40,7 +40,7 @@
               <option>Student Services Building</option>
               <option>Mashouf Wellness Center</option>
             </select>
-            <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px;"type="submit" id="meeting_location" >Update Location</button>
+            <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px; color: white; background-color: #9575cd; border-color: #9575cd;" type="submit" id="meeting_location" >Update Location</button>
           </form>
         </div>
     </div>
