@@ -5,24 +5,14 @@ module.exports = {
         // Adds ALL meetingPlaces to DB
     return queryInterface.bulkInsert('meetingplaces', [{
       title: 'Cesar Chavez Student Center',
-      createdAt: new Date(),
-      updatedAt: new Date()
     }, {
       title: 'J. Paul Leonard Library - Peets Coffee',
-      createdAt: new Date(),
-      updatedAt: new Date()
     }, {
       title: 'J. Paul Leonard Library - Research Commons',
-      createdAt: new Date(),
-      updatedAt: new Date()
     }, {
       title: 'Student Services Building',
-      createdAt: new Date(),
-      updatedAt: new Date()
     }, {
       title: 'Mashouf Wellness Center',
-      createdAt: new Date(),
-      updatedAt: new Date()
     }], {});
   },
 

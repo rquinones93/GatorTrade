@@ -44,12 +44,13 @@ router.get('/', auth.postAuthentication, (request, response, next) => {
         categories: categories,
         meeting_places: meeting_places
       });
-    }).catch(err => {
+    }).catch(err => { 
       console.log(err);
+      renderErrors(response, err);
     });
 });
 
-router.post('/', auth.postAuthentication, upload.single('image'), (request, response, next) => {
+router.post('/', upload.single('image'), (request, response, next) => {
   const { title, description, price, category, meeting_place } = request.body;
   const seller_id = request.user.user_id;
   const image_path = request.file.path;
@@ -63,8 +64,14 @@ router.post('/', auth.postAuthentication, upload.single('image'), (request, resp
       request.flash('success_msg', "Posted! Your post is now pending admin review. Check again within 24 hours.");
       response.redirect('/user');
 
-    }).catch(err => { renderErrors(response, err); });
-  }).catch(err => { renderErrors(response, err); });
+    }).catch(err => { 
+      console.log(err);
+      renderErrors(response, err);
+    });
+  }).catch(err => { 
+    console.log(err);
+    renderErrors(response, err);
+   });
 });
 
 let renderErrors = (response, errors) => {
