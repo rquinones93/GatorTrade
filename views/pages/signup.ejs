@@ -1,81 +1,95 @@
+<!--Login Page-->
 <div class="container">
   <div class="row">
-    <div class="col-xl-8 offset-xl-2">
-      <br>
-      <h1>Sign Up</h1>
-      <% include ../error.ejs %>
-      <hr>
-            
-      <form class="form-signin form-group" method="POST" action="/signup">
-        <div class="controls">
-          <div class="row">
-            <!-- Form Input -->
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="form_name">First Name <small>(Required)</small></label>
-                <input id="form_name" type="text" name="first_name" class="form-control" placeholder="Please Enter Your First Name" required="required"
-                    data-error="First Name is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label for="form_lastname">Last Name <small>(Required)</small></label>
-                <input id="form_lastname" type="text" name="last_name" class="form-control" placeholder="Please Enter Your Last Name" required="required"
-                    data-error="Last Name is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label for="form_email">SFSU Email <small>(Required, Must end in @mail.sfsu.edu)</small></label>
-                <input id="form_email" type="email" name="email" class="form-control" placeholder="Please Enter Your SFSU Email" required="required"
-                       data-error="Valid SFSU Email is required." max-length="40">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label for="form_password">Password <small>(Required, 8 character minimum)</small></label>
-                <input id="form_password" type="password" name="password" class="form-control" placeholder="Please Enter Your Password"
-                       max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label for="form_confirm_password">Confirm Password <small>(Required)</small></label>
-                <input id="form_confirm_password" type="password" name="confirmpassword" class="form-control" placeholder="Please Re-Enter Your Password"
-                  max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-                <div class="help-block with-errors"></div>
-              </div>
-            </div>
-          </div>
-
-          <!--Captcha-->
-          <div class="form-group">
-            <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-            <input class="d-none" data-recaptcha="true" data-error="Please complete the Captcha">
-            <div class="help-block with-errors"></div>
-          </div>
-
-          <!--Agree to Terms onchange="document.getElementById('create_account').disabled = !this.checked;"-->     
-          <input type="checkbox" onchange="document.getElementById('create_account').disabled = !this.checked;"
-                 name="checkbox" value="check" id="agree"/> I have read and agree to the Terms and Conditions and Privacy Policy
+    <div class="col-md-8 offset-md-2">
+      <div class="card card-signin my-5">
+        <div class="card-body">
           <br>
+          <!--Link to Sign Up Page-->
+          <div class="float-right">
+            <span class="psw" ><a href="/signup"><p style="color: #9575cd">Have an account? Log In</p></a></span>
+          </div>
           <br>
+
+          <!-- Link to Sign Up Page-->
+          <h1 class="card-title" style="color: #9575cd"><font size=+3>Sign Up</font></h1>
+          <hr style="background-color: #9575cd">
+          <% include ../error.ejs %>
+
+          <br>
+          <form class="form-signin form-group" method="POST" action="/signup">
+            <div class="controls">
+              <div class="row">
+                <!-- Form Input -->
+                <!-- First Name -->
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="form_name" style="color:#9575cd">First Name <small>(Required)</small></label>
+                    <input id="form_name" type="text" name="first_name" class="form-control" placeholder="Please Enter Your First Name" required="required"
+                        data-error="First Name is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only" style="border-color:black; color:black">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <!-- Last Name -->
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="form_lastname" style="color:#9575cd">Last Name <small>(Required)</small></label>
+                    <input id="form_lastname" type="text" name="last_name" class="form-control" placeholder="Please Enter Your Last Name" required="required"
+                        data-error="Last Name is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only" style="border-color:black; color:black">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- Email -->
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="form_email" style="color:#9575cd">SFSU Email <small>(Required, Must end in @mail.sfsu.edu)</small></label>
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please Enter Your SFSU Email" required="required"
+                            data-error="Valid SFSU Email is required." max-length="40" style="border-color:black; color:black">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <!-- Password -->
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="form_password" style="color:#9575cd">Password <small>(Required, 8 character minimum)</small></label>
+                    <input id="form_password" type="password" name="password" class="form-control" placeholder="Please Enter Your Password"
+                            max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only" style="border-color:black; color:black">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- Confirm Password -->
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="form_confirm_password" style="color:#9575cd">Confirm Password <small>(Required)</small></label>
+                    <input id="form_confirm_password" type="password" name="confirmpassword" class="form-control" placeholder="Please Re-Enter Your Password"
+                      max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only" style="border-color:black; color:black">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Captcha-->
+              <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                <input class="d-none" data-recaptcha="true" data-error="Please complete the Captcha">
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <!--Agree to Terms onchange="document.getElementById('create_account').disabled = !this.checked;"-->     
+              <input type="checkbox" onchange="document.getElementById('create_account').disabled = !this.checked;"
+                      name="checkbox" value="check" id="agree"/> I have read and agree to the Terms and Conditions and Privacy Policy
+              <br>
+              <br>
+            </div>
+            <!--Submit SignUp Form-->    
+            <button class="btn btn-lg btn-primary btn-raised"  type="submit" id="create_account" disabled style="color: white; background-color:#9575cd; border-color: #9575cd; ">Create Account</button>
+          </form>
         </div>
-        <!--Submit SignUp Form-->    
-        <button class="btn btn-lg btn-primary" type="submit" id="create_account" disabled>Create Account</button>
-        <div class="float-right">
-          <a href="/login" class="btn btn-lg btn-success" role="button">Have An Account? Log In </a>
-        </div>
-      </form>
-    </div>
+      </div>
   </div>
 </div>
 
