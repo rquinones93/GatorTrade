@@ -55,16 +55,19 @@
                 <a href="/post/<%= item.item_id %>" class="btn">
                   <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
                   <div class="overlay rounded">
-                    <h5 class="postcard-title"><b><%= item.title %></b></h5>
-                    <p class="postcard-text"><strong>Price: </strong> $<%= item.price %></p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <p class="postcard-text"><%= item.description %></p>
                   </div>
                 </a>
 
                 <!--Item Title and Price display below picture-->
                 <div class="col-lg-12">
-                    <p >GYM OPENING PART -$5 AT THE DOOR</p>
-                      <p >PRICE: $50 </p>
+                    <p ><%= item.title %></p>
+                      <p >$<%= item.price %></p>
+
                  </div>
                </div>
               </div>
