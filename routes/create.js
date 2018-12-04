@@ -63,8 +63,13 @@ router.post('/', upload.single('image'), (request, response, next) => {
       request.flash('success_msg', "Posted! Your post is now pending admin review. Check again within 24 hours.");
       response.redirect('/user');
 
-    }).catch(err => { renderErrors(response, err); });
-  }).catch(err => { renderErrors(response, err); });
+    }).catch(err => { 
+            console.log(err);
+
+      renderErrors(response, err); });
+  }).catch(err => {
+        console.log(err);
+    renderErrors(response, err); });
 });
 
 let renderErrors = (response, errors) => {
