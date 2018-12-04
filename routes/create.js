@@ -44,8 +44,9 @@ router.get('/', auth.postAuthentication, (request, response, next) => {
         categories: categories,
         meeting_places: meeting_places
       });
-    }).catch(err => {
+    }).catch(err => { 
       console.log(err);
+      renderErrors(response, err);
     });
 });
 
@@ -64,12 +65,13 @@ router.post('/', upload.single('image'), (request, response, next) => {
       response.redirect('/user');
 
     }).catch(err => { 
-            console.log(err);
-
-      renderErrors(response, err); });
-  }).catch(err => {
-        console.log(err);
-    renderErrors(response, err); });
+      console.log(err);
+      renderErrors(response, err);
+    });
+  }).catch(err => { 
+    console.log(err);
+    renderErrors(response, err);
+   });
 });
 
 let renderErrors = (response, errors) => {
