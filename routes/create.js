@@ -49,7 +49,7 @@ router.get('/', auth.postAuthentication, (request, response, next) => {
     });
 });
 
-router.post('/', auth.postAuthentication, upload.single('image'), (request, response, next) => {
+router.post('/', upload.single('image'), (request, response, next) => {
   const { title, description, price, category, meeting_place } = request.body;
   const seller_id = request.user.user_id;
   const image_path = request.file.path;
