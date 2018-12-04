@@ -11,39 +11,10 @@
 
 <div class = "">Displaying <%=items.length%> of <%=items.length%></div>
 
-  <!-- Show Items & Side Price/Location-->
+  <!-- Show Items-->
 <div class="wrapper">
-  <nav class="background-color #9575cd" style="background-color:#9575cd" id="sidebar">
-    <div class="container-fluid">
-    <div class="sidebar-header">
-      <h3><br>Search Filters</h3>
-    </div>
-    <form>
-        <div class="form-group">
-          <label for="sortPrice" style="color:black" class="bmd-label-floating">Sort By Price:</label>
-          <select class="form-control" id="sortPrice">
-            <option>- select price -</option>
-            <option>less than $25</option>
-            <option>$25 to $50</option>
-            <option>$50 to $100</option>
-            <option>$100 & up</option>
-          </select>
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="meetLocation" style="color:black" class="bmd-label-floating">Meet Location:</label>
-            <select class="form-control" id="meetLocation">
-              <option>- select location -</option>
-              <option>Cesar Chavez Student Center</option>
-              <option>J. Paul Leonard Library - Peets Coffee</option>
-              <option>J. Paul Leonard Library - Reasearch Commons</option>
-              <option>Student Services Building</option>
-              <option>Mashouf Wellness Center</option>
-            </select>
-          </div>
-      </form>
-      </div>
-  </nav>
+
+ <!-- removed search filters -->
 
   <div class="content">
     <div class="container-fluid">
@@ -64,11 +35,10 @@
                 </a>
 
                 <!--Item Title and Price display below picture-->
-                <div class="col-lg-12">
-                    <p ><%= item.title %></p>
-                      <p >$<%= item.price %></p>
-
-                 </div>
+                 <div class="col-lg-12">
+                    <h6 class="font-weight-bold, text-center"><%= item.title %></h6>
+                    <h6 class="font-weight-bold, text-center">Price: $<%= item.price %></h6>
+                 </div> 
                </div>
               </div>
             <%});%>
@@ -76,8 +46,6 @@
       </div>
     </div>
   </div>
-
-
  
   <script>
     // Set Selected Attribute for drop down, for easier searching
