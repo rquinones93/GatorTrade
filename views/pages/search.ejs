@@ -1,82 +1,94 @@
 <!--TESTING New home page-->
-<div class="jumbotron">
-  <div class="container">
-      <h1 class="display-3">
-      Team 04 <br />
-      Searching: <%= current_category %></h1>
-      <p hidden id="current_category"><%= current_category %></p>
-      <p hidden id="current_search"><%= current_search %></p>
+<div class="container jumbotron">
+  <h1 class="display-3">
+  Searching In: <%= current_category %></h1>
+  <br/>
+</div>
+<div>
+<h3>Apply Search Filter</h3>
+  <br/>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <h6>By Price:</h6><hr>
+      <div class="row">
+        <!-- Low to High -->
+        <form class="col-sm-6" method="POST" action="/search/low_to_high">
+          <input hidden name="searchInput" value="<%= current_search %>">
+          <input hidden name="categories" value="<%= current_category %>">
+          <button class="btn btn-sm btn-primary btn-raised" type="submit" id="low_to_high" >Price: Low to High</button>
+        </form>
+
+        <!-- High to Low -->
+        <form class="col-sm-6" method="POST" action="/search/high_to_low">
+          <input hidden name="searchInput" value="<%= current_search %>">
+          <input hidden name="categories" value="<%= current_category %>">
+          <button class="btn btn-sm btn-primary btn-raised" type="submit" id="high_to_low" >Price: High to Low</button>
+        </form>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <h6>By Meeting Location:</h6><hr>
+        <div class="row">
+          <form class="col-sm-12 input-group" method="POST" action="/search/meeting_location">
+            <input hidden name="searchInput" value="<%= current_search %>">
+            <input hidden name="categories" value="<%= current_category %>">
+            <select class="form-control form-control-sm col-sm-6" name="updated_location">
+              <option>Select</option>
+              <option>Cesar Chavez Student Center</option>
+              <option>J. Paul Leonard Library - Peets Coffee</option>
+              <option>J. Paul Leonard Library - Research Commons</option>
+              <option>Student Services Building</option>
+              <option>Mashouf Wellness Center</option>
+            </select>
+            <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px;"type="submit" id="meeting_location" >Update Location</button>
+          </form>
+        </div>
     </div>
   </div>
+</div>
+<hr>
 
 <div class = "">Displaying <%=items.length%> of <%=items.length%></div>
 
-  <!-- Show Items & Side Price/Location-->
-<div class="wrapper">
-  <nav class="bg-light" id="sidebar">
-    <div class="container-fluid">
-    <div class="sidebar-header">
-      <h3><br>Search Filters</h3>
-    </div>
-      <div class="form-group">
-      <div class="Price Range">
-        <label for="sel1">Price Range:</label>
-        <input class="form-control" id="sel1" type="number" min="0">
-        <br/>
-        <label>Filter by:</label>
-        <select class="form-control" id="select">
-          <option>Select</option>
-          <option>Name</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <br/>
-          <label for="sell">Meeting Location:</label>
-          <select class="form-control" id="sel1">
-            <option>Select</option>
-            <option>J. Paul Leonard Library</option>
-            <option>Student Center</option>
-            <option>Cafe</option>
-          </select>
-        </div>
-      </div>
-  </nav>
-
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row row-offcanvas row-offcanvas-right">
-        <%if( typeof items != "undefined") { %>
-          <% items.forEach(( item ) => {%>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-              <div class="card rounded" style="width: 100%;">
-                <a href="/post/<%= item.item_id %>" class="btn">
-                  <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
-                  <div class="overlay rounded">
-                    <h5 class="postcard-title"><b><%= item.title %></b></h5>
-                    <p class="postcard-text"><strong>Price: </strong> $<%= item.price %></p>
-                    <p class="postcard-text"><%= item.description %></p>
-                  </div>
-                </a>
-               </div>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <%if( typeof items != "undefined") { %>
+        <% items.forEach(( item ) => {%>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card rounded" style="width: 100%;">
+              <a href="/post/<%= item.item_id %>" class="btn">
+                <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+                <div class="overlay rounded">
+                  <h5 class="postcard-title"><b><%= item.title %></b></h5>
+                  <p class="postcard-text"><strong>Price: </strong> $<%= item.price %></p>
+                  <p class="postcard-text"><%= item.description %></p>
+                </div>
+              </a>
               </div>
-            <%});%>
-          <%}%>
-      </div>
+            </div>
+          <%});%>
+        <%}%>
     </div>
   </div>
+</div>
 
+<div id="hidden-gems">
+  <p hidden id="current_category"><%= current_category %></p>
+  <p hidden id="current_search"><%= current_search %></p>
+</div>
  
-  <script>
-    // Set Selected Attribute for drop down, for easier searching
-    function setSelectedCategory() {
-      var selectedCategory = document.getElementById("current_category").innerHTML;
-      document.getElementById(selectedCategory).setAttribute('selected', 'selected');
-    }
-    // Set search input, so last search is remembered
-    function setSearchInput() {
-      var searchInput = document.getElementById("current_search").innerHTML;
-      document.getElementsByName("searchInput")[0].value = searchInput;
-    }
-    setSelectedCategory();
-    setSearchInput();
-  </script>
+<script>
+  // Set Selected Attribute for drop down, for easier searching
+  function setSelectedCategory() {
+    var selectedCategory = document.getElementById("current_category").innerHTML;
+    document.getElementById(selectedCategory).setAttribute('selected', 'selected');
+  }
+  // Set search input, so last search is remembered
+  function setSearchInput() {
+    var searchInput = document.getElementById("current_search").innerHTML;
+    document.getElementsByName("searchInput")[0].value = searchInput;
+  }
+  setSelectedCategory();
+  setSearchInput();
+</script>

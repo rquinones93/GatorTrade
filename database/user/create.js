@@ -6,7 +6,7 @@ const CREATE_USER =
   `INSERT INTO users ( first_name, last_name, email, password, profile_picture ) ` +
   `VALUES ( $1, $2, $3, $4, $5 ) RETURNING *`;
 
-const create = (first_name, last_name, email, password, profile_picture ) => {
+const create = (first_name, last_name, email, password ) => {
   return Promise.all([isEmailInUse(email)])
     .then(([emailUsed]) => {
       let errors = [];
@@ -18,9 +18,10 @@ const create = (first_name, last_name, email, password, profile_picture ) => {
       } else {
         bcrypt.hash(password, 10).then(hash => {
           // Returns hashed password
+          // Create user with default no custom profile picture
           return db.one(CREATE_USER, [ 
             first_name, last_name, email, 
-            hash, profile_picture 
+            hash, "./images/no_profile.png"
           ]);
         });
       }
