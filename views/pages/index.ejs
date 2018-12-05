@@ -1,33 +1,79 @@
+<!--Text Alterations-->
+<html>
+<head>
+<style>
+txtshd {
+    text-shadow: 4px 4px 11px#9575cd;
+}
+
+headline {
+    z-index: 1;
+    background-color: white;
+    position: absolute;
+    margin-top:-30px;
+}
+
+
+
+</style>
+</head>
+<body>
+<!--Text Alterations-->
+
+<!-- Welcome to GatorTrade -->
+
+<h1 class="display-3" style = "color:black"  ><txtshd> <center><b><b>Welcome to GatorTrade!</b></b></center></txtshd></h1>
+<hr class="rgba-white-light" style="margin: 0 15%;background-color:black">
+<br>
+<h1 class="lead"  style="color:darkgray;"><b><b><center><font size =" +1" face="Arial" >We're here to make SFSU students lives a lot easier. Search for many of the essentials students need: Books, Computers, Apparel and many other things. Trying to get rid of an item sell it here. Need a service post it here. GatorTrade the #1 Buying/Selling site for SFSU students!</font></center></b></b></h1>
+<br>
+<br>
+<!-- Welcome to GatorTrade -->
+
 <!-- Page Heading -->
-<h1 class="my-4">Categories</h1>
+<h1 class="display-3" style="color:black"><center><txtshd><u><i><b>Categories</b></i></u></txtshd></center></h1>
+<br>
+<br>
 <!--Categories-->
+
 <%if( typeof categories != "undefined") { %>
+  
   <form method="POST" action="/search">
     <div class="row">
-      <% categories.forEach(( category ) => {%>
-        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 10px;">
-          <div class="card h-100">
+     <% categories.forEach(( category ) => {%>
+        <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 50px;" >
+        
+       <div class="card h-100">
+          <headline><img class="" src="../../images/icons/clothes.png"  width="70" height="70"></headline>
             <div class="card-body">
-              <button class="btn btn-primary text-primary" style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
-                <h4 class="card-title"><%= category.title %></h4>
+              <div class='Center' align='center'>
+              <button class="btn btn-primary text-primary "  style="padding: 0px; border: none; background: white;" name="categories" value="<%= category.title %>" type="submit">
+                <h4 class="card-title" style="color:#9575cd; "><b><b><%= category.title %></b></b></h4>
               </button>
-              <p class="card-text"><%= category.description %></p>
+               </div>
+
+               <hr class="rgba-white-light" style="margin: 4 15%;background-color:whitesmoke">
+
+
+              <p class="card-text" style = "font-size: 17px; text-align: center"><%= category.description %></p>
             </div>
           </div>
         </div>
+        <br>
       <%});%>
     </div>
   </form>
 <%}%>
 
+
+
 <!--Bottom Half of Page(From Recent Posts Down)-->
 <!-- Jumbotron Header -->
-<header class="jumbotron my-4">
-  <h1 class="display-3">Recent Posts</h1>
-  <p class="lead">Checkout what people have just posted!</p>
-  <a href="/search" class="btn btn-primary btn-lg">See All Items</a>
+<header class="jumbotron my-4" style="background-color:whitesmoke; border-color: #9575cd; ">
+  <h1 class="display-3" style="color:black"><h><txtshd><b>Recent Posts &nbsp</b></h></txtshd><a href="/search" class="btn btn-primary btn-lg" style="color:white; background-color:#9575cd;height:46px;width:185px">See All Items</a></h1>
+  <p class="lead"><b>Checkout what people have just posted!</b></p>
 </header>
-
+<br>
 <!-- 4 Most Recent Items -->
 <%if( typeof items != "undefined") { %>
   <div class="container-fluid">

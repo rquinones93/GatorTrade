@@ -151,20 +151,31 @@
               <th></th>
               <th>Item<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
               <th>Description</th>
+
               <th>Remove</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          
+  
+            <!-- For each post with seller_id being the user, display post details -->
+            <% if (typeof posts != "undefined") { %>
+              <% posts.forEach((post) => { %>
+              <tr>
               <td>
                 <form action="">
                   <input type="checkbox" name=" " value=" ">
                 </form>
               </td>
-              <td>Purple Shoes</td>
+              <td><a href="/post/<%= post.item_id %>" class="btn"><%= post.title %></td>
               <td>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
+                <%= post.description %>
+              </td>
+              <td><%= post.updatedAt %></td>
+              <td>
+                <form class="form-horizontal" action="/action_page.php">
+                  <div class="form-group">
+                    <button type="edit" class="btn btn-info">Edit</button>
+                </form>
               </td>
               <td>
                 <form class="form-horizontal" action="/action_page.php">
@@ -173,7 +184,11 @@
                 </form>
               </td>
             </tr>
+              <%});%>
+            <% } %>
+  
           </tbody>
+  
         </table>
       </div>
     </div> -->
@@ -304,4 +319,3 @@
   crossorigin="anonymous"></script>
 <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
   crossorigin="anonymous"></script>
-

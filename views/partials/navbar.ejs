@@ -1,7 +1,3 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header justify-content-between d-print-block">
   <div class="container flex-md-row">
     <a class="navbar-brand" href="/">GT</a>
@@ -25,8 +21,8 @@
       <% } %>
       </div>
 
-      <form class="input-group search-bar" method="POST" action="/search" role="search">
-        <div class="input-group-prepend">
+      <form class="input-group input-group search-bar" method="POST" action="/search" role="search">
+        <div>
           <% if (typeof current_category != "undefined") { %>
             <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
           <% } else { %>
@@ -43,20 +39,32 @@
             <option class="dropdown-item" id="Services"       value="Services">Services</option>
           </div>  
         </div>
-        <input type="text" name="searchInput" class="form-control" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
-        <div class="input-group-append">
-          <button class="form-control btn btn-outline-secondary" type="submit">Search</button>
+        <input type="text" name="searchInput" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
+        <div class="">
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>
       </form>
 
-       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-change" href="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-change" href="/signup">Sign Up</a>
-        </li>
-      </ul>
+       <!-- Right side of navbar changes whether user is logged in -->
+      <% if ( isAuthenticated ) { %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/user">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/logout">Log Out</a>
+          </li>
+        </ul>
+      <% } else { %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-change" href="/login">Login</a>
+          </li>
+        </ul>
+      <% } %>
     </div>  
   </div>
 </nav>
@@ -69,7 +77,6 @@
     $("#hidden-categories").text($(this).text());
     $("#hidden-categories").val($(this).text());
   });
-
   // Set Selected Attribute for drop down, for easier searching
   function setSelectedCategory() {
     var selectedCategory = document.getElementById("current_category").innerHTML;
@@ -83,7 +90,6 @@
     var searchInput = document.getElementById("current_search").innerHTML;
     document.getElementsByName("searchInput")[0].value = searchInput;
   }
-
   setSelectedCategory();
   setSearchInput();
 </script>
