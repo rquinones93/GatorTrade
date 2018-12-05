@@ -1,6 +1,6 @@
 // User must be authenticated as an admin to access Admin Panel
 // and Admin Actions
-const Admin = require("../database/admin");
+const { Admin } = require("../database");
 
 const adminAuthentication = (request, response, next) => {
   if (request.isAuthenticated()) {
