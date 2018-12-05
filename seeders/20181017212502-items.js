@@ -12,9 +12,7 @@ module.exports = {
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125823/samples/ecommerce/shoes.png',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '1',
       title: 'Leather Bag',
@@ -24,9 +22,7 @@ module.exports = {
       meeting_place: 'J. Paul Leonard Library - Peets Coffee',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125830/samples/ecommerce/leather-bag-gray.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '2',
       title: 'Text Books - $5ea',
@@ -36,9 +32,7 @@ module.exports = {
       meeting_place: 'J. Paul Leonard Library - Research Commons',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539811936/samples/ecommerce/books.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '2',
       title: 'Intro to Java Textbook - CSC210',
@@ -48,9 +42,7 @@ module.exports = {
       meeting_place: 'Student Services Building',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539811936/samples/ecommerce/books.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '1',
       title: 'iPhone 6s',
@@ -60,9 +52,7 @@ module.exports = {
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816302/iphone6s.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '2',
       title: 'Macbook Air',
@@ -72,9 +62,7 @@ module.exports = {
       meeting_place: 'Student Services Building',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816416/macbookair.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '1',
       title: 'Gym Opening Party - $5 at the door',
@@ -84,9 +72,7 @@ module.exports = {
       meeting_place: 'Mashouf Wellness Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816512/mashouf.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '2',
       title: 'Career Fair - FREE EVENT!',
@@ -96,9 +82,7 @@ module.exports = {
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816585/career.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '2',
       title: 'Coffee Pot',
@@ -108,9 +92,7 @@ module.exports = {
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/c_scale,w_250/v1539816673/coffeepot1.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '1',
       title: 'Coffee Pot 2.0',
@@ -120,9 +102,7 @@ module.exports = {
       meeting_place: 'Cesar Chavez Student Center',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539816732/coffeepot2.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '1',
       title: 'Economics Tutor - 15/hr',
@@ -132,9 +112,7 @@ module.exports = {
       meeting_place: 'J. Paul Leonard Library - Research Commons',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125821/samples/people/smiling-man.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }, {
       seller_id: '2',
       title: 'Carpool - San Mateo to SFSU',
@@ -144,9 +122,7 @@ module.exports = {
       meeting_place: 'J. Paul Leonard Library - Peets Coffee',
       image_link: 'https://res.cloudinary.com/hx8ztvtac/image/upload/v1539125824/samples/bike.jpg',
       public_id: "",
-      status: 'Pending',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'Pending'
     }], {});
   },
 
