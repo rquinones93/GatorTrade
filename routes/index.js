@@ -7,7 +7,7 @@ router.get('/', (request, response, next) => {
 
   // Query DB for Categories to Populate buttons at top of the page
   // and get Recent Items
-  Promise.all([Item.get4RecentItems(), Item.getItemCategories()])
+  Promise.all([Item.get6RecentItems(), Item.getItemCategories()])
   .then(([items, categories]) => {
     response.render('pages/index', {
       title: "GatorTrade",
