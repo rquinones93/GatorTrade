@@ -188,7 +188,6 @@
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="exampleModalLabel">Removing "<%= post.title %>"</h5>
                                   <!-- Gotta Implement This -->
-                                  <form action="/"></form>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -197,7 +196,7 @@
                                   Are you sure you would like to remove this post?
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-raised btn-success">Confirm</button>
+                                  <a href="user/remove_post/<%= post.item_id %>" class="btn btn-raised btn-success">Confirm</a>
                                 </div>
                               </div>
                             </div>

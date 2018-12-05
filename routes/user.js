@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../auth/actionAuthentication');
-const {User} = require('../database');
+let cloudinary = require('cloudinary');
+const { Item, User } = require('../database');
+
+// Set up cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 router.get('/', auth.userDashBoardAuthentication, (request, response, next) => {
   
@@ -22,6 +30,7 @@ router.get('/', auth.userDashBoardAuthentication, (request, response, next) => {
     });
 });
 
+// Messages Tab - Read Message
 router.post('/read', (request, response, next) => {
   let message = request.body;
   User.readMessage(message.message_id) 
@@ -31,6 +40,7 @@ router.post('/read', (request, response, next) => {
   }).catch(err => console.log(err));
 });
 
+// Messages Tab - Remove Message
 router.post('/remove', (request, response, next) => {
   let message = request.body;
   User.removeMessage(message.message_id) 
@@ -38,6 +48,34 @@ router.post('/remove', (request, response, next) => {
       request.flash('success_msg', 'Messasge has been deleted.');
       response.redirect('/user');
   }).catch(err => console.log(err));
+});
+
+// Posts Tab - Remove Post
+router.get('/remove_post/:post_id', auth.removePostAuthentication, (request, response, next) => {
+  let item_id = request.params.post_id;
+  console.log("I am here");
+
+  Item.getItemById(item_id)
+  .then((item) => {
+    console.log("I am here 2");
+    console.log(item);
+
+    // Remove Item's Image from Cloudinary
+    if (item.public_id != '') {
+      cloudinary .uploader.destroy(item.public_id, { invalidate: true}, (error, result) => {
+        console.log(result, error); // Print Errors if Any
+      });
+    }
+
+    // Remove Item from DB
+    Item.removeItemByItemId(item_id)
+    .then(() => {
+      request.flash('success_msg', 'Your post has been deleted.');
+      response.redirect('/user');
+      
+    }).catch(err => console.log(err));
+  }).catch(err => console.log(err));
+  
 });
 
 // Not Priority
@@ -56,5 +94,6 @@ router.post('/remove', (request, response, next) => {
 //   request.flash('success_msg', 'Profile Picture has been updated. View on Settings Tab.');
 //   response.redirect('/user');
 // });
+
 
 module.exports = router;

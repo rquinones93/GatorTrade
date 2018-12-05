@@ -54,7 +54,39 @@ const editAuthentication = (request, response, next) => {
         console.log(err);
       });
   } else {
-    request.flash('error', 'You must login to edit a post.');
+    request.flash('error', 'You must login to see this page.');
+    response.redirect('/login');
+  }
+};
+
+const removePostAuthentication = (request, response, next) => {
+  if (request.isAuthenticated()) {
+    // Check if logged in user is an admin
+    Item.getItemById(request.params.post_id)
+      .then(current_item => {
+
+        console.log(current_item);
+        if (!current_item) {
+          // Post does not exist
+          request.flash('error', 'Post does not exist.');
+          response.redirect('/user');
+        }
+
+        // Logged in user is not owner of post
+        if (current_item.seller_id != request.user.user_id) {
+          request.flash('error', 'You cannot remove this post.');
+          response.redirect('/user');
+        }
+
+        // Logged in user is the owner of the post
+        if (current_item.seller_id == request.user.user_id) {
+          return next();
+        }
+      }).catch(err => {
+        console.log(err);
+      });
+  } else {
+    request.flash('error', 'You must login to see this page.');
     response.redirect('/login');
   }
 };
@@ -63,5 +95,6 @@ module.exports = {
   userDashBoardAuthentication: userDashBoardAuthentication,
   postAuthentication: postAuthentication,
   messageAuthentication: messageAuthentication,
-  editAuthentication: editAuthentication
+  editAuthentication: editAuthentication,
+  removePostAuthentication: removePostAuthentication
 };
