@@ -91,6 +91,7 @@ app.use(function (request, response, next) {
 // Routers 
 const index  = require('./routes/index');
 const about  = require('./routes/about');
+const privacy = require('./routes/privacy');
 const search = require('./routes/search');
 const post   = require('./routes/post');
 const admin  = require('./routes/admin');
@@ -104,6 +105,7 @@ const create = require('./routes/create');
 // Middleware for routes
 app.use('/', index);
 app.use('/about', about);
+app.use('/privacy', privacy);
 app.use('/search', search);
 app.use('/post', post);
 app.use('/admin', admin);
