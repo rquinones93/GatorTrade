@@ -41,8 +41,9 @@ router.get('/:post_id', auth.editAuthentication, (request, response, next) => {
 
   Promise.all([Item.getItemById(post_id), Item.getItemCategories(), Item.getMeetingPlaces()])
     .then(([current_item, categories, meeting_places]) => {
-      response.render('pages/create', {
+      response.render('pages/edit', {
         title: "GatorTrade - Create New Post",
+        item: current_item,
         categories: categories,
         meeting_places: meeting_places
       });
@@ -52,34 +53,37 @@ router.get('/:post_id', auth.editAuthentication, (request, response, next) => {
     });
 });
 
-router.post('/', upload.single('image'), (request, response, next) => {
-  const {
-    title,
-    description,
-    price,
-    category,
-    meeting_place
-  } = request.body;
-  const seller_id = request.user.user_id;
+// Edit a Post
+router.post('/:post_id', upload.single('image'), (request, response, next) => {
+  const item_id = request.params.post_id;
+  const { title, description, price, category, meeting_place } = request.body;
   const image_path = request.file.path;
 
+  // Upload new image to Cloudinary service
   cloudinary.uploader.upload(image_path, (result) => {
     const image_link = result.secure_url;
     const public_id = result.public_id;
 
-    Item.create(seller_id, title, description, price,
-      category, meeting_place, image_link, public_id).then(errors => {
-      request.flash('success_msg', "Posted! Your post is now pending admin review. Check again within 24 hours.");
-      response.redirect('/user');
+    Item.getItemById(item_id).then((current_item) => {
+      const old_public_id = current_item.public_id;
 
-    }).catch(err => {
-      console.log(err);
-      renderErrors(response, err);
-    });
-  }).catch(err => {
-    console.log(err);
-    renderErrors(response, err);
-  });
+      // Delete Old Item Image from Storage - Default Seeds might not have public ID
+      if(old_public_id) {
+        cloudinary.uploader.destroy(old_public_id, { invalidate: true }, (error, result) => {
+          console.log(result, error); // Print Errors if Any
+        });
+      }
+
+      // Update Item in Database with new values
+      Item.updateItem(item_id, title, description, price, category, meeting_place, image_link, public_id)
+      .then( (errors) => {
+        request.flash('success_msg', "Updated! Your post is now pending admin review. Check again within 24 hours.");
+        response.redirect('/user');
+        
+        // Below are errors if any of the Promise calls fail
+      }).catch(err => { console.log(err); renderErrors(response, err); });
+    }).catch(err => { console.log(err); renderErrors(response, err); });
+  }).catch(err => { console.log(err); renderErrors(response, err); });
 });
 
 let renderErrors = (response, errors) => {
