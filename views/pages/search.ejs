@@ -4,8 +4,8 @@
   Searching In: <%= current_category %></h1>
   <br/>
 </div>
-<div>
-<h3>Apply Search Filter</h3>
+<div class="container">
+  <h3>Apply Search Filter</h3>
   <br/>
   <div class="row">
     <div class="form-group col-md-6">
@@ -45,46 +45,40 @@
         </div>
     </div>
   </div>
-</div>
-<hr>
 
-<div class = "">Displaying <%=items.length%> of <%=items.length%></div>
+  <hr>
+</div>
 
  <!-- Show Items-->
-<div class="wrapper">
+<div class="content">
+  <div class="container-fluid">
+    <div>Displaying <%=items.length%> of <%=items.length%></div>
 
- <!-- removed search filters -->
+    <div class="row row-offcanvas row-offcanvas-right">
+      <%if( typeof items != "undefined") { %>
+        <% items.forEach(( item ) => { %>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card rounded" style="width: 100%;">
+              <a href="/post/<%= item.item_id %>" class="btn">
+                <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
+                <div class="overlay rounded">
+                  <br><br><br><br><br>
+                  <h5 class="postcard-text"><%= item.description %></h5>
+                </div>
+              </a>
 
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row row-offcanvas row-offcanvas-right">
-        <%if( typeof items != "undefined") { %>
-          <% items.forEach(( item ) => {%>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-              <div class="card rounded" style="width: 100%;">
-                <a href="/post/<%= item.item_id %>" class="btn">
-                  <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
-                  <div class="overlay rounded">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <p class="postcard-text"><%= item.description %></p>
-                  </div>
-                </a>
-
-                <!--Item Title and Price display below picture-->
-                 <div class="col-lg-12">
-                    <h6 class="font-weight-bold, text-center"><%= item.title %></h6>
-                    <h6 class="font-weight-bold, text-center">Price: $<%= item.price %></h6>
-                 </div> 
-               </div>
-              </div>
+              <!--Item Title and Price display below picture-->
+              <div class="col-lg-12">
+                <h5 class="font-weight-bold, text-center"><%= item.title %></h5>
+                <h5 class="font-weight-bold, text-center"><strong>Price:</strong> $<%= item.price %></h5>
+              </div> 
             </div>
-          <%});%>
-        <%}%>
+          </div>
+        <%});%>
+      <%}%>
     </div>
   </div>
+</div>
 
 <div id="hidden-gems">
   <p hidden id="current_category"><%= current_category %></p>
