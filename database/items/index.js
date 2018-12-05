@@ -1,6 +1,6 @@
 // Export Items modules to the rest of the application
 module.exports = {
-  get4RecentItems: require('./get4RecentItems'),
+  get6RecentItems: require('./get6RecentItems'),
   getItemCategories: require('./getItemCategories'),
   getMeetingPlaces: require('./getMeetingPlaces'),
   getPendingItems: require('./getPendingItems'),
