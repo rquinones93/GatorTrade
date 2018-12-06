@@ -188,7 +188,6 @@
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="exampleModalLabel">Removing "<%= post.title %>"</h5>
                                   <!-- Gotta Implement This -->
-                                  <form action="/"></form>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -197,7 +196,7 @@
                                   Are you sure you would like to remove this post?
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-raised btn-success">Confirm</button>
+                                  <a href="user/remove_post/<%= post.item_id %>" class="btn btn-raised btn-success">Confirm</a>
                                 </div>
                               </div>
                             </div>
@@ -215,13 +214,30 @@
             <div id="menu2" class="container tab-pane fade"><br>
               <h2>Change Settings</h2>
               <div class="container-fluid">
-                <h5>Edit Profile Picture</h5>
-                <img src="//placehold.it/150" class="rounded-circle" alt="Cinque Terre" width="250" height="236">
+                <br>
+                <p class="h2" style="color:indigo">Update Profile Picture</p>
+                <hr style="background-color: #9575cd">
 
+                <form class="form-signin form-group" method="POST" action="/user/update_profile_picture" enctype="multipart/form-data">
+                  <img src="<%= profile_picture %>"  alt="Cinque Terre" width="250">
+                  <br><br>
+                  <!-- Item Photo-->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <div class="custom-file">
+                        <input id="logo" type="file" name="image" accept="image/*" class="custom-file-input" style="border: 1px"required>
+                        <label for="logo" class="custom-file-label text-truncate">Choose file...</label>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Submit SignUp Form-->    
+                  <button class="btn btn-md btn-success btn-raised" type="submit" id="create_account" style="color: white; background-color: #9575cd; border-color: #9575cd; ">Update</button>
+                </form>
                 <br><br>
                 
-                <input type="file" id="myFile">
                 <div class="row">
+                  <p class="h2" style="color:indigo">Update Password</p>
+                  <hr style="background-color: #9575cd">
                   <div class="col-lg-12">
                     <div class="form-group">
                       <br>
@@ -257,3 +273,10 @@
   crossorigin="anonymous"></script>
 <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
   crossorigin="anonymous"></script>
+<!-- For File -->
+<script>
+$('.custom-file-input').on('change', function() { 
+  let fileName = $(this).val().split('\\').pop(); 
+  $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+});
+</script>

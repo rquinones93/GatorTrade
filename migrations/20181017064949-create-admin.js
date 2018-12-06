@@ -12,10 +12,6 @@ module.exports = {
       user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'user_id'
-        }
       }
     });
   },

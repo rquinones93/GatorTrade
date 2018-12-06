@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card card-signin my-4">
+        <div class="card-body">
+          <br>
+
+          <h1 class="card-title" style="color: #9575cd"><font size=+3>Edit Item</font></h1>
+          <hr style="background-color: #9575cd">
+          <% include ../error.ejs %>
+
+          <br>
+          <form class="form-signin form-group" method="POST" action="/edit/<%= item.item_id %>" enctype="multipart/form-data">
+            <div class="controls">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="form_title" style="color: #9575cd">Title <small>(Required)</small></label>
+                    <input id="form_title" type="text" name="title" class="form-control" value="<%= item.title %>" required
+                        data-error="A post title is required." max-length="40">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="form_description" style="color: #9575cd">Description <small>(Required)</small></label>
+                    <input id="form_description" type="text" name="description" class="form-control" value="<%= item.description %>" required
+                        data-error="An item description is required." max-length="100">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <!-- Category Pulldown -->
+                <%if( typeof categories != "undefined") { %>
+                  <div class="col-lg-6">
+                    <label for="form_category" style="color: #9575cd">Select Item Category <small>(Required)</small></label>
+                    <select class="form-control input-group-append col-lg-12 custom-select" name="category" id="select_category">
+                      <% categories.forEach(( category ) => {%>
+                      <option id="<%= category.title %>" value="<%= category.title %>"><%= category.title %></option>
+                    <%});%>
+                    </select>
+                  </div>
+                <%}%>
+
+                <!-- Meeting Place Pulldown -->
+                <%if( typeof meeting_places != "undefined") { %>
+                  <div class="col-lg-6">
+                    <label for="form_meeting_place" style="color: #9575cd">Select Meeting Place <small>(Required)</small></label>
+                    <select class="form-control input-group-append col-lg-12" name="meeting_place" id="select_meeting_place">
+                      <% meeting_places.forEach(( meeting_place ) => {%>
+                      <option id="<%= meeting_place.title %>" value="<%= meeting_place.title %>"><%= meeting_place.title %></option>
+                    <%});%>
+                    </select>
+                  </div>
+                <%}%>
+              </div>
+
+              <div class="row">
+                <!-- Item Price-->
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="form_price" style="color: #9575cd">Price <small>(Required)</small></label>
+                    <input id="form_price" type="text" name="price" class="form-control" value="<%= item.price %>" required
+                          data-error="An item price is required." pattern="^[0-9.]*$" max-length="40">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                </div>
+                <!-- Item Photo-->
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="form_upload_profile_picture" style="color: #9575cd">Item Photo <small>(Required)</small></label>
+                    <div class="custom-file">
+                      <input id="logo" type="file" name="image" accept="image/*" class="custom-file-input" required>
+                      <label for="logo" class="custom-file-label text-truncate">Choose file...</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!--Captcha-->
+                <div class="col-lg-12">
+                  <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                  <input class="d-none" data-recaptcha="true" data-error="Please complete the Captcha">
+                  <div class="help-block with-errors"></div>
+                </div>
+
+              </div>
+            </div>
+            <!--Submit SignUp Form-->    
+            <div class="row">
+              <div class="col-lg-12">
+                <p style="color:indigo;">Note: Editing an item places it back under review. Please allow up to 24 hours for your post to be reviewed. </p>
+                <a href="/user" class="btn btn-lg btn-danger btn-raised" role="button" style="color: white; background-color: red; border-color: red;">Cancel Edit</a>
+                <div class="float-right">
+                  <button class="btn btn-lg btn-success btn-raised" type="submit" id="create_account" style="color: white; background-color: #9575cd; border-color: #9575cd; ">Edit Item</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+
+<script>
+  // Set Dropdowns to Item's Values
+  $(document).ready(function() {
+    $("#select_category").val('<%= item.category %>');
+    $("#select_meeting_place").val('<%= item.meeting_place %>');
+  });
+
+  // Updates File Name on Browse Click
+  $('.custom-file-input').on('change', function() { 
+   let fileName = $(this).val().split('\\').pop(); 
+   $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+  });
+</script>
+<script src='https://www.google.com/recaptcha/api.js'></script>

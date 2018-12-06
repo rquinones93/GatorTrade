@@ -101,6 +101,7 @@ const login  = require('./routes/login');
 const logout = require('./routes/logout');
 const resetpassword = require('./routes/resetpassword');
 const create = require('./routes/create');
+const edit = require('./routes/edit');
 
 // Middleware for routes
 app.use('/', index);
@@ -115,6 +116,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/resetpassword', resetpassword);
 app.use('/create', create);
+app.use('/edit', edit);
 
 // catch 404 and forward to error handler
 app.use(function (req, response, next) {
