@@ -25,7 +25,7 @@ module.exports = {
       status: 'Pending'
     }, {
       seller_id: '2',
-      title: 'Text Books - $5ea',
+      title: 'Text Books',
       description: 'Hella books, on the low.',
       price: 5.00,
       category: 'Books',
@@ -65,7 +65,7 @@ module.exports = {
       status: 'Pending'
     }, {
       seller_id: '1',
-      title: 'Gym Opening Party - $5 at the door',
+      title: 'Gym Opening Party',
       description: "Come by! 1pm-8pm!",
       price: 5.00,
       category: 'Events',
@@ -75,7 +75,7 @@ module.exports = {
       status: 'Pending'
     }, {
       seller_id: '2',
-      title: 'Career Fair - FREE EVENT!',
+      title: 'Career Fair (Free)',
       description: "Internships and Full Time! Stop by from 11AM-3PM",
       price: 0.00,
       category: 'Events',
