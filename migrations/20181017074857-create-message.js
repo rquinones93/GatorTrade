@@ -12,18 +12,10 @@ module.exports = {
       item_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'items',
-          key: 'item_id'
-        }
       },
       seller_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'user_id'
-        }
       },
       message: {
         allowNull: false,

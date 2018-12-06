@@ -2,5 +2,6 @@
 module.exports = {
   Search: require('./search'),
   Item: require('./items'),
-  User: require('./user')
+  User: require('./user'),
+  Admin: require('./admin')
 };
