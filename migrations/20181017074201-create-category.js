@@ -16,6 +16,9 @@ module.exports = {
       description: {
         allowNull: false,
         type: Sequelize.STRING
+      }, image: {
+        allowNull: false,
+        type: Sequelize.STRING
       }
     });
   },
