@@ -28,9 +28,9 @@
               <th>Description</th>
               <th>Price</th>
               <th>Location</th>
+              <th>See Post</th>
               <th>Approve</th>
               <th>Deny</th>
-              <th>Status</th>
             </tr>
           </thead>
 
@@ -43,21 +43,21 @@
                   <td><%= item.description %></td>
                   <td>$<%= item.price %></td>
                   <td><%= item.meeting_place %></td>
+                  <td><a href="admin/post/<%= item.item_id %>" target="_blank" class="btn btn-info btn-raised">See Post</a></td>
                   <td>
                     <form class="form-horizontal" action="/admin/approve" method="post">
                         <div class="form-group">
-                            <button type="submit" formmethod="post" name="item_id" value="<%= item.item_id %>" class="btn btn-success">Approve</button>
+                            <button type="submit" formmethod="post" name="item_id" value="<%= item.item_id %>" class="btn btn-success btn-raised">Approve</button>
                         </div>
                     </form>
                   </td>
                   <td>
                     <form class="form-horizontal" action="/admin/deny" method="post">
                         <div class="form-group">
-                            <button type="submit" formmethod="post" name="item_id" value="<%= item.item_id %>" class="btn btn-danger">Deny</button>
+                            <button type="submit" formmethod="post" name="item_id" value="<%= item.item_id %>" class="btn btn-danger btn-raised">Deny</button>
                         </div>
                     </form>
                   </td>
-                  <td><%= item.status %></td>
                 </tr>
               <% }); %>
             <% } %>
