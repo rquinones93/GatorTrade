@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const { User } = require('../database');
 
 router.get('/', (request, response, next) => {
@@ -20,7 +19,7 @@ router.post('/', (request, response, next) => {
   } else {
     User.recoverPassword(newpassword, inputEmail, inputfirstname, inputlastname) // using secret -> (newpassword, inputEmail, inputfirstname, inputlastname, secret)
       .then( (person) => {
-
+        console.log("after hash");
         if (person.length == 1){ //user was changed
           request.flash('success_msg', "Password reset successful!");
           response.redirect(`/resetpassword`);
