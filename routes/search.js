@@ -39,14 +39,14 @@ router.post('/', (request, response, next) => {
 });
 
 // Filtered Search
-router.post('/:search_type', (request, response, next) => {
+router.post('/filter', (request, response, next) => {
   // Search Input can be undefined if accessing from index or
   // not input by user.
   let searchInput = (request.body.searchInput != undefined) ?
     request.body.searchInput : "";
 
   let searchCategory = request.body.categories;
-  let search_type = request.params.search_type;
+  let search_type = request.body.filter;
 
   Search.search(searchInput.toLowerCase(), searchCategory)
     .then(items => {
@@ -65,18 +65,30 @@ router.post('/:search_type', (request, response, next) => {
         });
       }
 
-      // By Meeting Location
-      if (search_type == "meeting_location") {
-        const new_location = request.body.updated_location; 
-        let new_location_items = [];
+      // Meeting Location Ascending
+      if (search_type == "location_ascending") {
+        items.sort((a, b) => {
+          let meeting_place_a = a.meeting_place.toLowerCase(),
+              meeting_place_b = b.meeting_place.toLowerCase();
+          if (meeting_place_a < meeting_place_b) //sort string ascending
+            return -1;
+          if (meeting_place_a > meeting_place_b)
+            return 1;
+          return 0; //default return value (no sorting)
+        });
+      }
 
-        for( let i = 0; i < items.length; i++ ) {
-          if(items[i].meeting_place == new_location) {
-            new_location_items.push(items[i]);
-          }
-        }
-
-        items = new_location_items;
+      // Meeting Location Descending
+      if (search_type == "location_descending") {
+        items.sort((a, b) => {
+          let meeting_place_a = a.meeting_place.toLowerCase(),
+            meeting_place_b = b.meeting_place.toLowerCase();
+          if (meeting_place_a > meeting_place_b) //sort string descending
+            return -1;
+          if (meeting_place_a < meeting_place_b)
+            return 1;
+          return 0; //default return value (no sorting)
+        });
       }
 
       // Render Search Results
