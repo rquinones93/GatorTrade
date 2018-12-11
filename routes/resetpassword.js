@@ -15,12 +15,23 @@ router.post('/', (request, response, next) => {
   if (newpassword != reenterpassword) {
     request.flash('error_msg', "Passwords do not match");
     response.redirect('/resetpassword');
+    console.log("Passwords do not match");
+
   } else {
     User.recoverPassword(newpassword, inputEmail, inputfirstname, inputlastname)
-      .then( () => {
-        console.log("Query works");
-        request.flash('success_msg', "Password reset successful!");
-        response.redirect(`/resetpassword`);
+      .then( (person) => {
+        console.log(person.length);
+        
+        if (person.length == 1){ //user was changed
+          request.flash('success_msg', "Password reset successful!");
+          response.redirect(`/resetpassword`);
+        } else if (person.length == 0) { //no user found with info
+          request.flash('error_msg', "Please Enter Valid User Info");
+          response.redirect(`/resetpassword`);
+        } else { //multiple users with same name, email, and last name
+          request.flash('success_msg', "Password reset for multiple!");
+          response.redirect(`/resetpassword`);
+        }
     }).catch(err => console.log(err));
   }
 });
