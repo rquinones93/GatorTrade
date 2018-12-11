@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../auth/actionAuthentication');
 const { User, Item } = require('../database');
 
-router.get('/:item_id', (request, response, next) => {
+router.get('/:item_id', auth.approvedPost, (request, response, next) => {
   // Get Item ID
   let local_item_id = request.params.item_id;
 
