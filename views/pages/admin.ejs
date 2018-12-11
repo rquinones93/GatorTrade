@@ -8,7 +8,7 @@
       <a class="nav-link active" data-toggle="tab" href="#home">Pending Items</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">User Data</a>
+      <a class="nav-link" data-toggle="tab" href="#menu1">All Items</a>
     </li>
   </ul>
 
@@ -64,20 +64,20 @@
       </div>
     </div>
 
-    <!-- User Data Tab -->
+    <!-- All Items Tab -->
     <div id="menu1" class="container tab-pane fade"><br>
-      <h3>User approval</h3>
+      <h3>All items</h3>
         <div class="container">
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Image</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Location</th>
-                  <th>Remove User</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Remove Items</th>
                 </tr>
               </thead>
               <tbody>
@@ -96,7 +96,7 @@
                   <td>
                     <form class="form-horizontal" action="/action_page.php">
                         <div class="form-group">
-                          <button type="deny" class="btn btn-danger">Remove</button>
+                            <button type="" formmethod="" name="" value = "" class="btn btn-raised btn-danger">Remove</button>
                         </div>
                     </form>
                   </td>
@@ -109,3 +109,7 @@
     </div>
   </div>
 </div>
+
+
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+  crossorigin="anonymous"></script>
