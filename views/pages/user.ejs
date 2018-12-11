@@ -166,7 +166,7 @@
                   <% if (typeof posts != "undefined") { %>
                     <% posts.forEach((post) => { %>
                       <tr>
-                        <td><a href="/post/<%= post.item_id %>" class="btn"><%= post.title %></a></td>
+                        <td><a href="/post/<%= post.item_id %>" target="_ blank" class="btn"><%= post.title %></a></td>
                         <td><%= post.description %></td>
                         <td><a href="/edit/<%= post.item_id %>" class="btn btn-info btn-raised">Edit</a>
                         </td>
