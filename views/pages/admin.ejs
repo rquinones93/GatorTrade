@@ -16,7 +16,9 @@
   <!-- Pending Items Tab -->
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br>
-      <h3>Items awaiting for approval</h3>
+      <% if (typeof items != "undefined") { %>
+        <h3><%= items.length %> Item(s) awaiting approval</h3>
+      <% } %>
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
