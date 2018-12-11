@@ -103,7 +103,7 @@
                     <% if (typeof messages != "undefined") { %>
                       <% messages.forEach((message) => { %>
                         <tr>
-                          <td><a href="/post/<%= message.item_id %>" class="btn btn-raised"><%= message.item_title %></td>
+                          <td><a href="/post/<%= message.item_id %>" target="_ blank" class="btn btn-raised"><%= message.item_title %></td>
                           <td>
                           <% if (message.status != "READ") { %>
                             <strong><%= message.message %></strong>
