@@ -17,6 +17,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
+      item_title: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       message: {
         allowNull: false,
         type: Sequelize.STRING

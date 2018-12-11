@@ -28,10 +28,10 @@ router.get('/:item_id', (request, response, next) => {
 });
 
 router.post('/', auth.messageAuthentication, (request, response, next) => {
-  let {item_id, seller_id, messageInput} = request.body;
+  let {item_id, seller_id, item_title, messageInput} = request.body;
 
   // Send message to Seller. Sender's User ID not required
-  User.message(item_id, seller_id, messageInput)
+  User.message(item_id, seller_id, item_title, messageInput)
     .then( () => {
       
       // Redirect after message sent successfully
