@@ -18,7 +18,7 @@ router.post('/', (request, response, next) => {
     console.log("Passwords do not match");
 
   } else {
-    User.recoverPassword(newpassword, inputEmail, inputfirstname, inputlastname)
+    User.recoverPassword(newpassword, inputEmail, inputfirstname, inputlastname) // using secret -> (newpassword, inputEmail, inputfirstname, inputlastname, secret)
       .then( (person) => {
 
         if (person.length == 1){ //user was changed
