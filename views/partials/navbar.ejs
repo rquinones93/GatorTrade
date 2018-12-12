@@ -22,6 +22,11 @@
       </div>
 
       <form class="input-group input-group search-bar" method="POST" action="/search" role="search">
+    
+        <div class="">
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+        <input type="text" name="searchInput" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
         <div>
           <% if (typeof current_category != "undefined") { %>
             <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
@@ -39,11 +44,6 @@
             <option class="dropdown-item" id="Services"       value="Services">Services</option>
           </div>  
         </div>
-        <div class="">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
-        </div>
-        <input type="text" name="searchInput" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
-      
       </form>
 
        <!-- Right side of navbar changes whether user is logged in -->
