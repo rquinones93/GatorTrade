@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header justify-content-between d-print-block">
+<nav class="navbar navbar-expand-lg navbar-light background-color site-header justify-content-between d-print-block" style="background-color:#e8eaf6">
   <div class="container flex-md-row">
     <a class="navbar-brand" href="/">GatorTrade</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +8,7 @@
     <div class="navbar-collapse collapse d-print-block" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link nav-link-change" href="/create">Post</a>
+          <a class="nav-link nav-link-change" style="color: black" href="/create">Post</a>
         </li>
       </ul>
 
@@ -39,20 +39,21 @@
             <option class="dropdown-item" id="Services"       value="Services">Services</option>
           </div>  
         </div>
-        <input type="text" name="searchInput" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
         <div class="">
           <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>
+        <input type="text" name="searchInput" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
+      
       </form>
 
        <!-- Right side of navbar changes whether user is logged in -->
       <% if ( isAuthenticated ) { %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link nav-link-change" href="/user">Profile</a>
+            <a class="nav-link nav-link-change" style="color: black" href="/user">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-change" href="/logout">Log Out</a>
+            <a class="nav-link nav-link-change" style="color: black" href="/logout">Log Out</a>
           </li>
         </ul>
       <% } else { %>
