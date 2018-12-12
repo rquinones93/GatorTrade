@@ -4,7 +4,7 @@
 <% if (typeof item != "undefined") { %>
 <div class="container">
   <div class="row">
-    <div class="card card-post" style="background-color:#f5f5f5">
+    <div class="card card-post mx-auto" style="background-color:#f5f5f5; width: 100%;">
       <div class="card-body">
           <div class = "col-lg-12 col-md-12 col-sm-12 item-title">
               <h1 class="item-title" style="color: #9575cd"><font size=+3><%= item.title %></font></h1>
@@ -14,7 +14,7 @@
             <!--Item's image-->
             <div class="row">
               <div class = "col-lg-5 col-md-6 col-sm-12 item-photo">
-              <img src="<%= item.image_link %>" alt="Item's Image" height="100%" width = "100%" class="img-responsive rounded">
+              <img src="<%= item.image_link %>" alt="Item's Image" style="height:100%; width:100%;overflow: hidden;" class="img-responsive rounded">
             </div>                  
             <!--Item's Information-->
             <div class = "col-lg-7 col-md-6 col-sm-12 item-detail">
