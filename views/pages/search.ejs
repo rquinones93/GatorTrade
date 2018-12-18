@@ -16,9 +16,14 @@
         <form class="col-sm-12 input-group" method="POST" action="/search/filter">
           <input hidden name="searchInput" value="<%= current_search %>">
           <input hidden name="categories" value="<%= current_category %>">
-          <select class="form-control form-control-sm col-sm-6" id="filterSelection" name="filter">
+          <select class="form-control form-control-sm col-sm-10" id="filterSelection" name="filter">
             <option value="Price: Low to High" id="Price: Low to High">Price: Low to High</option>
             <option value="Price: High to Low" id="Price: High to Low">Price: High to Low</option>
+            <option value="Meeting Place: Cesar Chavez Student Center"                id="Meeting Place: Cesar Chavez Student Center">Meeting Place: Cesar Chavez Student Center</option>
+            <option value="Meeting Place: J. Paul Leonard Library - Peets Coffee"     id="Meeting Place: J. Paul Leonard Library - Peets Coffee">Meeting Place: J. Paul Leonard Library - Peets Coffee</option>
+            <option value="Meeting Place: J. Paul Leonard Library - Research Commons" id="Meeting Place: J. Paul Leonard Library - Research Commons">Meeting Place: J. Paul Leonard Library - Research Commons</option>
+            <option value="Meeting Place: Student Services Building"                  id="Meeting Place: Student Services Building">Meeting Place: Student Services Building</option>
+            <option value="Meeting Place: Mashouf Wellness Center"                    id="Meeting Place: Mashouf Wellness Center">Meeting Place: Mashouf Wellness Center</option>
           </select>
           <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px; color: white; background-color: #9575cd; border-color: #9575cd;" type="submit">Apply</button>
         </form>

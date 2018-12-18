@@ -65,6 +65,22 @@ router.post('/filter', (request, response, next) => {
         });
       }
 
+      // By Meeting Place
+      if (filter_type.includes("Meeting Place:")) {
+        // Creates substring of just the location we're looking for
+        const new_location = filter_type.replace("Meeting Place: ", "");
+        let new_location_items = [];
+
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].meeting_place == new_location) {
+            new_location_items.push(items[i]);
+          }
+        }
+
+        // Set items to the new, set that only contains selected meeting place
+        items = new_location_items;
+      }
+
       // Render Search Results
       response.render('pages/search', {
         title: "GatorTrade - Search",
