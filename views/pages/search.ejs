@@ -16,11 +16,9 @@
         <form class="col-sm-12 input-group" method="POST" action="/search/filter">
           <input hidden name="searchInput" value="<%= current_search %>">
           <input hidden name="categories" value="<%= current_category %>">
-          <select class="form-control form-control-sm col-sm-6" name="filter">
-            <option value="low_to_high">Price: Low to High</option>
-            <option value="high_to_low">Price: High to Low</option>
-            <option value="location_ascending">Meeting Place: Alphabetical Order</option>
-            <option value="location_descending">Meeting Place: Reverse Alphabetical Order</option>
+          <select class="form-control form-control-sm col-sm-6" id="filterSelection" name="filter">
+            <option value="Price: Low to High" id="Price: Low to High">Price: Low to High</option>
+            <option value="Price: High to Low" id="Price: High to Low">Price: High to Low</option>
           </select>
           <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px; color: white; background-color: #9575cd; border-color: #9575cd;" type="submit">Apply</button>
         </form>
@@ -60,6 +58,11 @@
 <div id="hidden-gems">
   <p hidden id="current_category"><%= current_category %></p>
   <p hidden id="current_search"><%= current_search %></p>
+  <%if( typeof current_filter != "undefined") { %>
+    <p hidden id="current_filter"><%= current_filter %></p>
+  <% } else { %>
+    <p hidden id="current_filter"></p>
+  <% } %>
 </div>
  
 <script>
@@ -73,6 +76,16 @@
     var searchInput = document.getElementById("current_search").innerHTML;
     document.getElementsByName("searchInput")[0].value = searchInput;
   }
+
+  // Set Selected Filter
+  function setSelectedFilter() {
+    var selectedFilter = document.getElementById("current_filter").innerHTML;
+
+    if(selectedFilter != "") {
+      document.getElementById(selectedFilter).setAttribute('selected', 'selected');
+    }
+  }
   setSelectedCategory();
   setSearchInput();
+  setSelectedFilter();
 </script>

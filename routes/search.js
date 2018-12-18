@@ -46,48 +46,22 @@ router.post('/filter', (request, response, next) => {
     request.body.searchInput : "";
 
   let searchCategory = request.body.categories;
-  let search_type = request.body.filter;
+  let filter_type = request.body.filter;
 
   Search.search(searchInput.toLowerCase(), searchCategory)
     .then(items => {
       
       // Prices Low to High 
-      if(search_type == "low_to_high") {
+      if (filter_type == "Price: Low to High") {
         items.sort((a,b) => {
           return a.price - b.price;
         });
       }
 
       // Prices High to Low
-      if (search_type == "high_to_low") {
+      if (filter_type == "Price: High to Low") {
         items.sort((a, b) => {
           return b.price - a.price;
-        });
-      }
-
-      // Meeting Location Ascending
-      if (search_type == "location_ascending") {
-        items.sort((a, b) => {
-          let meeting_place_a = a.meeting_place.toLowerCase(),
-              meeting_place_b = b.meeting_place.toLowerCase();
-          if (meeting_place_a < meeting_place_b) //sort string ascending
-            return -1;
-          if (meeting_place_a > meeting_place_b)
-            return 1;
-          return 0; //default return value (no sorting)
-        });
-      }
-
-      // Meeting Location Descending
-      if (search_type == "location_descending") {
-        items.sort((a, b) => {
-          let meeting_place_a = a.meeting_place.toLowerCase(),
-            meeting_place_b = b.meeting_place.toLowerCase();
-          if (meeting_place_a > meeting_place_b) //sort string descending
-            return -1;
-          if (meeting_place_a < meeting_place_b)
-            return 1;
-          return 0; //default return value (no sorting)
         });
       }
 
@@ -96,7 +70,8 @@ router.post('/filter', (request, response, next) => {
         title: "GatorTrade - Search",
         items: items,
         current_category: searchCategory,
-        current_search: searchInput
+        current_search: searchInput,
+        current_filter: filter_type
       });
     }).catch(err => {
       console.log(err);
