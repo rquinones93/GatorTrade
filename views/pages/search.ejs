@@ -4,30 +4,30 @@
   Searching In: <%= current_category %></h1>
   <br/>
 </div>
-<div>
-  <h3 style="color:#9575cd">Apply Search Filter</h3>
-  <br/>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <form class="col-sm-12 input-group" method="POST" action="/search/filter">
-        <input hidden name="searchInput" value="<%= current_search %>">
-        <input hidden name="categories" value="<%= current_category %>">
-        <select class="form-control form-control-sm col-sm-6" name="filter">
-          <option value="low_to_high">Price: Low to High</option>
-          <option value="high_to_low">Price: High to Low</option>
-          <option value="location_ascending">Meeting Place: Alphabetical Order</option>
-          <option value="location_descending">Meeting Place: Reverse Alphabetical Order</option>
-        </select>
-        <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px; color: white; background-color: #9575cd; border-color: #9575cd;" type="submit">Apply</button>
-      </form>
-    </div>
-  </div>
-  <hr>
-</div>
 
- <!-- Show Items-->
+<!-- Show Items-->
 <div class="content">
   <div class="container-fluid">
+  
+    <!-- Filters -->
+    <div class="row">
+      <h3 style="color:#9575cd">Filter by:</h3>
+      <div class="form-group col-md-6">
+        <form class="col-sm-12 input-group" method="POST" action="/search/filter">
+          <input hidden name="searchInput" value="<%= current_search %>">
+          <input hidden name="categories" value="<%= current_category %>">
+          <select class="form-control form-control-sm col-sm-6" name="filter">
+            <option value="low_to_high">Price: Low to High</option>
+            <option value="high_to_low">Price: High to Low</option>
+            <option value="location_ascending">Meeting Place: Alphabetical Order</option>
+            <option value="location_descending">Meeting Place: Reverse Alphabetical Order</option>
+          </select>
+          <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px; color: white; background-color: #9575cd; border-color: #9575cd;" type="submit">Apply</button>
+        </form>
+      </div>
+    </div>
+    <hr>
+
     <div>Displaying <%=items.length%> of <%=items.length%></div>
 
     <div class="row row-offcanvas row-offcanvas-right">
