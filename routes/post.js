@@ -17,7 +17,7 @@ router.get('/:item_id', auth.approvedPost, (request, response, next) => {
       
       // Render Page
       response.render('pages/post', {
-        title: "Post " + local_item_id,
+        title: "GatorTrade - " + item.title,
         item: item,
         seller: seller,
         post_id: local_item_id
