@@ -50,9 +50,7 @@ const editAuthentication = (request, response, next) => {
         if (current_item.seller_id == request.user.user_id) {
           return next();
         }
-      }).catch(err => {
-        console.log(err);
-      });
+      }).catch(err => {console.log(err);});
   } else {
     request.flash('error', 'You must login to see this page.');
     response.redirect('/login');
@@ -65,7 +63,6 @@ const removePostAuthentication = (request, response, next) => {
     Item.getItemById(request.params.post_id)
       .then(current_item => {
 
-        console.log(current_item);
         if (!current_item) {
           // Post does not exist
           request.flash('error', 'Post does not exist.');
@@ -82,9 +79,7 @@ const removePostAuthentication = (request, response, next) => {
         if (current_item.seller_id == request.user.user_id) {
           return next();
         }
-      }).catch(err => {
-        console.log(err);
-      });
+      }).catch(err => {console.log(err);});
   } else {
     request.flash('error', 'You must login to see this page.');
     response.redirect('/login');

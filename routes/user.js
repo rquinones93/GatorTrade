@@ -51,9 +51,7 @@ router.get('/', auth.userDashBoardAuthentication, (request, response, next) => {
         name: `${request.user.first_name} ${request.user.last_name}`,
         profile_picture: user.profile_picture
       });
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(err => {console.log(err);});
 });
 
 // Messages Tab - Read Message
@@ -63,7 +61,7 @@ router.post('/read', (request, response, next) => {
     .then( () => {
       request.flash('success_msg', 'Messasge has been marked as read.');
       response.redirect('/user');
-  }).catch(err => console.log(err));
+  }).catch(err => {console.log(err);});
 });
 
 // Messages Tab - Remove Message
@@ -73,18 +71,15 @@ router.post('/remove', (request, response, next) => {
     .then( () => {
       request.flash('success_msg', 'Messasge has been deleted.');
       response.redirect('/user');
-  }).catch(err => console.log(err));
+  }).catch(err => {console.log(err);});
 });
 
 // Posts Tab - Remove Post
 router.get('/remove_post/:post_id', auth.removePostAuthentication, (request, response, next) => {
   let item_id = request.params.post_id;
-  console.log("I am here");
 
   Item.getItemById(item_id)
   .then((item) => {
-    console.log("I am here 2");
-    console.log(item);
 
     // Remove Item's Image from Cloudinary
     if (item.public_id != '') {
@@ -99,9 +94,8 @@ router.get('/remove_post/:post_id', auth.removePostAuthentication, (request, res
       request.flash('success_msg', 'Your post has been deleted.');
       response.redirect('/user');
       
-    }).catch(err => console.log(err));
-  }).catch(err => console.log(err));
-  
+      }).catch(err => {console.log(err);});
+    }).catch(err => {console.log(err);});
 });
 
 // Not Priority
@@ -139,10 +133,9 @@ router.post('/update_profile_picture', upload.single('image'), (request, respons
       .then(() => {
         request.flash('success_msg', 'Profile Picture has been updated. View on Settings Tab.');
         response.redirect('/user');
-      }).catch(err => console.log(err));
+      }).catch(err => {console.log(err);});
     });
-  }).catch(err => console.log(err));
+  }).catch(err => {console.log(err);});
 });
-
 
 module.exports = router;

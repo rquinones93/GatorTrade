@@ -12,7 +12,7 @@ router.get('/', auth.adminAuthentication, (request, response, next) => {
         title: "GatorTrade - Admin",
         items: items
       });
-    }).catch( err => { console.log(err); });
+    }).catch(err => {console.log(err);});
 });
 
 //Approve Post on admin dashboard
@@ -22,7 +22,7 @@ router.post('/approve', (request, response, next) => {
   .then( () => {
     request.flash('success_msg', 'Message has been approved');
     response.redirect('/admin');
-  }).catch(err => console.log(err));
+  }).catch(err => {console.log(err);});
 });
 
 //Deny Post on admin dashboard
@@ -32,7 +32,7 @@ router.post('/deny', (request, response, next) => {
     .then( () => {
       request.flash('success_msg', 'Message has been Denied');
       response.redirect('/admin');
-  }).catch(err => console.log(err));
+  }).catch(err => {console.log(err);});
 });
 
 module.exports = router;

@@ -37,8 +37,7 @@ router.post('/', auth.messageAuthentication, (request, response, next) => {
       // Redirect after message sent successfully
       request.flash('success_msg', "Message has been sent to the seller!");
       response.redirect(`/post/${item_id}`);
-    }).catch(err => console.log(err));
+    }).catch(err => {console.log(err);});
 });
-
 
 module.exports = router;

@@ -47,10 +47,7 @@ router.get('/:post_id', auth.editAuthentication, (request, response, next) => {
         categories: categories,
         meeting_places: meeting_places
       });
-    }).catch(err => {
-      console.log(err);
-      renderErrors(response, err);
-    });
+    }).catch(err => {console.log(err);});
 });
 
 // Edit a Post
@@ -81,16 +78,9 @@ router.post('/:post_id', upload.single('image'), (request, response, next) => {
         response.redirect('/user');
         
         // Below are errors if any of the Promise calls fail
-      }).catch(err => { console.log(err); renderErrors(response, err); });
-    }).catch(err => { console.log(err); renderErrors(response, err); });
-  }).catch(err => { console.log(err); renderErrors(response, err); });
+      }).catch(err => { console.log(err);});
+    }).catch(err => { console.log(err);});
+  }).catch(err => { console.log(err);});
 });
-
-let renderErrors = (response, errors) => {
-  response.render('pages/create', {
-    title: 'GatorTrade - Create New Post',
-    errors: errors
-  });
-};
 
 module.exports = router;
