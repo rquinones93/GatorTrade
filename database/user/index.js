@@ -10,4 +10,5 @@ module.exports = {
   readMessage: require('./readMessage'),
   removeMessage: require('./removeMessage'),
   updateProfilePicture: require('./updateProfilePicture'),
+  changePassword: require('./changePassword'),
 };
