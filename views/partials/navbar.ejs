@@ -31,9 +31,19 @@
           <% if (typeof current_category != "undefined") { %>
             <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
           <% } else { %>
-            <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories</button>
-          <% } %>
-          <input hidden id="hidden-categories" name="categories" value="All Categories">
+             <!-- <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories</button>  -->
+           
+           
+            <!-- option 2. this works perfectly as well -->
+              <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdown-toggle-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                All Categories
+              </button> 
+
+
+            <% } %>
+           <!--original work, misaligned  
+             <input hidden id="hidden-categories" name="categories" value="All Categories">
           <div class="dropdown-menu" id="categories">
             <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
             <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
@@ -42,7 +52,20 @@
             <option class="dropdown-item" id="Events"         value="Events">Events</option>
             <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
             <option class="dropdown-item" id="Services"       value="Services">Services</option>
-          </div>  
+          </div>
+            </div>    -->
+
+          <!-- option 2. this works perfectly well -->
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="All Categories" value="All Categories">All Categories</a>
+            <a class="dropdown-item" id="Apparel"        value="Apparel">Apparel</a>
+            <a class="dropdown-item" id="Books"          value="Books">Books</a>
+            <a class="dropdown-item" id="Electronics"    value="Electronics">Electronics</a>
+            <a class="dropdown-item" id="Events"         value="Events">Events</a>
+            <a class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</a>
+            <a class="dropdown-item" id="Services"       value="Services">Services</a>
+          </div>
+        </div> 
         </div>
       </form>
 
