@@ -7,17 +7,15 @@
         <div class="card-body">
           <br>
 
-          <div class="float-right">
-            <span class="psw" ><p style="color: #9575cd">*All fields required</p></span>
-          </div>
-          <br>
-
           <h1 class="card-title" style="color: #9575cd"><font size=+3>Post Item For Sale</font></h1>
           <hr style="background-color: #9575cd">
           <% include ../error.ejs %>
 
-          <br>
           <!--Title for a post item-->
+          <div>
+            <span class="psw" ><p style="color: #9575cd">* All fields are required.</p></span>
+          </div>
+          <br>
           <form class="form-signin form-group" method="POST" action="/create" enctype="multipart/form-data">
             <div class="controls">
               <div class="row">

@@ -18,7 +18,7 @@
 
       <form class="input-group input-group search-bar" method="POST" action="/search" role="search">
         <input type="text" name="searchInput" style="color: black;" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
-        <div class="dropdown" style="margin-left: 2px;">
+        <div class="dropdown" style="margin-left: 2px; margin-right:2px;">
           <% if (typeof current_category != "undefined") { %>
             <button class="btn btn-outline-secondary dropdown-toggle" style="color: black;" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
           <% } else { %>
@@ -38,7 +38,7 @@
           </div>
         </div> 
 
-        <div style="margin-left: 2px;">
+        <div style="margin-left: 2px; margin-right:2px;">
           <button class="btn btn-outline-secondary" style="color: black;" type="submit">Search</button>
         </div>
       </form>
