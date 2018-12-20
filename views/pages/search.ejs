@@ -1,10 +1,12 @@
 <!--TESTING New home page-->
+<div class = "fontevr">
 <div class="container jumbotron">
   <h1 class="display-3">
   Searching In: <%= current_category %></h1>
   <br/>
 </div>
 <div>
+<% include ../error.ejs %>
 <h3 style="color:#9575cd">Apply Search Filter</h3>
   <br/>
   <div class="row">
@@ -83,6 +85,7 @@
 <div id="hidden-gems">
   <p hidden id="current_category"><%= current_category %></p>
   <p hidden id="current_search"><%= current_search %></p>
+</div>
 </div>
  
 <script>

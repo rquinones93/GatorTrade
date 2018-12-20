@@ -1,17 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header justify-content-between d-print-block">
+<div class = "fontevr">
+<nav class="navbar navbar-expand-lg navbar-light background-color site-header justify-content-between d-print-block" style="background-color:#e8eaf6">
   <div class="container flex-md-row">
-    <a class="navbar-brand" href="/">GT</a>
+    <a class="navbar-brand" href="/">GatorTrade</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="navbar-collapse collapse d-print-block" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-change" href="/create">Post</a>
-        </li>
-      </ul>
-
       <div hidden id="secrets">
       <% if (typeof current_category != "undefined")  {%>
         <p hidden id="current_category"><%= current_category %></p>
@@ -22,14 +17,17 @@
       </div>
 
       <form class="input-group input-group search-bar" method="POST" action="/search" role="search">
-        <div>
+        <input type="text" name="searchInput" style="color: black;" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
+        <div class="dropdown" style="margin-left: 2px;">
           <% if (typeof current_category != "undefined") { %>
-            <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
+            <button class="btn btn-outline-secondary dropdown-toggle" style="color: black;" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_category %></button>
           <% } else { %>
-            <button class="btn btn-outline-secondary dropdown-toggle" id="dropdown-toggle-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories</button>
+            <button class="btn btn-outline-secondary dropdown-toggle" style="color: black;" type="button" id="dropdown-toggle-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All Categories
+            </button>
           <% } %>
           <input hidden id="hidden-categories" name="categories" value="All Categories">
-          <div class="dropdown-menu" id="categories">
+          <div class="dropdown-menu" style="color: black;" id="categories">
             <option class="dropdown-item" id="All Categories" value="All Categories">All Categories</option>
             <option class="dropdown-item" id="Apparel"        value="Apparel">Apparel</option>
             <option class="dropdown-item" id="Books"          value="Books">Books</option>
@@ -37,31 +35,37 @@
             <option class="dropdown-item" id="Events"         value="Events">Events</option>
             <option class="dropdown-item" id="Home Goods"     value="Home Goods">Home Goods</option>
             <option class="dropdown-item" id="Services"       value="Services">Services</option>
-          </div>  
-        </div>
-        <input type="text" name="searchInput" class="form-control input-group-text" placeholder="Search for more items." aria-label="Recipient's username" aria-describedby="basic-addon2" max-length="40" pattern="^[A-Za-z0-9 ]*$" title="I only like letters and numbers :)">
-        <div class="">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </div>
+        </div> 
+
+        <div style="margin-left: 2px;">
+          <button class="btn btn-outline-secondary" style="color: black;" type="submit">Search</button>
         </div>
       </form>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" style="margin-left: 5px;">
+          <a class="nav-link nav-link-change" style="color: black" href="/create">Post</a>
+        </li>
+      </ul>
 
        <!-- Right side of navbar changes whether user is logged in -->
       <% if ( isAuthenticated ) { %>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link nav-link-change" href="/user">Profile</a>
+          <li class="nav-item" style="margin-left: 5px;">
+            <a class="nav-link nav-link-change" style="color: black;" href="/user">Dashboard</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-change" href="/logout">Log Out</a>
+          <li class="nav-item" style="margin-left: 5px;">
+            <a class="nav-link nav-link-change" style="color: black;" href="/logout">Log Out</a>
           </li>
         </ul>
       <% } else { %>
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link nav-link-change" href="/signup">Sign Up</a>
+          <li class="nav-item" style="margin-left: 5px;">
+            <a class="nav-link nav-link-change" style="color: black;" href="/signup">Sign Up</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-change" href="/login">Login</a>
+          <li class="nav-item" style="margin-left: 5px;">
+            <a class="nav-link nav-link-change" style="color: black;" href="/login">Login</a>
           </li>
         </ul>
       <% } %>
@@ -93,3 +97,4 @@
   setSelectedCategory();
   setSearchInput();
 </script>
+</div>

@@ -36,11 +36,13 @@
 .dropdown-item.active,
 .dropdown-item:active {
     color: #212529;
+    position: right;
 }
 
 .dropdown-item:focus,
 .dropdown-item:hover {
     background: #fec400;
+    position: right;
 }
 
 .glyphicon-search {

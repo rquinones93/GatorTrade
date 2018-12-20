@@ -1,42 +1,54 @@
+<div class = "fontevr">
 <br>
 <% include ../error.ejs %>
 <!--Show Product detail-->
 <% if (typeof item != "undefined") { %>
-<div class="flex-container">
+<div class="container">
   <div class="row">
-    <div class = "col-lg-12 col-md-12 col-sm-12 item-title">
-      <h1 class="item-title"><%= item.title %></h1>
-    </div>
-    <div class = "col-lg-5 col-md-6 col-sm-12 item-photo">
-      <img src="<%= item.image_link %>" alt="Item's Image" height="100%" width = "100%" class="img-responsive rounded">
-    </div>
-    
-    <div class = "col-lg-7 col-md-6 col-sm-12 item-detail">
-      <h5 class="item-location">Meeting Place: <span style="color:rgb(12, 175, 204)"><%=item.meeting_place%></span></h5>
-      <hr>
-      <h4 class="item-price">Price: <span>$<%=item.price%></span></h5>
-      <hr>
-      <p class="item-description"><%= item.description %></p>
-      <% if (typeof seller != "undefined") { %>
-        <hr>
-        <h5>Sold By - <%= seller.full_name %></h5>
-        <img src="<%= seller.profile_picture %>" height="45%" alt="Seller Profile Picture" class="img-responsive img-thumbail rounded">
-      <% }%>
-    </div>
-    <div class="container">
-      <form class="row" method="POST" action = "/post">
-        <div class=" col-lg-12 col-md-12 col-sm-12">
-          <input hidden name="item_id" value="<%=item.item_id%>">
-          <input hidden name="seller_id" value="<%=item.seller_id%>">
-          <h2>Message</h2>
-          <textarea type="text" name="messageInput" placeholder="Enter your message for seller"></textarea>
-        </div>
-      
-        <div class="container">
-          <button class="btn btn-success float-right" type="submit">Send Message</button>
-        </div>
-      </form>
+    <div class="card card-post mx-auto" style="background-color:#f5f5f5; width: 100%;">
+      <div class="card-body">
+          <div class = "col-lg-12 col-md-12 col-sm-12 item-title">
+              <h1 class="item-title" style="color: #9575cd"><font size=+3><%= item.title %></font></h1>
+            </div>
+            <hr style="background-color:  #9575cd">
+            <br>
+            <!--Item's image-->
+            <div class="row">
+              <div class = "col-lg-5 col-md-6 col-sm-12 item-photo">
+              <img src="<%= item.image_link %>" alt="Item's Image" style="height:100%; width:100%;overflow: hidden;" class="img-responsive rounded">
+            </div>                  
+            <!--Item's Information-->
+            <div class = "col-lg-7 col-md-6 col-sm-12 item-detail">
+              <h5 class="item-location">Meeting Place: <span style="color:rgb(12, 175, 204)"><%=item.meeting_place%></span></h5>
+              <hr style="background-color:  #9575cd">
+              <h5 class="item-price">Price: <span>$<%=item.price%></span></h5>
+              <hr style="background-color: #9575cd">
+              <h6 class="item-description"><%= item.description %></h6>
+              <% if (typeof seller != "undefined") { %>
+                <hr style="background-color: #9575cd">
+                <h5>Sold By: <span style="color:rgb(12, 175, 204)"> <%= seller.full_name %></span></h5>
+                <img src="<%= seller.profile_picture %>" height="45%" alt="Seller Profile Picture" class="img-responsive img-thumbail rounded">
+              <% }%>
+            </div>
+          </div>
+            <!--Message box for sending message to seller-->
+            <div class="container">
+              <form class="row" method="POST" action = "/post">
+                <div class=" col-lg-12 col-md-12 col-sm-12">
+                  <input hidden name="item_id" value="<%=item.item_id%>">
+                  <input hidden name="seller_id" value="<%=item.seller_id%>">
+                  <h3 style="color: #9575cd">Message</h2>
+                  <textarea type="text" name="messageInput" placeholder="Enter your message for seller"></textarea>
+                </div>
+              
+                <div class="container">
+                  <button class="btn btn-primary btn-raised text-uppercase float-right" type="submit" style="color: white; background-color: #9575cd; border-color: #9575cd ">Send Message</button>
+                </div>
+              </form>
+            </div>
+      </div>              
     </div>
   </div>
+</div>
 </div>
 <% } %>
