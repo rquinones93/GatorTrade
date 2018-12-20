@@ -114,6 +114,9 @@ router.get('/remove_post/:post_id', auth.removePostAuthentication, (request, res
 //   request.flash('success_msg', 'Profile Picture has been updated. View on Settings Tab.');
 //   response.redirect('/user');
 // });
+let renderErrors = (response, errors) => {
+  response.redirect('/user');
+};
 
 
 module.exports = router;
