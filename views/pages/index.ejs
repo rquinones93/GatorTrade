@@ -81,10 +81,10 @@ headline {
   <div class="container-fluid">
     <div class="row center">
     <%if( typeof items != "undefined") { %>
-      <% items.forEach(( item ) => {%>
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <% items.forEach(( item ) => { %>
+          <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card rounded" style="width: 100%;">
-              <a href="/post/<%= item.item_id %>" class="btn">
+              <a href="/post/<%= item.item_id %>" target="_ blank"class="btn">
                 <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
                 <div class="overlay rounded">
                   <br><br><br><br><br>
@@ -94,8 +94,9 @@ headline {
 
               <!--Item Title and Price display below picture-->
               <div class="col-lg-12">
-                <h5 class="font-weight-bold, text-center"><%= item.title %></h5>
-                <h5 class="font-weight-bold, text-center"><strong>Price:</strong> $<%= item.price %></h5>
+                <h5 class="font-weight-bold,"><%= item.title %></h5>
+                <h5 class="font-weight-bold,"><strong>Price:</strong> $<%= item.price %></h5>
+                <h6 class="font-weight-bold,"><strong>Meeting Place:</strong> <%= item.meeting_place%></h6>
               </div> 
             </div>
           </div>
