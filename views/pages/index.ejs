@@ -21,7 +21,7 @@ headline {
 <!--Text Alterations-->
 
 <!-- Welcome to GatorTrade -->
-
+<div class = "fontevr">
 <h1 class="display-3" style = "color:black"  ><txtshd> <center><b><b>Welcome to GatorTrade!</b></b></center></txtshd></h1>
 <hr class="rgba-white-light" style="margin: 0 15%;background-color:black">
 <br>
@@ -68,10 +68,9 @@ headline {
 
 <!--Bottom Half of Page(From Recent Posts Down)-->
 <!-- Jumbotron Header -->
-<header class="jumbotron my-4" style="background-color:whitesmoke; border-color: #9575cd; ">
-  <h1 class="display-3" style="color:black"><h><txtshd><b>Recent Posts &nbsp</b></h></txtshd><a href="/search" class="btn btn-primary btn-lg btn-raised" style="color:white; background-color:#9575cd;height:46px;width:185px">See All Items</a></h1>
-  <p class="lead"><b>Checkout what people have just posted!</b></p>
-</header>
+<div>
+  <h1 class="display-3" style="color:black;margin-left: .3em"><h><txtshd><u><b> Recent Posts</b></u></h></txtshd><a href="/search" class="btn btn-primary btn-lg" style="color:white; background-color:#9575cd;height:46px;width:185px; margin-left: 24.2em" >See All Items</a></h1>
+</div>
 <br>
 <!-- 4 Most Recent Items -->
 <%if( typeof items != "undefined") { %>
@@ -99,4 +98,5 @@ headline {
         <%});%>
       <%}%>
     </div>
+  </div>
 <%}%>
