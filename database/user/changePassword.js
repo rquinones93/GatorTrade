@@ -10,7 +10,7 @@ const changePassword = (user_id, password) => {
         // Returns hashed password
         // change password for user with user_id
         return db.query(CHANGE_PASSWORD, [user_id, hash]);
-    });
+    }).catch(err => console.log(err));
 };
 
 module.exports = changePassword;

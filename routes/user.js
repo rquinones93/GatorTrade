@@ -58,8 +58,7 @@ router.post('/changePassword', (request, response, next) => {
   if ( formErrors ) {
     renderErrors(response, formErrors);
   } else {
-    let user_id = request.body;
-    let password = request.body;
+    let { user_id, password } = request.body;
 
     User.changePassword(user_id, password)
       .then(() => {
@@ -98,22 +97,6 @@ router.get('/remove_post/:post_id', auth.removePostAuthentication, (request, res
   
 });
 
-// Not Priority
-// Update Profle Picture
-// Get Current Profile Picture + Public ID
-// Upload and Update
-// Delete Old
-// Redirect to Settings Tab
-// router.post('/update_profile_picture', (request, response, next) => {
-//   let user_id = request.user.user_id;
-
-//   User.getUserDataById(user_id)
-//   .then((user) => {
-//     let old_profile_id = user.public_id
-//   }).catch();
-//   request.flash('success_msg', 'Profile Picture has been updated. View on Settings Tab.');
-//   response.redirect('/user');
-// });
 let renderErrors = (response, errors) => {
   response.redirect('/user');
 };
