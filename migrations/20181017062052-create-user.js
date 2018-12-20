@@ -27,6 +27,10 @@ module.exports = {
       profile_picture: {
         allowNull: false,
         type: Sequelize.STRING
+      },
+      profile_picture_public_id: {
+        allowNull: true,
+        type: Sequelize.STRING
       }
     });
   },

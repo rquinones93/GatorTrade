@@ -44,10 +44,7 @@ router.get('/', auth.postAuthentication, (request, response, next) => {
         categories: categories,
         meeting_places: meeting_places
       });
-    }).catch(err => { 
-      console.log(err);
-      renderErrors(response, err);
-    });
+    }).catch(err => {console.log(err);});
 });
 
 router.post('/', upload.single('image'), (request, response, next) => {
@@ -64,21 +61,8 @@ router.post('/', upload.single('image'), (request, response, next) => {
       request.flash('success_msg', "Posted! Your post is now pending admin review. Check again within 24 hours.");
       response.redirect('/user');
 
-    }).catch(err => { 
-      console.log(err);
-      renderErrors(response, err);
-    });
-  }).catch(err => { 
-    console.log(err);
-    renderErrors(response, err);
-   });
+    }).catch(err => {console.log(err);});
+  }).catch(err => {console.log(err);});
 });
-
-let renderErrors = (response, errors) => {
-  response.render('pages/create', {
-    title: 'GatorTrade - Create New Post',
-    errors: errors
-  });
-};
 
 module.exports = router;

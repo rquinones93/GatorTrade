@@ -17,7 +17,7 @@ router.get('/:item_id', auth.approvedPost, (request, response, next) => {
       
       // Render Page
       response.render('pages/post', {
-        title: "Post " + local_item_id,
+        title: "GatorTrade - " + item.title,
         item: item,
         seller: seller,
         post_id: local_item_id
@@ -28,17 +28,16 @@ router.get('/:item_id', auth.approvedPost, (request, response, next) => {
 });
 
 router.post('/', auth.messageAuthentication, (request, response, next) => {
-  let {item_id, seller_id, messageInput} = request.body;
+  let {item_id, seller_id, item_title, messageInput} = request.body;
 
   // Send message to Seller. Sender's User ID not required
-  User.message(item_id, seller_id, messageInput)
+  User.message(item_id, seller_id, item_title, messageInput)
     .then( () => {
       
       // Redirect after message sent successfully
       request.flash('success_msg', "Message has been sent to the seller!");
       response.redirect(`/post/${item_id}`);
-    }).catch(err => console.log(err));
+    }).catch(err => {console.log(err);});
 });
-
 
 module.exports = router;
