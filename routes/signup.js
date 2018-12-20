@@ -32,7 +32,7 @@ router.post('/', (request, response, next) => {
         request.flash('success_msg', "Congrats! You're registered!");
         response.redirect('/login');
 
-      }).catch(err => { renderErrors( response, err ); });
+      }).catch(err => {console.log(err);});
   }
 });
 

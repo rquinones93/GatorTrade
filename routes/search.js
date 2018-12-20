@@ -12,9 +12,7 @@ router.get('/', (request, response, next) => {
         current_category: "All Categories",
         current_search: ""
       });
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(err => {console.log(err);});
 });
 
 router.post('/', (request, response, next) => { 
@@ -33,9 +31,7 @@ router.post('/', (request, response, next) => {
         current_category: searchCategory,
         current_search: searchInput
       });
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(err => {console.log(err);});
 });
 
 // Filtered Search
@@ -89,8 +85,7 @@ router.post('/filter', (request, response, next) => {
         current_search: searchInput,
         current_filter: filter_type
       });
-    }).catch(err => {
-      console.log(err);
-    });
+    }).catch(err => {console.log(err);});
 });
+
 module.exports = router;
