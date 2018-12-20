@@ -1,3 +1,4 @@
+<div class = "fontevr">
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -90,11 +91,11 @@
               <h5 class="card-title"><strong>Here are your messages:</strong></h5>
               <br>
               <div class="table-responsive-lg">
-                <table class="table">
+                <table class="table" id="myMessagesTable">
                   <thead class="thead-light">
                     <tr>
-                      <th scope="col">Item</th>
-                      <th scope="col">Message</th>
+                      <th scope="col" onclick="sortTable(0)">Item <span class="fas fa-sort"></span></th>
+                      <th scope="col" onclick="sortTable(1)">Message <span class="fas fa-sort"></span></th>
                       <th scope="col">Read</th>
                       <th scope="col">Remove</th>
                     </tr>
@@ -103,7 +104,7 @@
                     <% if (typeof messages != "undefined") { %>
                       <% messages.forEach((message) => { %>
                         <tr>
-                          <td><a href="/post/<%= message.item_id %>" class="btn btn-raised btn-success">See Post</td>
+                          <td><a href="/post/<%= message.item_id %>" target="_ blank" class="btn btn-raised"><%= message.item_title %></td>
                           <td>
                           <% if (message.status != "READ") { %>
                             <strong><%= message.message %></strong>
@@ -166,7 +167,7 @@
                   <% if (typeof posts != "undefined") { %>
                     <% posts.forEach((post) => { %>
                       <tr>
-                        <td><a href="/post/<%= post.item_id %>" class="btn"><%= post.title %></a></td>
+                        <td><a href="/post/<%= post.item_id %>" target="_ blank" class="btn btn-raised"><%= post.title %></a></td>
                         <td><%= post.description %></td>
                         <td><a href="/edit/<%= post.item_id %>" class="btn btn-info btn-raised">Edit</a>
                         </td>
@@ -231,35 +232,39 @@
                     </div>
                   </div>
                   <!--Submit SignUp Form-->    
-                  <button class="btn btn-md btn-success btn-raised" type="submit" id="create_account" style="color: white; background-color: #9575cd; border-color: #9575cd; ">Update</button>
+                  <button class="btn btn-md btn-success btn-raised" type="submit" id="create_account" style="color: white; background-color: #9575cd; border-color: #9575cd; ">Update Profile Picture</button>
                 </form>
                 <br><br>
                 
-                <div class="row">
-                  <p class="h2" style="color:indigo">Update Password</p>
-                  <hr style="background-color: #9575cd">
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <br>
-                      <label for="form_password">Change Password <small>(8 character minimum) *</small></label>
-                      <input id="form_password" type="password" name="password" class="form-control" placeholder="Please Enter Your Password"
-                        max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-                      <div class="help-block with-errors"></div>
-                    </div>
-                  </div>
-                </div>
+                <form class="form-horizontal" action="/user/changePassword" method="post">
 
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <label for="form_confirm_password">Confirm Password *</label>
-                      <input id="form_confirm_password" type="password" name="confirmpassword" class="form-control" placeholder="Please Re-Enter Your Password"
-                        max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
-                      <div class="help-block with-errors"></div>
+                  <div class="row">
+                    <p class="h2" style="color:indigo">Update Password</p>
+                    <hr style="background-color: #9575cd">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <br>
+                        <label for="form_password">Change Password <small>(8 character minimum) *</small></label>
+                        <input id="form_password" type="password" name="password" class="form-control" placeholder="Please Enter Your Password"
+                          max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only" required="required">
+                        <div class="help-block with-errors"></div>
+                      </div>
                     </div>
                   </div>
-                  <button type="button" style="color:white" class="btn btn-success btn-block bg-success">Update Changes</button>
-                </div>
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for="form_confirm_password">Confirm Password *</label>
+                        <input id="form_confirm_password" type="password" name="confirmpassword" class="form-control" placeholder="Please Re-Enter Your Password"
+                          max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only" required="required">
+                        <div class="help-block with-errors"></div>
+                      </div>
+                      <button class="btn btn-md btn-success btn-raised" formmethod="post" type="submit" style="color: white; background-color: #9575cd; border-color: #9575cd; ">Update Password</button>
+                    </div>
+                    <input type="hidden" id="user_id" name="user_id" value="<%= userid %>">
+                  </div>
+                </form>
               </div>
             </div>
             <!--closes tab content from messages tab-->
@@ -268,6 +273,64 @@
       </div>
   </div>
 </div>
+
+<script>
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myMessagesTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc"; 
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // Start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 1; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        // Each time a switch is done, increase this count by 1:
+        switchcount ++; 
+      } else {
+        /* If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again. */
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+</script>
+
 <!--for modal-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
   crossorigin="anonymous"></script>

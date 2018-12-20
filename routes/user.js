@@ -4,7 +4,7 @@ const auth = require('../auth/actionAuthentication');
 let cloudinary = require('cloudinary');
 let multer = require('multer');
 const { Item, User } = require('../database');
-
+const formValidation = require('../validation/password_validation');
 // Set up cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -49,6 +49,7 @@ router.get('/', auth.userDashBoardAuthentication, (request, response, next) => {
         messages: messages,
         posts: posts,
         name: `${request.user.first_name} ${request.user.last_name}`,
+        userid: `${request.user.user_id}`,
         profile_picture: user.profile_picture
       });
     }).catch(err => {console.log(err);});
@@ -98,12 +99,25 @@ router.get('/remove_post/:post_id', auth.removePostAuthentication, (request, res
     }).catch(err => {console.log(err);});
 });
 
-// Not Priority
-// Update Profle Picture
-// Get Current Profile Picture + Public ID
-// Upload and Update
-// Delete Old
-// Redirect to Settings Tab
+// Settings Tab - Change Password
+router.post('/changePassword', (request, response, next) => {
+  let formErrors = formValidation( request );
+
+  if ( formErrors ) {
+    renderErrors(response, formErrors);
+  } else {
+    let { user_id, password } = request.body;
+
+    User.changePassword(user_id, password)
+      .then(() => {
+        console.log("inside");
+        request.flash('success_msg', 'Password change successful!');
+        response.redirect('/user');
+    }).catch(err => console.log(err => { renderErrors( response, err ); }));
+  }
+});
+
+// Settings Tab - Update Profile Picture
 router.post('/update_profile_picture', upload.single('image'), (request, response, next) => {
   const user_id = request.user.user_id;
   const image_path = request.file.path;
@@ -137,5 +151,9 @@ router.post('/update_profile_picture', upload.single('image'), (request, respons
     });
   }).catch(err => {console.log(err);});
 });
+
+let renderErrors = (response, errors) => {
+  response.redirect('/user');
+};
 
 module.exports = router;

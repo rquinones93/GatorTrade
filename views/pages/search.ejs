@@ -1,57 +1,37 @@
 <!--TESTING New home page-->
+<div class = "fontevr">
 <div class="container jumbotron">
   <h1 class="display-3">
   Searching In: <%= current_category %></h1>
   <br/>
 </div>
-<div class="container">
-  <h3>Apply Search Filter</h3>
-  <br/>
-  <div class="row">
-    <div class="form-group col-md-6">
-      <h6>By Price:</h6><hr>
-      <div class="row">
-        <!-- Low to High -->
-        <form class="col-sm-6" method="POST" action="/search/low_to_high">
-          <input hidden name="searchInput" value="<%= current_search %>">
-          <input hidden name="categories" value="<%= current_category %>">
-          <button class="btn btn-sm btn-primary btn-raised" type="submit" id="low_to_high" >Price: Low to High</button>
-        </form>
 
-        <!-- High to Low -->
-        <form class="col-sm-6" method="POST" action="/search/high_to_low">
+<!-- Show Items-->
+<div class="content">
+  <div class="container-fluid">
+  
+    <!-- Filters -->
+    <div class="row">
+      <h3 style="color:#9575cd">Filter by:</h3>
+      <div class="form-group col-md-6">
+        <form class="col-sm-12 input-group" method="POST" action="/search/filter">
           <input hidden name="searchInput" value="<%= current_search %>">
           <input hidden name="categories" value="<%= current_category %>">
-          <button class="btn btn-sm btn-primary btn-raised" type="submit" id="high_to_low" >Price: High to Low</button>
+          <select class="form-control form-control-sm col-sm-10" id="filterSelection" name="filter">
+            <option value="Price: Low to High" id="Price: Low to High">Price: Low to High</option>
+            <option value="Price: High to Low" id="Price: High to Low">Price: High to Low</option>
+            <option value="Meeting Place: Cesar Chavez Student Center"                id="Meeting Place: Cesar Chavez Student Center">Meeting Place: Cesar Chavez Student Center</option>
+            <option value="Meeting Place: J. Paul Leonard Library - Peets Coffee"     id="Meeting Place: J. Paul Leonard Library - Peets Coffee">Meeting Place: J. Paul Leonard Library - Peets Coffee</option>
+            <option value="Meeting Place: J. Paul Leonard Library - Research Commons" id="Meeting Place: J. Paul Leonard Library - Research Commons">Meeting Place: J. Paul Leonard Library - Research Commons</option>
+            <option value="Meeting Place: Student Services Building"                  id="Meeting Place: Student Services Building">Meeting Place: Student Services Building</option>
+            <option value="Meeting Place: Mashouf Wellness Center"                    id="Meeting Place: Mashouf Wellness Center">Meeting Place: Mashouf Wellness Center</option>
+          </select>
+          <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px; color: white; background-color: #9575cd; border-color: #9575cd;" type="submit">Apply</button>
         </form>
       </div>
     </div>
-    <div class="form-group col-md-6">
-      <h6>By Meeting Location:</h6><hr>
-        <div class="row">
-          <form class="col-sm-12 input-group" method="POST" action="/search/meeting_location">
-            <input hidden name="searchInput" value="<%= current_search %>">
-            <input hidden name="categories" value="<%= current_category %>">
-            <select class="form-control form-control-sm col-sm-6" name="updated_location">
-              <option>Select</option>
-              <option>Cesar Chavez Student Center</option>
-              <option>J. Paul Leonard Library - Peets Coffee</option>
-              <option>J. Paul Leonard Library - Research Commons</option>
-              <option>Student Services Building</option>
-              <option>Mashouf Wellness Center</option>
-            </select>
-            <button class="btn btn-sm btn-primary btn-raised input-group-append" style="margin-left: 15px;"type="submit" id="meeting_location" >Update Location</button>
-          </form>
-        </div>
-    </div>
-  </div>
+    <hr>
 
-  <hr>
-</div>
-
- <!-- Show Items-->
-<div class="content">
-  <div class="container-fluid">
     <div>Displaying <%=items.length%> of <%=items.length%></div>
 
     <div class="row row-offcanvas row-offcanvas-right">
@@ -59,7 +39,7 @@
         <% items.forEach(( item ) => { %>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card rounded" style="width: 100%;">
-              <a href="/post/<%= item.item_id %>" class="btn">
+              <a href="/post/<%= item.item_id %>" target="_ blank"class="btn">
                 <img class="card-img-top" src="<%= item.image_link %>" height="250px" alt="Card image cap">
                 <div class="overlay rounded">
                   <br><br><br><br><br>
@@ -69,8 +49,9 @@
 
               <!--Item Title and Price display below picture-->
               <div class="col-lg-12">
-                <h5 class="font-weight-bold, text-center"><%= item.title %></h5>
-                <h5 class="font-weight-bold, text-center"><strong>Price:</strong> $<%= item.price %></h5>
+                <h5 class="font-weight-bold,"><%= item.title %></h5>
+                <h5 class="font-weight-bold,"><strong>Price:</strong> $<%= item.price %></h5>
+                <h6 class="font-weight-bold,"><strong>Meeting Place:</strong> <%= item.meeting_place%></h6>
               </div> 
             </div>
           </div>
@@ -83,6 +64,12 @@
 <div id="hidden-gems">
   <p hidden id="current_category"><%= current_category %></p>
   <p hidden id="current_search"><%= current_search %></p>
+  <%if( typeof current_filter != "undefined") { %>
+    <p hidden id="current_filter"><%= current_filter %></p>
+  <% } else { %>
+    <p hidden id="current_filter"></p>
+  <% } %>
+</div>
 </div>
  
 <script>
@@ -96,6 +83,16 @@
     var searchInput = document.getElementById("current_search").innerHTML;
     document.getElementsByName("searchInput")[0].value = searchInput;
   }
+
+  // Set Selected Filter
+  function setSelectedFilter() {
+    var selectedFilter = document.getElementById("current_filter").innerHTML;
+
+    if(selectedFilter != "") {
+      document.getElementById(selectedFilter).setAttribute('selected', 'selected');
+    }
+  }
   setSelectedCategory();
   setSearchInput();
+  setSelectedFilter();
 </script>

@@ -57,6 +57,29 @@ const editAuthentication = (request, response, next) => {
   }
 };
 
+// Implement
+const approvedPost = (request, response, next) => {
+  // Check if logged in user is an admin
+  Item.getItemById(request.params.item_id)
+    .then(current_item => {
+
+      if (!current_item) {
+        // Post does not exist
+        request.flash('error', 'That post does not exist.');
+        response.redirect('/search');
+      }
+
+      // Post is not approved
+      if (current_item.status != "Approved") {
+        request.flash('error', 'That post is awaiting Admin Approval.');
+        response.redirect('/search');
+      }
+
+      // Show post
+      return next();
+    }).catch(err => { console.log(err); });
+};
+
 const removePostAuthentication = (request, response, next) => {
   if (request.isAuthenticated()) {
     // Check if logged in user is an admin
@@ -90,6 +113,7 @@ module.exports = {
   userDashBoardAuthentication: userDashBoardAuthentication,
   postAuthentication: postAuthentication,
   messageAuthentication: messageAuthentication,
+  approvedPost: approvedPost,
   editAuthentication: editAuthentication,
   removePostAuthentication: removePostAuthentication
 };
