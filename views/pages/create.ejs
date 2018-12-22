@@ -23,7 +23,7 @@
                   <div class="form-group">
                     <label for="form_title" style="color: #9575cd">Title</label>
                     <input id="form_title" type="text" name="title" class="form-control" placeholder="Enter post title" required="required"
-                        data-error="A post title is required." max-length="40" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
+                        data-error="A post title is required." max-length="40" pattern="^[A-Za-z0-9 ,./!$%&?-()]*$" title="Alphanumeric Characters Only">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
@@ -34,7 +34,7 @@
                   <div class="form-group">
                     <label for="form_description" style="color: #9575cd">Description </label>
                     <input id="form_description" type="text" name="description" class="form-control" placeholder="Describe in 100 characters or less" required="required"
-                        data-error="An item description is required." max-length="100" pattern="^[A-Za-z0-9 ]*$" title="Alphanumeric Characters Only">
+                        data-error="An item description is required." max-length="100" pattern="^[A-Za-z0-9 ,./!$%&?-()]*$" title="Alphanumeric Characters Only">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
