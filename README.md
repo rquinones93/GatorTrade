@@ -1,5 +1,7 @@
 # csc648-fa18-Team04
 
+GatorTrade is a web application built during San Francisco State University's Fall 2018 semester for CSC648 (Software Engineering). The purpose of the course is for a team of 5-7 students to work collaboratively and create a Buy/Sell/Trade-style website for SFSU students. GatorTrade was built with Node.js, Express.js, Bootstrap, PostgreSQL, and is hosted on a free Heroku server. Images are stored and hosted using Cloudinary, a free addon, easily provided by Heroku.
+
 ## Dependencies
 
 1. Node.js
@@ -22,7 +24,7 @@
 
 ## Initial Setup of Local PostgreSQL Database
 
-### Important: Make sure you've cloned the project & PostgreSQL Server is running before proceeding.
+### Important: Make sure you've cloned the project & PostgreSQL Server is running before proceeding
 
 - [Windows - Using pgAdmin - Video Tutorial](https://youtu.be/EBw5E5DzAvE?t=185)
   - Note: Create a new database called `gator_trade`. You should be finished by 5:00 in the video.
@@ -98,12 +100,17 @@ robertBEuserRegistration
 
 ## Development Team
 
-1. [Abigail - Team Lead](https://github.com/michinchin)
-2. [Alyssa - Front End Developer](https://github.com/amalunao)
-3. [Dhruv - Front End Lead](https://github.com/dhruvbshah)
-4. [Jarek - Back End Developer](https://github.com/Janda95)
-5. [Jed - Front End Developer](https://github.com/jahmadia)
-6. [Nikita - Front End Developer](https://github.com/nbajra)
-7. [Robert - Back End Lead](https://github.com/rquinones93)
+### Team Leads
 
-README Maintainer- Robert
+1. [Abigail - Team Lead](https://github.com/michinchin)
+2. [Robert - Back End Lead](https://github.com/rquinones93)
+3. [Dhruv - Front End Lead](https://github.com/dhruvbshah)
+
+### Team Developers
+
+1. [Jarek - Back End Developer](https://github.com/Janda95)
+2. [Alyssa - Front End Developer](https://github.com/amalunao)
+3. [Jed - Front End Developer](https://github.com/jahmadia)
+4. [Nikita - Front End Developer](https://github.com/nbajra)
+
+README Maintained by Robert
